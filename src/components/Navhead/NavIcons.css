@@ -1,0 +1,17 @@
+.icon-header-div{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    
+}
+
+#icon-header{
+    font-size: 1.3rem;
+}
+
+.icon-header:hover{
+    color: #b6d7a8;
+    cursor: pointer;
+
+}
+
