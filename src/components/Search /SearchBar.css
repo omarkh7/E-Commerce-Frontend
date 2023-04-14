@@ -14,6 +14,10 @@
     background-color: #eae9e9a9;
     border: solid 1px #b6d7a8;;
 }
+
+.input-wrapper:focus{
+    width: 20rem;
+}
 .input-wrapper input {
     background-color: transparent;
     border: none;
@@ -35,4 +39,11 @@
 
 #search-icon {
     color: black;
+}
+
+@media screen and (max-width:973px){
+    .input-wrapper{
+        width: 70vw;
+           
+    }
 }

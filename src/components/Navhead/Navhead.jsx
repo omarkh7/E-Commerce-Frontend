@@ -1,42 +1,47 @@
-import React, { useState } from 'react';
-import Logo from '../../assets/images/logo2-removebg-preview.png'
-import '../Navhead/Navhead.css';
-import Navbar from'../Navbar/Navbar';
-import SearchBar from '../Navhead/SearchBar'
-import NavIcons from '../Navhead/NavIcons'
-import { FaAlignRight } from 'react-icons/fa';
+import React, { useState } from "react";
+import Logo from "../../assets/images/logo2-removebg-preview.png";
+import "../Navhead/Navhead.css";
+import Navbar from "../Navbar/Navbar";
+import SearchBar from "../Search /SearchBar";
+import NavIcons from "../Navhead/NavIcons";
+import NavbarMobile from "../Navbar/NavbarMobile";
+import SearchResultsList from "../Search /SearchResultsList";
 function Navhead() {
+  const [results, setResults] = useState([]);
 
-  const [isNavExpanded, setIsNavExpanded] = useState(true);
+  return (
+    <header className='navhead pre-header'>
+      <div>
+        <img className='logo-header' src={Logo} alt='logo' />
+      </div>
 
-  const closeMenu = () => setIsNavExpanded(false);
-
-    return (
-      <header className='navhead pre-header'>
+      <div className='nav-navbar'>
+        <Navbar />
+      </div>
+      <div className='right-side-header'>
         <div>
-          <img className='logo-header' src={Logo} alt='logo' />
+          <SearchBar setResults={setResults} />
+          <SearchResultsList results={results} />
         </div>
-        <button
-          className='hamburger'
-          onClick={() => {
-            setIsNavExpanded(isNavExpanded);
-          }}
-        >
-          <FaAlignRight />
-        </button>
+        <div className='navicons'>
+          <NavIcons />
+        </div>
+      </div>
+      <div className='nav-navMobile'>
+        <NavbarMobile />
+      </div>
+
+      <div className='icons-mobileversion'>
         <div>
-          <Navbar isNavExpanded={isNavExpanded} />
+          <SearchBar setResults={setResults} />
+          <SearchResultsList results={results} />
         </div>
-        <div className='right-side-header'>
-          <div>
-            <SearchBar />
-          </div>
-          <div>
-            <NavIcons />
-          </div>
+        <div>
+          <NavIcons />
         </div>
-      </header>
-    );
+      </div>
+    </header>
+  );
 }
 
-export default Navhead
+export default Navhead;

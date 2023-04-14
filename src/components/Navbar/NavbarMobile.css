@@ -1,0 +1,35 @@
+.mobile-navigation{
+    display: flex;
+    flex-direction: row;
+}
+
+.hamburger{
+    color:black;
+    font-size: 30px;
+}
+.hamburger:hover {
+    color: #b6d7a8;
+    font-size: 30px;
+}
+
+.navlink-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.8vh;
+    font-weight: 500;
+        padding: 5px;
+}
+
+.navlink-mobile div:hover{
+    color: #b6d7a8;
+    background-color: #e8fae0;
+}
+
+.mobile-navigation .hamburger {
+    position: absolute;
+    right:3%;
+    top:40%;
+    cursor: pointer;
+font-weight: 200;
+}
