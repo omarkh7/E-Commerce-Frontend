@@ -1,10 +1,11 @@
 import './App.css';
-import Navhead from './components/Navhead/Navhead';
+import Login from './components/Login/Login';
+
 
 function App() {
   return (
     <div className="App">
-     <Navhead/>
+     <Login/>
     </div>
   );
 }
