@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { FaSistrix } from "react-icons/fa";
 import "../Search /SearchBar.css";
 
-function SearchBar({setResults}) {
+function SearchBar({setResults,setIsLoading}) {
   const [input, setInput] = useState("");
+
 
   const fetchData = (value) => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -13,6 +14,7 @@ function SearchBar({setResults}) {
           return value && user && user.name && user.name.toLowerCase().includes(value)
         })
         setResults(result);
+        setIsLoading(false);
       });
   };
 
@@ -21,6 +23,7 @@ function SearchBar({setResults}) {
     fetchData(value);
   };
   return (
+  
     <div className='input-wrapper'>
       <FaSistrix id='search-icon' />
       <input
@@ -28,7 +31,8 @@ function SearchBar({setResults}) {
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
-    </div>
+  </div>
+
   );
 }
 

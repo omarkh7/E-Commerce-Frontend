@@ -23,7 +23,7 @@
 
 .navlink-mobile div:hover{
     color: #b6d7a8;
-    background-color: #e8fae0;
+   cursor: pointer;
 }
 
 .mobile-navigation .hamburger {
