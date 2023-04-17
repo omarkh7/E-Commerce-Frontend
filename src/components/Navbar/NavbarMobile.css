@@ -1,8 +1,12 @@
 .mobile-navigation{
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
-
+body.mobile-navigation-open {
+    background-color: #1a1a1a;
+    /* replace with your desired dark color */
+}
 .hamburger{
     color:black;
     font-size: 30px;
@@ -19,6 +23,10 @@
     gap:1.8vh;
     font-weight: 500;
         padding: 5px;
+        color:black;
+}
+.navlink-mobile div{
+    color: black;
 }
 
 .navlink-mobile div:hover{
@@ -29,7 +37,7 @@
 .mobile-navigation .hamburger {
     position: absolute;
     right:3%;
-    top:40%;
+    top:10%;
     cursor: pointer;
 font-weight: 200;
 }

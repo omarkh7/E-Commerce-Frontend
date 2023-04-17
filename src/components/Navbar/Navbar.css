@@ -10,14 +10,15 @@
     justify-content: space-between;
 }
 
-.navbar div {
-    font-weight: 500;
-    padding: 5px;
+.navbar .navbar-divstyle {
+    font-weight: 500!important;
+    padding: 5px !important;
+    color:black;
 }
 
-.navbar div:hover {
-    color: #b6d7a8;
-    cursor: pointer;
+.navbar .navbar-divstyle:hover {
+    color: #b6d7a8 !important;
+    cursor: pointer !important;
 }
 
 

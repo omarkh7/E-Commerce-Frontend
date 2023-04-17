@@ -2,11 +2,13 @@
     display: flex;
     flex-direction: row;
     gap:1rem;
+    color:black;
     
 }
 
 #icon-header{
     font-size: 1.3rem;
+    color: black;
 }
 
 .icon-header:hover{
