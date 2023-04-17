@@ -1,0 +1,21 @@
+.icon-header-div{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    color:black;
+    
+}
+
+#icon-header{
+    font-size: 1.3rem;
+    color: black;
+}
+
+.icon-header:hover{
+    color: #b6d7a8;
+    cursor: pointer;
+
+}
+
+
+

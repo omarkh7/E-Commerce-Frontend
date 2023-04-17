@@ -1,0 +1,43 @@
+.mobile-navigation{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+body.mobile-navigation-open {
+    background-color: #1a1a1a;
+    /* replace with your desired dark color */
+}
+.hamburger{
+    color:black;
+    font-size: 30px;
+}
+.hamburger:hover {
+    color: #b6d7a8;
+    font-size: 30px;
+}
+
+.navlink-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.8vh;
+    font-weight: 500;
+        padding: 5px;
+        color:black;
+}
+.navlink-mobile div{
+    color: black;
+}
+
+.navlink-mobile div:hover{
+    color: #b6d7a8;
+   cursor: pointer;
+}
+
+.mobile-navigation .hamburger {
+    position: absolute;
+    right:3%;
+    top:10%;
+    cursor: pointer;
+font-weight: 200;
+}
