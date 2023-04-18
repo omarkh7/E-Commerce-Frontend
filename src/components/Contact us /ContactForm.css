@@ -1,7 +1,73 @@
+.daddydiv {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+/* body {
+    background-color: blue;
+} */
+
+.contact_div1 {
+    /* height: 150vh; */
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: space-evenly; */
+
+}
+
+.contact_div2 {
+    display: flex;
+
+}
+
+.contact_h1 {
+    display: flex;
+    /* align-self: center; */
+    color: black;
+    justify-content: center;
+    /* align-items: center; */
+    /* flex-direction: column;  */
+    /* width: 500px; */
+    /* height: 200%;
+    margin-left: 60px; */
+    color: #7a7878;
+    font-size: 45px;
+    padding-top: 5%;
+
+}
+
+.contact_h2 {
+
+    color: #7a7878;
+    font-size: 400%;
+    display: flex;
+    text-align: center;
+    /* padding-bottom: 25%; */
+    /* text-align: center; */
+    padding-top: 10%;
+}
+
+/* img { */
+/* height: 70%; */
+
+/* } */
+
+
+i {
+    font-size: 30px;
+}
+
+.p_reddiv {
+    font-size: 25px;
+}
+
+
 #contact_form {
     /* display: flex; */
     justify-content: flex-end;
     flex-direction: column;
+    padding-bottom: 10%;
 }
 
 
@@ -14,9 +80,42 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
-body {
-    background: #F2F3EB;
+
+
+.testtest {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 14%;
 }
+
+#container {
+    /* border: solid 3px #7a7878; */
+    /* max-width: 650px; */
+    /* align-self: flex-end; */
+    display: flex;
+    justify-content: center;
+    color: #7a7878;
+    padding-bottom: 5%;
+    height: 100vh;
+}
+
+.contactForm_div {
+
+    display: flex;
+    /* padding-right: 5%; */
+    padding-top: 5%;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* height: 100vh; */
+    padding-right: 10%;
+}
+
+body {
+    background: white;
+}
+
+
+/* #F2F3EB; body color*/
 
 button {
     overflow: visible;
@@ -31,7 +130,7 @@ button,
 input,
 select,
 textarea {
-    color: #5A5A5A;
+    color: #7a7878;
     font: inherit;
     margin: 0;
 }
@@ -44,19 +143,7 @@ textarea {
     overflow: auto;
 }
 
-.daddydiv {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: space-evenly;
-}
 
-#container {
-    border: solid 3px #474544;
-    max-width: 650px;
-    align-self: flex-end;
-    display: flex;
-    justify-content: space-between;
-}
 
 form {
 
@@ -91,24 +178,26 @@ h1 {
 .reddiv {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-self: center;
-
-
-    /* align-self: center; */
-    /* align-content: center; */
-    /* align-items: center;   */
+    color: #7a7878;
+    align-self: flex-end;
+    margin-right: 25%;
+    height: 80vh;
+    justify-content: space-evenly;
+    padding-left: 10%;
 
 }
 
 
 .Beirut_lebanon {
-    font-size: 300%;
+    font-size: 200%;
+
 }
 
 .h3_FindUsAt {
     display: flex;
-    font-size: 200%;
+    font-size: 300%;
+    height: auto;
+    /* padding-right: 10%; */
 }
 
 .icon_wrapper {
@@ -124,13 +213,14 @@ h1 {
     text-align: center;
     justify-content: space-between; */
     display: flex;
+    padding-right: 2%;
     justify-content: center;
 
 }
 
 .icon {
     height: 60px;
-    fill: #474544;
+    fill: #7a7878;
     /* display: block; */
     /* padding-top: 4; */
     /* display: flex;
@@ -156,7 +246,7 @@ textarea {
     background: none;
     border: none;
     border-bottom: solid 2px #474544;
-    color: #474544;
+    color: #7a7878;
     font-size: 1.000em;
     font-weight: 400;
     letter-spacing: 1px;
@@ -219,27 +309,27 @@ textarea {
 }
 
 ::-webkit-input-placeholder {
-    color: #474544;
+    color: #7a7878;
 }
 
 :-moz-placeholder {
-    color: #474544;
+    color: #7a7878;
     opacity: 1;
 }
 
 ::-moz-placeholder {
-    color: #474544;
+    color: #7a7878;
     opacity: 1;
 }
 
 :-ms-input-placeholder {
-    color: #474544;
+    color: #7a7878;
 }
 
 #form_button {
     background: none;
-    border: solid 2px #474544;
-    color: #474544;
+    border: solid 2px #7a7878;
+    color: #7a7878;
     cursor: pointer;
     display: inline-block;
     font-family: 'Helvetica', Arial, sans-serif;
@@ -256,66 +346,135 @@ textarea {
 }
 
 #form_button:hover {
-    background: #474544;
+    background: #7a7878;
     color: #F2F3EB;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     #container {
         margin: 20px auto;
         width: 95%;
     }
-}
+} */
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     h1 {
         font-size: 26px;
-    }
+    } */
 
-    .underline {
+/* .underline {
         width: 68px;
     }
 
     #form_button {
         padding: 15px 25px;
     }
-}
+} */
 
-@media screen and (max-width: 420px) {
+/* @media screen and (max-width: 420px) {
     h1 {
         font-size: 18px;
-    }
+    } */
 
-    .icon {
+/* .icon {
         height: 35px;
         width: 35px;
         display: flex;
         /* padding-right: 50%; */
-    }
+/* } */
 
 
-
+/* 
     input[type='text'],
     [type='email'],
     select,
     textarea {
         font-size: 0.875em;
     }
+}  */
+
+@media (max-width: 420px) {
+    body {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+    }
+
+    .contact_h2 {
+        text-align: center;
+    }
+
+    .h3_FindUsAt {
+        text-align: center;
+    }
+
+    .reddiv {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: space-around;
+        padding-top: 20%;
+        text-align: center;
+        padding-left: 20%;
+    }
+
+
 }
 
+/* @media (min-width: 420px) {
+    body {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+    }
+
+    .contact_h2 {
+        text-align: center;
+    }
+
+    .h3_FindUsAt {
+        text-align: center;
+    }
+
+    .reddiv {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: space-around;
+        padding-top: 20%;
+        text-align: center;
+        padding-left: 20%;
+    }
+
+
+} */
 
 
 .h1_title_contact {
 
-    color: #474544;
+    color: #7a7878;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: 9px;
     text-align: center;
     /* text-transform: uppercase; */
     display: flex;
-    padding-bottom: 4%;
-    justify-content: center;
+    padding-bottom: 6%;
+    /* justify-content: center; */
     /* padding-top: 10%; */
 
 
