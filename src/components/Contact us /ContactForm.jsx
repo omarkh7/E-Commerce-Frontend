@@ -26,9 +26,9 @@ const ContactForm = () => {
     const handleEvent = async (e) => {
         e.preventDefault();
         var data = { name, email, message, phoneNumber }
-        await emailjs.send("service_rc8vjdd",
-            "template_djd3xsc", data,
-            "GJE_YlJQo7AlphQbI")
+        await emailjs.send("service_ulcn8zp",
+            "template_95u0lpp", data,
+            "ZEAGTqdyPelINi3Lv")
 
         console.log('email sent')
         setName('');
