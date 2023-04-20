@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import "./ProductsHome.css";
+import { Link } from "react-router-dom";
 
 function ProductsHome() {
   const [alldata, setAllData] = useState([]);
@@ -31,7 +32,9 @@ function ProductsHome() {
         <div className="container_products_ticp">
         {alldata.length > 0 ? (
           alldata.map((item) => (
+
             <div className="ticp"  key={item._id}>
+              <Link to={`single-product/${item._id}`}>
               <img className="img_products_home" src={`${item.image}`} />
 
               <Fragment>
@@ -41,6 +44,7 @@ function ProductsHome() {
               <h5 className="title_product_item"> {item.name}</h5>
 
               <h5>{item.price} $</h5>
+              </Link>
             </div>
           ))
         ) : (
