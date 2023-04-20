@@ -12,9 +12,25 @@ function Navbar( ) {
       <Link to='Home' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Home </div>
       </Link>{" "}
-      <Link to='shop' style={{ textDecoration: "none" }}>
+     
+      <div className='nav-dropdown'>
+
         <div className='navbar-divstyle'>Shop </div>
-      </Link>
+        
+        <div className='dropdown-menu'>
+        <div className='dropdown-button navbar-divstyle'> 
+          <Link to='hightop'> Hightop sneakers </Link>
+          
+          <Link to='/lowtop'>Lowtop sneakers </Link>
+          <Link to='/athletic'>Athletic shoes</Link>
+          <Link to='/retro'>Retro Shoes </Link>
+          <Link to='/slides'>Slides</Link>
+          <Link to='/socks'>Socks</Link>
+
+          </div>
+        </div>
+        </div>
+     
       <Link to='about' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>About US </div>
       </Link>
