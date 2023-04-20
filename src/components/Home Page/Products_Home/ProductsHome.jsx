@@ -1,0 +1,55 @@
+import React, { useState, useEffect, Fragment } from "react";
+import axios from "axios";
+import "./ProductsHome.css";
+
+function ProductsHome() {
+  const [alldata, setAllData] = useState([]);
+
+  const apiURL = "http://localhost:8000/api/products/getproducts";
+
+  const fetchallData = async () => {
+    try {
+      const response = await axios.get(apiURL);
+      console.log("Products", response.data);
+      setAllData(response.data.productList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchallData();
+  }, []);
+
+  return (
+   
+    <div className="container_products">
+        <div className="group_title_product">
+        <h1 className="title_product">Our Products</h1>
+        <p >List of our products</p>
+        </div>
+        <div className="container_products_ticp">
+        {alldata.length > 0 ? (
+          alldata.map((item) => (
+            <div className="ticp"  key={item._id}>
+              <img className="img_products_home" src={`${item.image}`} />
+
+              <Fragment>
+                <h5>{item.category ? item.category.name : "N/A"}</h5>
+              </Fragment>{" "}
+
+              <h5 className="title_product_item"> {item.name}</h5>
+
+              <h5>{item.price} $</h5>
+            </div>
+          ))
+        ) : (
+          <p>No data available</p>
+        )}
+        </div>
+      </div>
+   
+  );
+}
+
+export default ProductsHome;

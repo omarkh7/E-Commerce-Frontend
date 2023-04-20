@@ -6,7 +6,7 @@ import Home from './components/Home Page/Home';
 import About from './components/About Me/About';
 import Contact from './components/Contact us /Contact';
 import Shop from './components/Shop/Shop';
-
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path='/terms' element={<Home />} />
           <Route path='/refund' element={<Home />} />
         </Routes>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

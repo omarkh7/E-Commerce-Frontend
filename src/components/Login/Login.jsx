@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Login/Login.css";
 import CoverImage from "../../assets/images/image00069.jpeg";
-import LogoImage from "../../assets/images/logo2-removebg-preview.png";
+import LogoImage from "../../assets/images/logo2-b.png";
 import SignUp from "./SignUp";
 import SocailMediaIcons from "./SocailMediaIcons";
 

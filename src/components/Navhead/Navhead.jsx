@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/logo2-removebg-preview.png";
+import Logo from "../../assets/images/logo2-b.png";
 import "../Navhead/Navhead.css";
 import Navbar from "../Navbar/Navbar";
 import SearchBar from "../Search /SearchBar";
