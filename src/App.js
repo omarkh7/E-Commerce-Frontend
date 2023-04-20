@@ -1,19 +1,20 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login/Login';
-import Navhead from './components/Navhead/Navhead'
+// import Navhead from './components/Navhead/Navhead'
 import Home from './components/Home Page/Home'; 
 import About from './components/About Me/About';
 import Contact from './components/Contact us /Contact';
 import Shop from './components/Shop/Shop';
-
+// import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navhead />
-   
+        {/* <Navhead /> */}
+        <Login/>
+      {/* <Footer/> */}
        
         <Routes>
           <Route path='/Home' element={<Home />} />
