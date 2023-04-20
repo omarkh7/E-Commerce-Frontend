@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import '../Login/SignUp.css';
 import {
   FaRegUserCircle,
@@ -8,7 +10,6 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import axios from 'axios';
-// import {  useNavigate } from 'react-router-dom';
 
 
 const SignUp = ({ onBackToLoginClick }) => {
@@ -23,7 +24,9 @@ const SignUp = ({ onBackToLoginClick }) => {
    const errRef = useRef();
   const emailRef = useRef();
 
-  //  const navigate = useNavigate();
+
+  const navigate = useNavigate();
+
 
   const fetchRegister = async () => {
     try {
@@ -39,10 +42,13 @@ const SignUp = ({ onBackToLoginClick }) => {
 
   console.log({ 'fullname':fullName,'email':email,'password':password,'location':location,'phonNumber':phoneNumber});
   const handleSubmit = (e) => {
-   e.preventDefault();
-    fetchRegister();
-    onBackToLoginClick();
-    
+    e.preventDefault();
+    if (fullName || email || password || location | phoneNumber) {
+      fetchRegister();
+      onBackToLoginClick();
+    } else {
+      console.log('Please fill out all required fields');
+    }
   }
 
   return (
@@ -105,6 +111,7 @@ const SignUp = ({ onBackToLoginClick }) => {
 
           <div className='signup-button-container'>
             <div onClick={() => onBackToLoginClick()}>Login here!</div>
+
 
             <button className='signup-btn'>Submit</button>
           </div>
