@@ -1,5 +1,5 @@
 .login-container {
-    background: linear-gradient(90.18deg, #e3f0de 30.43%, #d3ecca 89.19%, #d3ecca 89.19%);
+    background: linear-gradient(90.18deg, #f9fdf5 30.43%, #f3feee 89.19%, #f3faf0 89.19%);
     text-align: center;
     width: 100%;
     height: 100vh;
@@ -40,7 +40,7 @@
 .logoImage-login {
     height: 90px;
     width: 200px;
-    margin: 5vh;
+    margin: 5vh 5vw 2vh 5vw;
     align-items: center;
 }
 

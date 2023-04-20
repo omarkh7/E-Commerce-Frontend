@@ -27,13 +27,12 @@ const Login = () => {
         </div>
         <div className='form-container'>
           <img src={LogoImage} alt='logo' className='logoImage-login' />
-          { isLogin ? (
-            <SignIn onSignupClick={handleSignupClick} /> 
-          ) : (
-            <SignUp onBackToLoginClick={handleBackToLoginClick}/>
-          )}
           {isLogin ? (
-            <SocailMediaIcons /> ): ''}
+            <SignIn onSignupClick={handleSignupClick} />
+          ) : (
+              <SignUp onBackToLoginClick={handleBackToLoginClick} setIsLogin={setIsLogin} />
+          )}
+          {isLogin ? <SocailMediaIcons /> : ""}
         </div>
       </div>
     </div>

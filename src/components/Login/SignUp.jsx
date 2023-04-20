@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 import "../Login/SignUp.css";
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 
-const SignUp = ({ onBackToLoginClick }) => {
+const SignUp = ({ onBackToLoginClick,setIsLogin }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,37 +22,41 @@ const SignUp = ({ onBackToLoginClick }) => {
   const errRef = useRef();
   const emailRef = useRef();
 
-  const navigate = useNavigate();
+ 
 
   const fetchRegister = async () => {
     try {
-      const response = await axios.post(
+       await axios.post(
         "http://localhost:8000/api/users/register",
         { fullName, email, password, location, phoneNumber }
       );
-      setErrMsg(response.data.message);
+      setErrMsg("Successfully registered! You can login now");
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setLocation("");
+      setPhone("");
+      setTimeout(() => setErrMsg(""), 3000); // remove success message after 3 seconds
+      //  navigate("/login");
     } catch (error) {
       setErrMsg(error.response.data.message);
-      console.log(error.response.data.message);
-      //  navigate("/login");
+    
+       
     }
   };
 
-  console.log({
-    fullname: fullName,
-    email: email,
-    password: password,
-    location: location,
-    phonNumber: phoneNumber,
-  });
+  
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (fullName || email || password || location | phoneNumber) {
-      fetchRegister();
-      onBackToLoginClick();
-    } else {
-      console.log("Please fill out all required fields");
-    }
+    // if (fullName && email && password && location && phoneNumber) {
+    //   fetchRegister();
+    //   onBackToLoginClick();
+    // } else {
+    //   console.log("Please fill out all required fields");
+    // }
+    fetchRegister()
+    // setIsLogin(true)
   };
 
   return (
@@ -71,6 +75,7 @@ const SignUp = ({ onBackToLoginClick }) => {
             type='text'
             autoComplete='off'
             placeholder='Full Name'
+            value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           ></input>
         </div>
@@ -80,6 +85,7 @@ const SignUp = ({ onBackToLoginClick }) => {
             type='text'
             autoComplete='off'
             placeholder='Email'
+            value={email}
             ref={emailRef}
             onChange={(e) => setEmail(e.target.value)}
           ></input>
@@ -89,6 +95,7 @@ const SignUp = ({ onBackToLoginClick }) => {
           <input
             type='password'
             placeholder='Password'
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
@@ -99,6 +106,7 @@ const SignUp = ({ onBackToLoginClick }) => {
             type='text'
             autoComplete='off'
             placeholder='Location'
+            value={location}
             onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
@@ -108,6 +116,7 @@ const SignUp = ({ onBackToLoginClick }) => {
             type='text'
             autoComplete='off'
             placeholder='Phone Number'
+            value={phoneNumber}
             onChange={(e) => setPhone(e.target.value)}
           ></input>
         </div>

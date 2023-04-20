@@ -20,7 +20,7 @@ const SignIn = ({ onSignupClick }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate("/Home");
+      navigate("/");
     }
   }, []);
 
@@ -29,8 +29,10 @@ const SignIn = ({ onSignupClick }) => {
       .post("http://localhost:8000/api/users/login", { email, password })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        navigate("/Home");
-        alert('loged in');
+        setErrMsg("you are loggedin ");
+         setTimeout(() => setErrMsg(""), 3000);
+        navigate("/");
+        
       })
       .catch((err) => {
         if (!err?.response) {
