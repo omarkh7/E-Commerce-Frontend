@@ -36,10 +36,11 @@ const SignUp = ({ onBackToLoginClick,setIsLogin }) => {
       setPassword("");
       setLocation("");
       setPhone("");
-      setTimeout(() => setErrMsg(""), 3000); // remove success message after 3 seconds
+      setTimeout(() => setErrMsg(""), 3000); 
       //  navigate("/login");
     } catch (error) {
       setErrMsg(error.response.data.message);
+      setTimeout(() => setErrMsg(""), 3000);
     
        
     }

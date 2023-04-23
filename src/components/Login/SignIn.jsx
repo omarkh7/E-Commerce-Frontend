@@ -37,10 +37,13 @@ const SignIn = ({ onSignupClick }) => {
       .catch((err) => {
         if (!err?.response) {
           setErrMsg("No Server Response");
+          setTimeout(() => setErrMsg(""), 3000);
         } else if (err.response?.status === 404) {
           setErrMsg("Email not found");
+          setTimeout(() => setErrMsg(""), 3000);
         } else if (err.response?.status === 400) {
           setErrMsg("incorrect password");
+          setTimeout(() => setErrMsg(""), 3000);
         }
         // errRef.current.focus();
       });
