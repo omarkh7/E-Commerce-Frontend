@@ -25,7 +25,7 @@ function NavbarMobile() {
       {open ? closeIcon : hamburgerIcon}
       {open && (
         <div className='navlink-mobile'>
-          <Link to='Home' style={{ textDecoration: "none" }}>
+          <Link to='/' style={{ textDecoration: "none" }}>
             <motion.div
               initial={animatedForm}
               animate={animatedTo}
