@@ -9,7 +9,7 @@ function Navbar( ) {
   return (
     <div className='navbar'>
       {" "}
-      <Link to='Home' style={{ textDecoration: "none" }}>
+      <Link to='/' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Home </div>
       </Link>{" "}
       <Link to='shop' style={{ textDecoration: "none" }}>
