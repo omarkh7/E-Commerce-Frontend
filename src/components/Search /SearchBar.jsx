@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import { FaSistrix } from "react-icons/fa";
 import "../Search /SearchBar.css";
+import axios from "axios";
 
-function SearchBar({setResults,setIsLoading}) {
+function SearchBar({ setResults }) {
+  
   const [input, setInput] = useState("");
 
 
-  const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => {
-        const result = json.filter((user) => {
-          return value && user && user.name && user.name.toLowerCase().includes(value)
+  const fetchData = async(value) => {
+    try {
+      await axios.get("http://localhost:8000/api/category/allcategories")
+        .then((res) =>res.data.data)
+        .then((json) => {
+        const result = json.filter((result) => {
+          return value && result && result.name && result.name.toLowerCase().includes(value)
         })
-        setResults(result);
-        setIsLoading(false);
-      });
+           setResults(result);
+          
+         
+        })
+    }catch (error) {
+      console.error(error);
+    }
+  
   };
 
   const handleChange = (value) => {

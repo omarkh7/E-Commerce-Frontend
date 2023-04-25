@@ -13,7 +13,8 @@ function Navhead() {
 
 
   const [results, setResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  
 
   return (
     <header className='navhead pre-header'>

@@ -1,15 +1,24 @@
-import React from 'react'
-import './SearchResult.css';
+import React from "react";
+import "./SearchResult.css";
+import { Link } from "react-router-dom";
 
-const SearchResult = ({result}) => {
+const SearchResult = ({ result}) => {
+
+  // useEffect(() => {
+  //   <link  to={`single-category/${result._id}`}/>
+  // }, [result._id])
+  
   return (
-    <div
-      className='search-result'
-      onClick={(e) => alert(`You selected ${result}!`)}
+    <Link
+      to={`single-category/${result._id}`}
+      style={{ textDecoration: "none", color: "black" }}
+      onClick={window.location.reload}
     >
-      {result}
-    </div>
+      <div className='search-result' onMouseDown={() => false}>
+        {result.name}
+      </div>
+    </Link>
   );
-}
+};
 
-export default SearchResult
+export default SearchResult;
