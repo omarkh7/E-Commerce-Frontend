@@ -7,9 +7,7 @@ const SearchResultsList = ({ results }) => {
   return (
     <div className='results-list'>
       {results.map((result) => {
-        return (
-          <SearchResult result={result} />
-        );
+        return <SearchResult result={result}  />;
       })}
     </div>
   );
