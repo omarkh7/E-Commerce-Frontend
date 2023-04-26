@@ -2,8 +2,6 @@ body {
     background-color: white;
 }
 
-
-
 .box {
     display: flex;
     justify-content: center;
@@ -12,25 +10,76 @@ body {
 
 .h1_walkingexperience {
     text-align: center;
-    font-size: 300%;
-    color: #7a7878;
-    padding-bottom: 2%;
-
-
+    font-size: 200%;
+    color: black;
 }
 
-hr {
-    border-width: 5px;
-    max-width: 50%;
-    /* display: flex; */
-    border-color: #b6d7a8;
-    /* padding-left: 20%; */
-    text-align: center;
+.span_aboutUs {
 
-}
-
-
-.hr_h1 {
     display: flex;
     justify-content: center;
+    color: black;
+    font-size: 200%;
+    margin-bottom: 60px;
+}
+
+.hr1 {
+    border-width: 5px;
+    border-color: #b6d7a8;
+    margin-top: 40px;
+    max-width: 80%;
+    margin-left: 11%;
+
+}
+
+
+.hr2 {
+    border-width: 5px;
+    border-color: #b6d7a8;
+    margin-top: 40px;
+    max-width: 80%;
+    margin-left: 11%;
+
+}
+
+
+.h3_aboutUs {
+    /* display: flex; */
+    color: black;
+    font-size: 150%;
+    font-style: italic;
+    line-height: 100px;
+    /* padding: 120px; */
+    /* margin: 30px; */
+    padding-left: 15%;
+    max-width: 85%;
+    text-align: center;
+}
+
+
+.div_h3 {
+    display: flex;
+    /* height: 80vh; */
+}
+
+#box {
+    display: flex;
+    justify-content: center;
+    padding-top: 4%;
+}
+
+
+img {
+    width: 100%;
+    height: 90vh;
+}
+
+
+@media (max-width: 540) {
+    .span_aboutUs {
+        display: flex;
+        font-size: 25px;
+
+
+    }
 }

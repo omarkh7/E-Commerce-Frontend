@@ -9,11 +9,11 @@ import Shop from './components/Shop/Shop';
 
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="App">
         <Navhead />
-
         <Routes>
           <Route path='/Home' element={<Home />} />
           <Route path='/Home' element={<Home />} />
