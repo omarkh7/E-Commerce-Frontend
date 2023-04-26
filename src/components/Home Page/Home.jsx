@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import Categories from "./Categories_Home/Categories";
 import ProductsHome from "./Products_Home/ProductsHome";
 import Slider from "./Slider/Slider";
 import "./Home.css";
 
+
 function Home() {
+  
   return (
     <div>
+    
       <Slider />
       <Categories />
       <ProductsHome />
