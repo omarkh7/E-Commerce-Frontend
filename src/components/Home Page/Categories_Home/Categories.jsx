@@ -5,24 +5,33 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import Loader from "../../Loader/Loader";
 
 function Categories() {
   const [alldata, setAllData] = useState([]);
+  const [loading,setLoading] = useState(true);
 
   const apiURL = "http://localhost:8000/api/category/allcategories";
 
   const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setAllData(response.data.data);
+      console.log("Products", response.data);
+      setAllData(response.data?.productList || []); 
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchallData();
   }, []);
+  if(loading){
+    return <div> <Loader/> </div>
+  }
+ 
 
   const settings = {
     desktop: {

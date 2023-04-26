@@ -5,6 +5,7 @@ import Slider from "./Slider/Slider";
 import "./Home.css";
 
 
+
 function Home() {
   
   return (
