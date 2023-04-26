@@ -1,38 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaSistrix } from "react-icons/fa";
 import "../Search /SearchBar.css";
+import axios from "axios";
+import SearchResultsList from "./SearchResultsList";
 
-function SearchBar({setResults,setIsLoading}) {
+function SearchBar() {
   const [input, setInput] = useState("");
+  const [results, setResults] = useState([]);
+  const wrapperRef = useRef(null);
 
-
-  const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => {
-        const result = json.filter((user) => {
-          return value && user && user.name && user.name.toLowerCase().includes(value)
-        })
-        setResults(result);
-        setIsLoading(false);
-      });
+  const fetchData = async (value) => {
+    try {
+      await axios
+        .get("http://localhost:8000/api/category/allcategories")
+        .then((res) => res.data.data)
+        .then((json) => {
+          const result = json.filter((result) => {
+            return (
+              value &&
+              result &&
+              result.name &&
+              result.name.toLowerCase().includes(value)
+            );
+          });
+          setResults(result);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChange = (value) => {
     setInput(value);
     fetchData(value);
   };
+
+  const handleBlur = () => {
+    setResults([]);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        handleBlur();
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef, handleBlur]);
+
   return (
-  
-    <div className='input-wrapper'>
+    <div className='input-wrapper' ref={wrapperRef}>
       <FaSistrix id='search-icon' />
       <input
         placeholder='Type to search ...'
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
-  </div>
-
+      {results.length > 0 && (
+        <SearchResultsList results={results} />
+      )}
+    </div>
   );
 }
 
