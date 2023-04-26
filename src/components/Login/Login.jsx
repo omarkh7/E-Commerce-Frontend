@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Login/Login.css";
 import CoverImage from "../../assets/images/image00069.jpeg";
-import LogoImage from "../../assets/images/logo2-removebg-preview.png";
+import LogoImage from "../../assets/images/logo2-b.png";
 import SignUp from "./SignUp";
 import SocailMediaIcons from "./SocailMediaIcons";
 
@@ -27,13 +27,12 @@ const Login = () => {
         </div>
         <div className='form-container'>
           <img src={LogoImage} alt='logo' className='logoImage-login' />
-          { isLogin ? (
+          {isLogin ? (
             <SignIn onSignupClick={handleSignupClick} />
           ) : (
-            <SignUp onBackToLoginClick={handleBackToLoginClick}/>
+              <SignUp onBackToLoginClick={handleBackToLoginClick} setIsLogin={setIsLogin} />
           )}
-
-          <SocailMediaIcons />
+          {isLogin ? <SocailMediaIcons /> : ""}
         </div>
       </div>
     </div>

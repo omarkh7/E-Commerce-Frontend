@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/logo2-removebg-preview.png";
+import Logo from "../../assets/images/logo2-b.png";
 import "../Navhead/Navhead.css";
 import Navbar from "../Navbar/Navbar";
 import SearchBar from "../Search /SearchBar";
@@ -13,7 +13,10 @@ function Navhead() {
 
 
   const [results, setResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+ 
+ 
 
   return (
     <header className='navhead pre-header'>
@@ -39,9 +42,16 @@ function Navhead() {
 
       <div className='icons-mobileversion'>
         <div>
-          <SearchBar setResults={setResults} setIsLoading={setIsLoading} />
-          {isLoading ? <LoadingSearch/> : <SearchResultsList results={results} />  }
-         
+          <SearchBar
+            setResults={setResults}
+            setIsLoading={setIsLoading}
+           
+          />
+          {isLoading ? (
+            <LoadingSearch />
+          ) : (
+              <SearchResultsList results={results} />
+          )}
         </div>
         <div>
           <NavIcons />
