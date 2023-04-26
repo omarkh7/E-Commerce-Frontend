@@ -2,11 +2,10 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import "./SingleCategory.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SingleCategory() {
   const { categoryId } = useParams();
-  const nav = useNavigate();
 
   const [allproduct, setallproductData] = useState([]);
 
@@ -40,21 +39,12 @@ function SingleCategory() {
       <div className="container_category_ticp_cat">
         {allproduct.map((item) => (
           <div className="ticp_cat" key={item._id}>
-            <p
-              // to={`single-product/${item._id}`}
-              onClick={() => {
-                nav(`single-product/${item._id}`);
-              }}
-
-              // onClick={() => {
-              //   {  window.location.href = `single-product/${item._id}`};
-              // }}
-            >
+            <Link to={`/single-product/${item._id}`}>
               <img className="img_single_cat" src={item.image} alt="" />
               <h5>{item.category?.name || "N/A"}</h5>
               <h5 className="title_single_item">{item.name}</h5>
               <h5>{item.price} $</h5>
-            </p>
+            </Link>
           </div>
         ))}
       </div>

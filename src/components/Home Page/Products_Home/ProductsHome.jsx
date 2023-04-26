@@ -23,36 +23,30 @@ function ProductsHome() {
   }, []);
 
   return (
-   
     <div className="container_products">
-        <div className="group_title_product">
+      <div className="group_title_product">
         <h1 className="title_product">Our Products</h1>
-        <p >List of our products</p>
-        </div>
-        <div className="container_products_ticp">
+        <p>List of our products</p>
+      </div>
+      <div className="container_products_ticp">
         {alldata.length > 0 ? (
           alldata.map((item) => (
-
-            <div className="ticp"  key={item._id}>
+            <div className="ticp" key={item._id}>
               <Link to={`single-product/${item._id}`}>
-              <img className="img_products_home" src={`${item.image}`} />
-
-              <Fragment>
-                <h5>{item.category ? item.category.name : "N/A"}</h5>
-              </Fragment>{" "}
-
-              <h5 className="title_product_item"> {item.name}</h5>
-
-              <h5>{item.price} $</h5>
+                <img className="img_products_home" src={`${item.image}`} />
+                <Fragment>
+                  <h5>{item.category ? item.category.name : "N/A"}</h5>
+                </Fragment>{" "}
+                <h5 className="title_product_item"> {item.name}</h5>
+                <h5>{item.price} $</h5>
               </Link>
             </div>
           ))
         ) : (
           <p>No data available</p>
         )}
-        </div>
       </div>
-   
+    </div>
   );
 }
 
