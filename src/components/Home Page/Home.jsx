@@ -20,6 +20,7 @@ function Home() {
         <div className="column_home_11">
           <h1>About us</h1>
           <br></br>
+          <br></br>
           <p>
             All the products we send are accompanied by an authenticity card as
             well as a seal certifying the quality and authenticity of the
@@ -31,12 +32,14 @@ function Home() {
             who ensure their authenticity.
           </p>
           <br></br>
+          <br></br>
           <button className="home_button">Explore more</button>
         </div>
       </div>
       <div className="container_home_2">
         <div className="column_home_22 ">
           <h1>Authentic products</h1>
+          <br></br>
           <br></br>
           <p>All the products we send are accompanied by an authenticity card as
             well as a seal certifying the quality and authenticity of the
@@ -46,6 +49,7 @@ function Home() {
             well as a seal certifying the quality and authenticity of the
             product. Before reaching your hands, they are checked by our experts
             who ensure their authenticity.</p>
+          <br></br>
           <br></br>
           <button className="home_button">Explore more</button>
         </div>

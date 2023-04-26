@@ -5,11 +5,11 @@
 }
 
 .container_products_ticp {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   justify-content: space-between;
   align-items: center;
-}
+row-gap: 3rem;}
 .ticp {
   display: flex;
   flex-direction: column;
