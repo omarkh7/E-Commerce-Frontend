@@ -9,6 +9,7 @@ import Shop from './components/Shop/Shop';
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/Single_Product/SingleProduct';
 import SingleCategory from './components/Single_Category/SingleCategory';
+import Order from './components/Order/Oder';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path='/refund' element={<Home />} />
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
           <Route path='/single-category/:categoryId' element={<SingleCategory/>} />
-          
+          <Route path='/order' element={<Order />} />
         </Routes>
         <Footer/>
       </div>

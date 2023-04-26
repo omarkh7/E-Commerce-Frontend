@@ -12,9 +12,11 @@ function NavIcons() {
           <FaRegUser id='icon-header' />
         </Link>
       </div>
-      
+
       <div className='icon-header'>
-        <BsBag id='icon-header' />
+        <Link to='/order' style={{ textDecoration: "none" }}>
+          <BsBag id='icon-header' />
+        </Link>
       </div>
     </div>
   );
