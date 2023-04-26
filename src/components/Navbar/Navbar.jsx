@@ -2,48 +2,81 @@ import React from "react";
 import "../Navbar/Navbar.css";
 import { Link } from "react-router-dom";
 
-
-function Navbar( ) {
-
-
+function Navbar() {
   return (
-    <div className='navbar'>
+    <div className="navbar">
       {" "}
-      <Link to='Home' style={{ textDecoration: "none" }}>
-        <div className='navbar-divstyle'>Home </div>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div className="navbar-divstyle">Home </div>
       </Link>{" "}
-     
-      <div className='nav-dropdown'>
+      <div className="nav-dropdown">
+        <div className="navbar-divstyle">Shop </div>
 
-        <div className='navbar-divstyle'>Shop </div>
-        
-        <div className='dropdown-menu'>
-        <div className='dropdown-button navbar-divstyle'> 
-          <Link to='hightop'> Hightop sneakers </Link>
-          
-          <Link to='/lowtop'>Lowtop sneakers </Link>
-          <Link to='/athletic'>Athletic shoes</Link>
-          <Link to='/retro'>Retro Shoes </Link>
-          <Link to='/slides'>Slides</Link>
-          <Link to='/socks'>Socks</Link>
+        <div className="dropdown-menu">
+          <div className="dropdown-button navbar-divstyle">
+            <Link
+              to="/single-category/643fe9acc1397ac9890562cd"
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/643fe9acc1397ac9890562cd")
+              }
+            >
+              {" "}
+              Hightop sneakers{" "}
+            </Link>
 
+            <Link
+              to="/single-category/6437ba63a671878f61ce7e40"
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/6437ba63a671878f61ce7e40")
+              }
+            >
+              Lowtop sneakers{" "}
+            </Link>
+            <Link to="/single-category/6437ba7ba671878f61ce7e426437ba7ba671878f61ce7e42">
+              Athletic shoes
+            </Link>
+            <Link to="/single-category/643feab292947e7429c6dfc2">
+              Retro Shoes{" "}
+            </Link>
+            {/* <Link to="/single-category/643feb6092947e7429c6dfc4retroretro"
+            onClick={() => window.location.href='/single-category/643feb6092947e7429c6dfc4retroretro'}
+            >Slides</Link> */}
+
+            <a
+              href="#"
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/643feb6092947e7429c6dfc4retroretro")
+              }
+            >
+              Slides
+            </a>
+
+            <a
+              href="#"
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/643feb6d92947e7429c6dfc6")
+              }
+            >Socks</a>
           </div>
         </div>
-        </div>
-     
-      <Link to='about' style={{ textDecoration: "none" }}>
-        <div className='navbar-divstyle'>About US </div>
+      </div>
+      <Link to="about" style={{ textDecoration: "none" }}>
+        <div className="navbar-divstyle">About US </div>
       </Link>
-      <Link to='contact' style={{ textDecoration: "none" }}>
-        <div className='navbar-divstyle'>Contact Us </div>
+      <Link to="contact" style={{ textDecoration: "none" }}>
+        <div className="navbar-divstyle">Contact Us </div>
       </Link>
-      <div className='nav-dropdown'>
-        <div className='dropdown-button navbar-divstyle'> Conditions</div>
+      <div className="nav-dropdown">
+        <div className="dropdown-button navbar-divstyle"> Conditions</div>
 
-        <div className='dropdown-menu'>
-          <a href='/terms'>Terms and Conditions</a>
-          <a href='/refund'>Refund and Return</a>
-          <a href='/privacy'>Privacy Policy</a>
+        <div className="dropdown-menu">
+          <a href="/terms">Terms and Conditions</a>
+          <a href="/refund">Refund and Return</a>
+          <a href="/privacy">Privacy Policy</a>
         </div>
       </div>
     </div>
