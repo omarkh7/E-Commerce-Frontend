@@ -41,6 +41,7 @@ const ContactForm = () => {
 
 
 
+    // <img src='https://w0.peakpx.com/wallpaper/919/1023/HD-wallpaper-retro-texture-with-sneakers-background-with-sneakers-retro-sport-background-sneakers-background.jpg' />
     // https://r4.wallpaperflare.com/wallpaper/713/298//--ked-nike-wallpaper-82cb2aa572de89020d0668a66156dd6b.jpg
 
     return (
@@ -48,24 +49,20 @@ const ContactForm = () => {
             <div className="daddydiv">
             </div>
             <div className='contact_div1'>
-                <img src='https://w0.peakpx.com/wallpaper/919/1023/HD-wallpaper-retro-texture-with-sneakers-background-with-sneakers-retro-sport-background-sneakers-background.jpg' />
-
+                <img className="image" src="https://img.freepik.com/free-photo/white-canvas-sneakers-unisex-footwear-fashion_53876-108036.jpg?w=1380&t=st=1682507378~exp=1682507978~hmac=409ab685c40888ac69111efd469ebba860bd0e8842819cc622aade7147a245e4" />
             </div>
             <h1 className='contact_h1'>
                 Are You Interested To Know More About Us And Our Products?
             </h1>
-            <h2 className='contact_h2'>
-                Contact Us
-            </h2>
+
             <div id="container">
                 <div className="reddiv">
                     <h3 className="h3_FindUsAt">Find Us At
                     </h3>
+                    <i className="status"> We're Available Around The Clock! </i>
                     <p><span className="Beirut_lebanon">Beirut,Lebanon </span></p>
-                    <i> We're Available Around The Clock! </i>
                     <p className="p_reddiv"> WhatsApp:+961 71 656 666 </p>
-                    <p className="p_reddiv"> Email: Step88up@gmail.com</p>
-
+                    <p>Email us: Step88up@gmail.com</p>
                 </div>
                 <div className="contactForm_div">
 
