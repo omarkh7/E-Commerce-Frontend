@@ -3,7 +3,7 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 6rem;
     background-color: #f8f8f8;
   }
   
@@ -12,11 +12,12 @@
   }
   
   .footer__column img {
-    max-width: 100%;
+    width: 50%;
+    margin-top: -50px;
   }
   
   .footer__column p {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     font-size: 0.9rem;
     color: #666;
   }
@@ -73,3 +74,18 @@
   .img_footer{
     width:40%;
   }
+
+  @media screen and (max-width: 768px) {
+.footer{
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.footer__column{
+width: 100%;
+margin: 10px 0px;
+}
+.footer__column img{
+  margin: auto;
+}
+    }
