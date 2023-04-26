@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login/Login";
-import Navhead from "./components/Navhead/Navhead";;
+import Navhead from "./components/Navhead/Navhead";
 import Home from "./components/Home Page/Home";
 import About from "./components/About Me/About";
 import Contact from "./components/Contact us /Contact";
@@ -11,7 +11,6 @@ import SingleCategory from './components/Single_Category/SingleCategory';
 
 function App() {
   return (
-    <BrowserRouter>
       <div className="App">
         <Navhead />
 
@@ -23,8 +22,7 @@ function App() {
 
           <Route path="/terms" element={<Home />} />
           <Route path="/refund" element={<Home />} />
-          <Route path="/hightop" element={<Hightop />} />
-          <Route path='/shop' element={<Shop />} />
+
 
           <Route path='/single-product/:productId' element={<SingleProduct />} />
           <Route path='/single-category/:categoryId' element={<SingleCategory />} />
@@ -32,7 +30,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </BrowserRouter>
+    
   );
 }
 
