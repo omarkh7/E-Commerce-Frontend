@@ -2,11 +2,11 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import "./ProductsHome.css";
 import { Link } from "react-router-dom";
-import Loader from "../../Loader/Loader";
+
 
 function ProductsHome() {
   const [alldata, setAllData] = useState([]);
-  const [loading,setLoading] = useState(true);
+  // const [loading,setLoading] = useState(true);
 
   const apiURL = "http://localhost:8000/api/products/getproducts";
 
@@ -15,19 +15,19 @@ function ProductsHome() {
       const response = await axios.get(apiURL);
       console.log("Products", response.data);
       setAllData(response.data.productList);
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.error(error);
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchallData();
   }, []);
-  if(loading){
-    return <div> <Loader/> </div>
-  }
+  // if(loading){
+  //   return <div> <Loader/> </div>
+  // }
 
   return (
     <div className="container_products">
