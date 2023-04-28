@@ -1,6 +1,3 @@
-body {
-    background-color: white;
-}
 
 .box {
     display: flex;
@@ -46,13 +43,14 @@ body {
 .h3_aboutUs {
     /* display: flex; */
     color: black;
-    font-size: 150%;
+    font-size: 20px;
     font-style: italic;
-    line-height: 100px;
+    padding: 2rem;
+    /* line-height: 100px; */
     /* padding: 120px; */
     /* margin: 30px; */
-    padding-left: 15%;
-    max-width: 85%;
+    /* padding-left: 15%; */
+    /* max-width: 85%; */
     text-align: center;
 }
 
@@ -70,14 +68,14 @@ body {
 
 
 img {
-    width: 95%;
+    width: 100%;
     height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
     align-content: center;
-    margin-left: 2.5%;
+    /* margin-left: 2.5%; */
 
 }
 
