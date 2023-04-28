@@ -21,14 +21,18 @@
     color: #b6d7a8;
 }
 .span-cart {
+font-weight: bold;
+    text-align: center;
     border-radius: 4rem;
-    padding: 0.02rem 0.5rem 0.02rem 0.2rem;
+    padding: 0.3rem;
     background-color: red;
     color: white;
     /* margin-left: 0.2rem; */
-    position:absolute;
+    position: absolute;
     width: 1.2rem;
     height: 1.2rem;
+    /* transform: translate(1%, 20%); */
+    font-size: 12px;
 /*            
             bottom:60;
             right: 100; */

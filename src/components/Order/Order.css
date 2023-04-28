@@ -146,6 +146,11 @@ tr:hover {
     cursor: pointer;
 
 }
+
+.increment-btn-cart:hover{
+color:#a1c297
+
+}
 .increment-div-rspnsv{
     display: flex;
     flex-direction: row;

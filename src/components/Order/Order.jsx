@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Order.css";
 import axios from "axios";
 import { AiFillDelete } from "react-icons/ai";
@@ -6,41 +6,44 @@ import { BsCart } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 
 const Order = () => {
-  // const cart = [
-  //   {
-  //     product_id: "64469d3c30a3f02fc407edfd",
-  //     size: "41",
-  //     color: "White",
-  //     quantity: "5",
-  //     price: "200",
-  //     name: "Dunk Low 3D Swoosh",
-  //     image: "http://localhost:8000/images/1682349372097-4.webp",
-  //   },
-  // ];
-
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitted, setISSubmitted] = useState(false);
-  const [cart, setCart] = useState([
-    {
-      product_id: "64469d3c30a3f02fc407edfd",
-      size: "41",
-      color: "White",
-      quantity: "1",
-      price: "200",
-      name: "Dunk Low 3D Swoosh",
-      image: "http://localhost:8000/images/1682349372097-4.webp",
-    },
-    {
-      product_id: "64469c4430a3f02fc407edee",
-      size: "41",
-      color: "black",
-      quantity: "2",
-      price: "200",
-      name: "Air Jordan 1 Mid White Metallic",
-      image: "http://localhost:8000/images/1682349124408-01.webp",
-    },
-  ]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || [
+      {
+        product_id: "64469d3c30a3f02fc407edfd",
+        size: "41",
+        color: "White",
+        quantity: "1",
+        price: "200",
+        name: "Dunk Low 3D Swoosh",
+        image: "http://localhost:8000/images/1682349372097-4.webp",
+      },
+      {
+        product_id: "64469c4430a3f02fc407edee",
+        size: "41",
+        color: "black",
+        quantity: "2",
+        price: "200",
+        name: "Air Jordan 1 Mid White Metallic",
+        image: "http://localhost:8000/images/1682349124408-01.webp",
+      },
+      {
+        product_id: "6448ef1d240b2b75493d78d0",
+        size: "41",
+        color: "Pink",
+        quantity: "2",
+        price: "565",
+        name: "Air Jordan 1 Retro High OG Washed Pink",
+        image: "http://localhost:8000/images/1682501405226-6.webp",
+      },
+    ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const handleSubmitOrder = async () => {
     setIsLoading(true);
@@ -73,24 +76,22 @@ const Order = () => {
 
   const handleDelete = (id) => {
     setCart((cart) => cart.filter((i) => i.product_id !== id));
-    localStorage.setItem("cart", JSON.stringify(cart));
+    
+      localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-
- const updateQuantity = (itemId, newQuantity) => {
-   const updatedCart = cart.map((item) => {
-     if (item.id === itemId) {
-       return {
-         ...item,
-         quantity: newQuantity,
-       };
-     }
-     return item;
-   });
-   setCart(updatedCart);
-   localStorage.setItem("cart", JSON.stringify(updatedCart));
- };
-
+  const updateQuantity = (itemId, newQuantity) => {
+    const updatedCart = cart.map((item) => {
+      if (item.product_id === itemId) {
+        return {
+          ...item,
+          quantity: newQuantity,
+        };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  };
 
   return (
     <div>
@@ -132,7 +133,7 @@ const Order = () => {
                         <button
                           className='increment-btn-cart'
                           onClick={() =>
-                            updateQuantity(item.id, item.quantity + 1)
+                            updateQuantity(item.product_id, +item.quantity + 1)
                           }
                         >
                           +
@@ -141,7 +142,7 @@ const Order = () => {
                         <button
                           className='increment-btn-cart'
                           onClick={() =>
-                            updateQuantity(item.id, item.quantity - 1)
+                            updateQuantity(item.product_id, +item.quantity - 1)
                           }
                         >
                           -
@@ -202,16 +203,16 @@ const Order = () => {
                         <button
                           className='increment-btn-cart'
                           onClick={() =>
-                            updateQuantity(item.id, item.quantity + 1)
+                            updateQuantity(item.product_id, +item.quantity + 1)
                           }
                         >
                           +
                         </button>
-                        <div>{item.quantity}</div>
+                        {item.quantity}
                         <button
                           className='increment-btn-cart'
                           onClick={() =>
-                            updateQuantity(item.id, item.quantity - 1)
+                            updateQuantity(item.product_id, +item.quantity - 1)
                           }
                         >
                           -
