@@ -122,7 +122,10 @@ background: #080808;
 }
 
 .login-btn:hover {
-    background-color: #b6d7a87e;
+    background-color: transparent;
+    color: #080808;
+    border-color: #080808;
+    transform: scale(1.1);
 }
 
 .login-button-container div {

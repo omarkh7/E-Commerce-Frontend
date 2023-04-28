@@ -16,6 +16,7 @@ function NavIcons() {
       <div className='icon-header'>
         <Link to='/order' style={{ textDecoration: "none" }}>
           <BsBag id='icon-header' />
+          <span className='span-cart'>1</span>
         </Link>
       </div>
     </div>

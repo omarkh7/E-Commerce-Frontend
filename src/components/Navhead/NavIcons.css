@@ -9,6 +9,7 @@
 #icon-header{
     font-size: 1.3rem;
     color: black;
+    position: relative;
 }
 
 .icon-header:hover{
@@ -16,6 +17,22 @@
     cursor: pointer;
 
 }
-
+#icon-header:hover{
+    color: #b6d7a8;
+}
+.span-cart {
+    border-radius: 4rem;
+    padding: 0.02rem 0.5rem 0.02rem 0.2rem;
+    background-color: red;
+    color: white;
+    /* margin-left: 0.2rem; */
+    position:absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+/*            
+            bottom:60;
+            right: 100; */
+            /* transform: translate(1%, 20%); */
+}
 
 

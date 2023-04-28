@@ -3,10 +3,25 @@ import "./Order.css";
 import axios from "axios";
 import { AiFillDelete } from "react-icons/ai";
 import { BsCart } from "react-icons/bs";
-import {FaCheckCircle} from "react-icons/fa"
+import { FaCheckCircle } from "react-icons/fa";
 
 const Order = () => {
-  const cart = [
+  // const cart = [
+  //   {
+  //     product_id: "64469d3c30a3f02fc407edfd",
+  //     size: "41",
+  //     color: "White",
+  //     quantity: "5",
+  //     price: "200",
+  //     name: "Dunk Low 3D Swoosh",
+  //     image: "http://localhost:8000/images/1682349372097-4.webp",
+  //   },
+  // ];
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitted, setISSubmitted] = useState(false);
+  const [cart, setCart] = useState([
     {
       product_id: "64469d3c30a3f02fc407edfd",
       size: "41",
@@ -16,11 +31,16 @@ const Order = () => {
       name: "Dunk Low 3D Swoosh",
       image: "http://localhost:8000/images/1682349372097-4.webp",
     },
-  ];
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isSubmitted,setISSubmitted]=useState(false)
+    {
+      product_id: "64469c4430a3f02fc407edee",
+      size: "41",
+      color: "black",
+      quantity: "2",
+      price: "200",
+      name: "Air Jordan 1 Mid White Metallic",
+      image: "http://localhost:8000/images/1682349124408-01.webp",
+    },
+  ]);
 
   const handleSubmitOrder = async () => {
     setIsLoading(true);
@@ -45,11 +65,32 @@ const Order = () => {
       setISSubmitted(true);
     } catch (error) {
       console.error(error.response.data.error);
-      setErrorMessage("An error occurred while submitting the order.");
+      setErrorMessage(error.response.data.error);
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleDelete = (id) => {
+    setCart((cart) => cart.filter((i) => i.product_id !== id));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+
+ const updateQuantity = (itemId, newQuantity) => {
+   const updatedCart = cart.map((item) => {
+     if (item.id === itemId) {
+       return {
+         ...item,
+         quantity: newQuantity,
+       };
+     }
+     return item;
+   });
+   setCart(updatedCart);
+   localStorage.setItem("cart", JSON.stringify(updatedCart));
+ };
+
 
   return (
     <div>
@@ -87,10 +128,31 @@ const Order = () => {
                       <td>{item.name}</td>
                       <td>{item.color}</td>
                       <td>{item.size}</td>
-                      <td>{item.quantity}</td>
+                      <td>
+                        <button
+                          className='increment-btn-cart'
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                        {item.quantity}
+                        <button
+                          className='increment-btn-cart'
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
+                        >
+                          -
+                        </button>
+                      </td>
                       <td>{item.price}</td>
                       <td>
-                        <AiFillDelete className='delete-icon-row' />
+                        <AiFillDelete
+                          className='delete-icon-row'
+                          onClick={() => handleDelete(item.product_id)}
+                        />
                       </td>
                     </tr>
                   ))}
@@ -98,8 +160,85 @@ const Order = () => {
               )}
             </tbody>
           </table>
+
+          <div className='cart-item-responsive'>
+            {cart.length === 0 ? (
+              <tr>
+                <td colSpan='7'>Your cart is empty.</td>
+              </tr>
+            ) : (
+              <>
+                {cart.map((item) => (
+                  <div key={item.id} className='cart-items-rspnv'>
+                    <div className='list-rspnv delete-icon'>
+                      <AiFillDelete
+                        className='delete-icon-row'
+                        onClick={() => handleDelete(item.id)}
+                      />
+                    </div>
+                    <div className='cart-image-rspnv-div'>
+                      {" "}
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className='cart-image-rspnv'
+                      />
+                    </div>
+                    <div className='list-rspnv'>
+                      <div>Product: </div>
+                      <div> {item.name}</div>
+                    </div>
+                    <div className='list-rspnv'>
+                      <div>Color: </div>
+                      <div>{item.color}</div>
+                    </div>
+                    <div className='list-rspnv'>
+                      <div>Size: </div>
+                      <div>{item.size}</div>
+                    </div>
+                    <div className='list-rspnv'>
+                      <div>Quantity: </div>
+                      <div className='increment-div-rspnsv'>
+                        <button
+                          className='increment-btn-cart'
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                        <div>{item.quantity}</div>
+                        <button
+                          className='increment-btn-cart'
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
+                        >
+                          -
+                        </button>
+                      </div>
+                    </div>
+                    <div className='list-rspnv'>
+                      <div>
+                        <div>Price:</div>
+                      </div>
+
+                      <div>
+                        <div>{item.price}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
         </div>
-        {isSubmitted ? (<div className='success-message'> <FaCheckCircle className="success"/> Order submitted successfully!</div>) : (
+        {isSubmitted ? (
+          <div className='success-message'>
+            {" "}
+            <FaCheckCircle className='success' /> Order submitted successfully!
+          </div>
+        ) : (
           <div className='cart-discription'>
             <h3 className='cart-description-title'>
               {" "}
@@ -138,9 +277,9 @@ const Order = () => {
               {errorMessage && (
                 <div className='error-message'>{errorMessage}</div>
               )}
-              
             </div>
-          </div>)}
+          </div>
+        )}
       </div>
     </div>
   );
