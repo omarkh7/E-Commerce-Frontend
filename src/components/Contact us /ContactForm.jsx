@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './ContactForm.css';
 import emailjs from '@emailjs/browser';
-
+import './flower.jpeg';
 // import dotenv from 'dotenv';
 // import ReactModal from 'react-modal';
 
@@ -49,7 +49,7 @@ const ContactForm = () => {
             <div className="daddydiv">
             </div>
             <div className='contact_div1'>
-                <img className="image" src="https://img.freepik.com/free-photo/white-canvas-sneakers-unisex-footwear-fashion_53876-108036.jpg?w=1380&t=st=1682507378~exp=1682507978~hmac=409ab685c40888ac69111efd469ebba860bd0e8842819cc622aade7147a245e4" />
+                <img className="image" src="./flower.jpeg" alt="flower" />
             </div>
             <h1 className='contact_h1'>
                 Are You Interested To Know More About Us And Our Products?
