@@ -9,14 +9,14 @@
     /* max-height: 300px; */
     overflow-y: auto;
     position: absolute;
-    top:100%;
-    left:28%;
+    top: 100%;
+    left: 28%;
 }
 
 @media screen and (max-width:973px) {
     .results-list {
-            width: 70vw;
-            top: 16vh;
-            left: 1%;
-        }
+        width: 70vw;
+        top: 16vh;
+        left: 1%;
+    }
 }

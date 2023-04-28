@@ -102,7 +102,7 @@ input:focus {
 }
 
 .login-btn {
-background: #080808;
+    background: #080808;
     color: #ffffff;
     border: 1px solid #080808;
     padding: 0 45px;
@@ -218,13 +218,13 @@ background: #080808;
         height: 6vh;
     }
 
-    .form-subcontainer{
-        padding:4vh;
+    .form-subcontainer {
+        padding: 4vh;
     }
 }
 
 @media screen and (max-width:780px) {
     .login-container {
-            padding: 1vh 5vw 1vh 5vw;
-        }
+        padding: 1vh 5vw 1vh 5vw;
+    }
 }

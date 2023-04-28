@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import '../Navhead/NavIcons.css'
-import { FaRegUser} from "react-icons/fa";
-import { BsBag } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import "../Navhead/NavIcons.css";
+import { FaRegUser } from "react-icons/fa";
+import { BsBag } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function NavIcons() {
-
   const [cartItemsCount, setCartItemsCount] = useState([]);
-
 
   useEffect(() => {
     const localStorageData = localStorage.getItem("cart");
     const cartItems = JSON.parse(localStorageData);
-    setCartItemsCount(cartItems)
-  },[cartItemsCount])
-
+    setCartItemsCount(cartItems);
+  }, [cartItemsCount]);
 
   return (
     <div className='icon-header-div'>
@@ -34,4 +31,4 @@ function NavIcons() {
   );
 }
 
-export default NavIcons
+export default NavIcons;
