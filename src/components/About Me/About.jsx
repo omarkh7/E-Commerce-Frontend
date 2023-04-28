@@ -29,7 +29,7 @@ function About() {
 
   return (
     <>
-      <img src="https://i.pinimg.com/originals/3b/79/4b/3b794bae88e01274f97c085a2427cfa4.jpg" alt="img" />
+      <img src="https://c0.wallpaperflare.com/preview/186/124/897/red-and-white-air-jordan-1-shoe-on-concrete-floor.jpg" alt="img" />
       <div id='box'>
         <h1 className='h1_walkingexperience'>We Provide You With The Best Walking Experience!
           <hr className='hr1' />
