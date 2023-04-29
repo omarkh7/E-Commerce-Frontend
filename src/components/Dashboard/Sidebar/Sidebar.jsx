@@ -24,64 +24,64 @@ const Sidebar = ({ children }) => {
 
     const InfomenuItem = [
         {
-            path: "/dashbriefinfo",
-            name: "BriefInfo",
+            path: "/DashCategory",
+            name: "Categories",
             icon: <FaTh />,
         },
         {
-            path: "/dashcertification",
-            name: "Certifications",
+            path: "/DashOrders",
+            name: "Orders",
             icon: <FaTh />,
         },
         {
-            path: "/dashwriteups",
-            name: "Writeups",
+            path: "/DashPages",
+            name: "Pages",
             icon: <FaTh />,
         },
         {
-            path: "/dashachievements",
-            name: "Achievements",
+            path: "/DashProducts",
+            name: "Products",
             icon: <FaTh />,
         },
         {
-            path: "/dasharticles",
-            name: "Articles",
+            path: "/DashUsers",
+            name: "Users",
             icon: <FaTh />,
         },
-        {
-            path: "/dashbio",
-            name: "Bio",
-            icon: <FaTh />,
-        },
-        {
-            path: "/dashendorsements&compliments",
-            name: "Endor&Compl",
-            icon: <FaTh />,
-        },
-        {
-            path: "/dashhighlights",
-            name: "Highlights",
-            icon: <FaTh />,
-        },
-        ,
-        {
-            path: "/dashwnews&articles",
-            name: "News & Articles",
-            icon: <FaTh />,
-        },
-        {
-            path: "/dashsocialmediaaccounts",
-            name: "Social Accounts",
-            icon: <FaTh />,
-        },
-        { path: "/dashtalks&workshops", name: "Talks & Workshops", icon: <FaTh /> },
+        // {
+        //     path: "/dashbio",
+        //     name: "Bio",
+        //     icon: <FaTh />,
+        // },
+        // {
+        //     path: "/dashendorsements&compliments",
+        //     name: "Endor&Compl",
+        //     icon: <FaTh />,
+        // },
+        // {
+        //     path: "/dashhighlights",
+        //     name: "Highlights",
+        //     icon: <FaTh />,
+        // },
+        // ,
+        // {
+        //     path: "/dashwnews&articles",
+        //     name: "News & Articles",
+        //     icon: <FaTh />,
+        // },
+        // {
+        //     path: "/dashsocialmediaaccounts",
+        //     name: "Social Accounts",
+        //     icon: <FaTh />,
+        // },
+        // { path: "/dashtalks&workshops", name: "Talks & Workshops", icon: <FaTh /> },
 
-        { path: "/dashworkexperience", name: "Work Experience", icon: <FaTh /> },
-        {
-            path: "/dashwriteupsprojects",
-            name: "Writeups Projects",
-            icon: <FaTh />,
-        },
+        // { path: "/dashworkexperience", name: "Work Experience", icon: <FaTh /> },
+        // {
+        //     path: "/dashwriteupsprojects",
+        //     name: "Writeups Projects",
+        //     icon: <FaTh />,
+        // },
     ];
 
     return (

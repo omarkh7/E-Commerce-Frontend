@@ -5,26 +5,28 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Pages.css";
 import Sidebar from "../Sidebar";
 
-function DashCategory() {
+function DashPages() {
     const form = useRef();
-    const [allcategories, setAllCategories] = useState([]);
+    const [allPages, setAllPages] = useState([]);
     const [selectedInfo, setSelectedInfo] = useState({});
     const [isUpdateMode, setIsUpdateMode] = useState(false);
     const [infoImage, setInfoImage] = useState(null);
 
     const [newInfo, setNewInfo] = useState({
-        info_name: "",
-        info_product_id: "",
-        info_image: null
+        type: "",
+        description: "",
+        title: "",
+        images: null,
+
     });
 
-    const APIKEY = "http://localhost:8000/api/category/allcategories"
+    const APIKEY = "http://localhost:8000/api/pages/getallpages"
 
-    const Categories = async () => {
+    const Pages = async () => {
         try {
             const res = await axios.get(APIKEY);
-            setAllCategories(res.data.data)
-            console.log("categoires", res.data.data)
+            setAllPages(res.data.data)
+            console.log("Pages", res.data.data)
 
         } catch (error) {
             console.log(error)
@@ -36,20 +38,19 @@ function DashCategory() {
 
 
     useEffect(() => {
-        Categories();
+        Pages();
     }, []);
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        // console.log("newinfo ", newInfo);
-        // console.log("infoImage ", infoImage)
         const formData = new FormData();
-        formData.append("name", newInfo.info_name);
-        formData.append("image", infoImage);
-        // console.log("formdafat ", formData.infoImage)
+        formData.append("type", newInfo.type);
+        formData.append("title", newInfo.title);
+        formData.append("description", newInfo.description);
+        formData.append("images", infoImage);
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/category/createcategory", formData,
+                "http://localhost:8000/api/pages/createpage", formData,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",
@@ -60,10 +61,12 @@ function DashCategory() {
 
 
             toast.success("Added Successfully", 2000);
-            Categories();
+            Pages();
             setNewInfo({
-                info_name: "",
-                info_image: "",
+                type: '',
+                title: '',
+                description: '',
+                images: '',
             });
         } catch (error) {
             console.error(error);
@@ -74,9 +77,9 @@ function DashCategory() {
 
 
     const deleteUser = async (id) => {
-        await axios.delete(`http://localhost:8000/api/category/deletecategory/${id}`);
+        await axios.delete(`http://localhost:8000/api/pages/deletepage/${id}`);
         toast.success("Deleted Successfully", 2000);
-        await Categories();
+        await Pages();
     };
 
 
@@ -93,12 +96,14 @@ function DashCategory() {
 
     const updateUser = async () => {
         const formData = new FormData();
-        formData.append("name", selectedInfo.info_name);
-        formData.append("image", infoImage);
+        formData.append("type", selectedInfo.type);
+        formData.append("title", selectedInfo.title);
+        formData.append("description", selectedInfo.description);
+        formData.append("images", infoImage);
         console.log("UPDATE", isUpdateMode)
 
         await axios.put(
-            `http://localhost:8000/api/category/updatecategory/${selectedInfo._id}`,
+            `http://localhost:8000/api/pages/updatepage/${selectedInfo._id}`,
             formData,
             {
                 headers: {
@@ -108,7 +113,7 @@ function DashCategory() {
         );
         toast.success("Updated Successfully", 2000);
         setIsUpdateMode(false);
-        Categories();
+        Pages();
     };
     return (
         <div className="compflex">
@@ -124,16 +129,35 @@ function DashCategory() {
                         <input
                             className="inputadd"
                             type="text"
-                            value={newInfo.info_name}
+                            value={newInfo.type}
                             onChange={(e) =>
-                                setNewInfo({ ...newInfo, info_name: e.target.value })
+                                setNewInfo({ ...newInfo, type: e.target.value })
                             }
-                            placeholder="Enter name"
+                            placeholder="Enter type"
                         />
                         <input
                             className="inputadd"
+                            type="text"
+                            value={newInfo.title}
+                            onChange={(e) =>
+                                setNewInfo({ ...newInfo, title: e.target.value })
+                            }
+                            placeholder="Enter title"
+                        /><input
+                            className="inputadd"
+                            type="text"
+                            value={newInfo.description}
+                            onChange={(e) =>
+                                setNewInfo({ ...newInfo, description: e.target.value })
+                            }
+                            placeholder="Enter description"
+                        />
+
+
+                        <input
+                            className="inputadd"
                             type="file"
-                            value={newInfo.info_image}
+                            value={newInfo.images}
                             onChange={(e) => handleImage(e)}
 
                         />
@@ -148,23 +172,35 @@ function DashCategory() {
                         <input
                             className="inputadd"
                             type="text"
-                            value={selectedInfo.info_name}
+                            value={selectedInfo.type}
                             onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, info_name: e.target.value })
+                                setSelectedInfo({ ...selectedInfo, type: e.target.value })
+                            }
+                        /><input
+                            className="inputadd"
+                            type="text"
+                            value={selectedInfo.title}
+                            onChange={(e) =>
+                                setSelectedInfo({ ...selectedInfo, title: e.target.value })
+                            }
+                        /><input
+                            className="inputadd"
+                            type="text"
+                            value={selectedInfo.description}
+                            onChange={(e) =>
+                                setSelectedInfo({ ...selectedInfo, description: e.target.value })
                             }
                         />
 
                         <input
                             className="inputadd"
                             type="file"
-                            value={newInfo.info_image}
+                            value={newInfo.images}
                             onChange={(e) =>
                                 setInfoImage(e.target.files[0],
                                 )
                             }
                         />
-
-
                         <div className="compflexbutton">
                             <button className="buttonadd" onClick={() => updateUser()}>
                                 Save
@@ -183,18 +219,23 @@ function DashCategory() {
                         <thead>
                             <tr>
                                 <th scope="col">NB</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">type</th>
+                                <th scope="col">title</th>
+                                <th scope="col">description</th>
                                 <th scope="col">Image</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {allcategories
+                            {allPages
                                 .map((info, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td>{info.name}</td>
-                                        <td><img src={info.image} alt={info.image} /></td>
+                                        <td>{info.type}</td>
+                                        <td>{info.title}</td>
+                                        <td>{info.description}</td>
+                                        <td><img src={info.images} alt={info.images} /></td>
+
 
                                         <td>
                                             <button
@@ -221,4 +262,4 @@ function DashCategory() {
     );
 }
 
-export default DashCategory;
+export default DashPages;

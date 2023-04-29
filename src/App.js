@@ -7,15 +7,18 @@ import About from './components/About Me/About';
 import Contact from './components/Contact us /Contact';
 import Shop from './components/Shop/Shop';
 import DashCategory from './components/Dashboard/Sidebar/Pages/DashCategory';
+import DashPages from './components/Dashboard/Sidebar/Pages/DashPages';
+import DashOrders from './components/Dashboard/Sidebar/Pages/DashOrders';
+import DashProducts from './components/Dashboard/Sidebar/Pages/DashProducts';
+import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
 
 function App() {
   return (
     <>
 
-
       <BrowserRouter>
         <div className="App">
-          <Navhead />
+          {/* <Navhead />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/Home' element={<Home />} />
@@ -25,8 +28,32 @@ function App() {
             <Route path='/shop' element={<Shop />} />
             <Route path='/terms' element={<Home />} />
             <Route path='/refund' element={<Home />} />
+            
+          </Routes> */}
+          <Routes>
+            <Route
+              exact
+              path='/DashPages'
+              element={<DashPages />} />
+            <Route
+              exact
+              path='DashCategory'
+              element={<DashCategory />} />
+            <Route
+              exact
+              path='DashOrders'
+              element={<DashOrders />} />
+
+            <Route
+              exact
+              path='DashUsers'
+              element={<DashUsers />} />
+
+            <Route
+              exact
+              path='DashProducts'
+              element={<DashProducts />} />
           </Routes>
-          <DashCategory />
         </div>
       </BrowserRouter>
     </>
