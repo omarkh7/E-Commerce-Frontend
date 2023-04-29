@@ -10,6 +10,7 @@ import SingleProduct from './components/Single_Product/SingleProduct';
 import SingleCategory from './components/Single_Category/SingleCategory';
 
 function App() {
+  
   return (
       <div className="App">
         <Navhead />
