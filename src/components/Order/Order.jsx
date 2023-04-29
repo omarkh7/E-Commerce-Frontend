@@ -85,7 +85,7 @@ const Order = () => {
       if (item.product_id === itemId) {
         return {
           ...item,
-          quantity: newQuantity,
+          quantity: newQuantity <0 ? 0 : newQuantity,
         };
       }
       return item;
