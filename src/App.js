@@ -7,7 +7,7 @@ import About from "./components/About Me/About";
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/Single_Product/SingleProduct';
 import SingleCategory from './components/Single_Category/SingleCategory';
-import ContactForm from "./components/Contact us /ContactForm";
+// import ContactForm from "./components/Contact us /ContactForm";
 import Order from './components/Order/Order';
 
 
@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element ={<About />} />
-          <Route path='/contact' element= {<ContactForm />} />
+          {/* <Route path='/contact' element= {<ContactForm />} /> */}
           <Route path='/login' element= {<Login />} />
           <Route path='/terms' element={<Home />} />
           <Route path='/refund' element={<Home />} />

@@ -85,26 +85,26 @@ header {
     }
 
     .right-side-header {
-         display: none;
-     }
-    
-     .icons-mobileversion {
-         display: flex;
-         flex-direction: row;
-         justify-content: space-between;
-         align-items: center;
-         /* width: 100%; */
-         width: 60%;
-      padding: 1vh;
-         background-color: none;
-  
-     }
-    
-     .logo-header {
+        display: none;
+    }
+
+    .icons-mobileversion {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        /* width: 100%; */
+        width: 60%;
+        padding: 1vh;
+        background-color: none;
+
+    }
+
+    .logo-header {
         height: 60px;
         width: 100px;
         margin: 0;
 
-     }
- 
+    }
+
 }

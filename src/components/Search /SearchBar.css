@@ -45,19 +45,19 @@
     color: black;
 }
 
-@media screen and (max-width:973px){
-    .input-wrapper{
+@media screen and (max-width:973px) {
+    .input-wrapper {
         /* width: 70vw; */
         width: 90%;
-           
+
     }
 
     .input-wrapper input::placeholder {
-      
+
         font-size: 12px;
 
-  
-      
+
+
     }
-    
+
 }

@@ -9,34 +9,10 @@
 #icon-header {
     font-size: 1.3rem;
     color: black;
-    position: relative;
 }
 
 .icon-header:hover {
     color: #b6d7a8;
     cursor: pointer;
 
-}
-
-#icon-header:hover {
-    color: #b6d7a8;
-}
-
-.span-cart {
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4rem;
-    padding: 0.3rem;
-    background-color: red;
-    color: white;
-    /* margin-left: 0.2rem; */
-    position: absolute;
-    width: 1.4rem;
-    /* height: 1.2rem; */
-    /* transform: translate(1%, 20%); */
-    font-size: 12px;
-    /*            
-            bottom:60;
-            right: 100; */
-    /* transform: translate(1%, 20%); */
 }
