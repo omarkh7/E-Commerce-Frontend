@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
 function Categories() {
+
+
   const [alldata, setAllData] = useState([]);
 
   const apiURL = "http://localhost:8000/api/category/allcategories";
@@ -15,7 +17,6 @@ function Categories() {
     try {
       const response = await axios.get(apiURL);
       setAllData(response.data.data);
-      console.log(response.data.data)
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +62,7 @@ function Categories() {
             alldata.map((item) => (
               
               <div className="img_text_categories_home" key={item._id}>
-              <Link to={`single-category/${item._id}`}>
+              <Link to={`single-category/${item._id}`} >
 
                 <img
                   className="img_categories_home"

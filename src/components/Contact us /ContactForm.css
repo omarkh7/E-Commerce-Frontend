@@ -38,8 +38,8 @@
 .contact_form_name > input {
   background-color: #ffffff;
   color: #222222;
-  border-color: #d8d8d8;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 16px;
   width: 100%;
   box-sizing: border-box;
@@ -47,7 +47,7 @@
   font-family: "Jost", "Helvetica Neue", Arial, Verdana, sans-serif;
   margin: 5px auto;
   background: #fff;
-  border: 1px solid #222222;
+
   outline: none;
 }
 
@@ -82,7 +82,9 @@
     flex-direction: row;
     column-gap: 20px;
     font-size: 2rem;
+   
 }
+
 .social_icons_contact>a{
 text-decoration: none;
 color:#080808;
