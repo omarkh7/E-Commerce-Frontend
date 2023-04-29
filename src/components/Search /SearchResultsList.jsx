@@ -3,10 +3,11 @@ import "../Search /SearchResultsList.css";
 import SearchResult from "./SearchResult";
 
 const SearchResultsList = ({ results }) => {
+  console.log('results',results)
   return (
     <div className='results-list'>
-      {results.map((result, id) => {
-        return <SearchResult result={result.name} key={id} />;
+      {results.map((result) => {
+        return <SearchResult result={result}  />;
       })}
     </div>
   );
