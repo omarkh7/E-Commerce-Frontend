@@ -5,14 +5,7 @@ import './Contact.css'
 
 const Contact = () => {
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-
-  //   emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, e.target, process.env.REACT_APP_PUBLIC_KEY);
-  // }
-
-
-
+ 
   return (
     <>
       {/* <div className='contact_div1'>

@@ -4,15 +4,15 @@
     flex-direction: column;
 }
 
-/* body {
-    background-color: blue;
-} */
-
 .contact_div1 {
-    /* height: 150vh; */
-    display: flex;
-    /* flex-direction: column; */
-    /* justify-content: space-evenly; */
+    background-image: url('../../assets/images/flower.jpeg');
+    background-position: center center;
+    background-size: cover;
+    object-fit: cover;
+    height: 45rem;
+    filter: brightness(90%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
 }
 
@@ -23,14 +23,9 @@
 
 .contact_h1 {
     display: flex;
-    /* align-self: center; */
     color: black;
     justify-content: center;
-    /* align-items: center; */
-    /* flex-direction: column;  */
-    /* width: 500px; */
-    /* height: 200%;
-    margin-left: 60px; */
+
     color: #7a7878;
     font-size: 2rem;
     padding-top: 2rem;
@@ -69,12 +64,9 @@ i {
     /* display: flex; */
     justify-content: flex-end;
     flex-direction: column;
-    /* padding-bottom: 10%; */
+
 }
 
-
-
-/* @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700); */
 
 html {
     font-family: 'Montserrat', Arial, sans-serif;
@@ -91,9 +83,6 @@ html {
 }
 
 #container {
-    /* border: solid 3px #7a7878; */
-    /* max-width: 650px; */
-    /* align-self: flex-end; */
     display: flex;
     justify-content: center;
     color: #7a7878;
@@ -104,11 +93,8 @@ html {
 .contactForm_div {
 
     display: flex;
-    /* padding-right: 5%; */
     padding-top: 8rem;
     flex-direction: column;
-    /* justify-content: flex-end; */
-    /* height: 100vh; */
     padding-right: 10%;
 }
 
@@ -116,8 +102,6 @@ body {
     background: white;
 }
 
-
-/* #F2F3EB; body color*/
 
 button {
     overflow: visible;
@@ -145,37 +129,9 @@ textarea {
     overflow: auto;
 }
 
-
-
 form {
-
-    /* margin: 50px 0; */
     padding: 37.5px;
-    /* padding-top: 3%; */
-
 }
-
-
-
-
-/* 
-h1 {
-    color: #474544;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 7px;
-    text-align: center;
-    text-transform: uppercase;
-} */
-
-
-
-/* .underline {
-    border-bottom: solid 2px #474544;
-    margin: -0.512em auto;
-    width: 80px;
-} */
-
 
 .reddiv {
     display: flex;
@@ -209,17 +165,7 @@ h1 {
 }
 
 .icon_wrapper {
-    /* margin: 50px auto 0; */
-    /* width: 100%; */
-    /* align-items: flex-start;
-    align-content: flex-start;
-    align-self: flex-end;
-    padding-right: 16%;
-    padding-top: 5%;
-    margin-top: 5%;
-    padding-top: 3%;
-    text-align: center;
-    justify-content: space-between; */
+
     display: flex;
     padding-right: 2%;
     justify-content: center;
@@ -229,13 +175,7 @@ h1 {
 .icon {
     height: 60px;
     fill: #7a7878;
-    /* display: block; */
-    /* padding-top: 4; */
-    /* display: flex;
-     */
 
-    /* margin: 0 auto; */
-    /* width: 50px; */
 }
 
 
@@ -335,70 +275,102 @@ textarea {
 }
 
 #form_button {
-    border-radius: 18px;
-    background-color: #b6d7a8;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    font-weight: 500;
-    width: 40%;
-    height: 3em;
+    background: #080808;
+    color: #ffffff;
+    border: 1px solid #080808;
+    padding: 0 45px;
     text-align: center;
-    box-shadow: 0 0.188em 1.550em rgb(220, 219, 219);
+    cursor: pointer;
+    min-height: 44px;
+    height: 40px;
+    line-height: 1.2;
+    vertical-align: top;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
+    text-transform: none;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    width: fit-content;
+    -shadow: 0 0.188em 1.550em rgb(220, 219, 219);
 
 }
 
 #form_button:hover {
-    background: #7a7878;
-    color: #F2F3EB;
+    background-color: transparent;
+    color: #080808;
+    border-color: #080808;
+    transform: scale(1.1);
 }
 
 .submit {
     text-align: center;
 }
 
-/* @media screen and (max-width: 768px) {
-    #container {
-        margin: 20px auto;
-        width: 95%;
-    }
-} */
-
-/* @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 26px;
-    } */
-
-/* .underline {
-        width: 68px;
+@media (max-width: 972px) {
+    .contact_h1 {
+        font-size: 1.5rem;
     }
 
-    #form_button {
-        padding: 15px 25px;
+    .contact_div1 {
+        height: 30rem;
     }
-} */
 
-/* @media screen and (max-width: 420px) {
-    h1 {
-        font-size: 18px;
-    } */
+    .contactForm_div {
+        padding-top: 4rem;
+    }
 
-/* .icon {
-        height: 35px;
-        width: 35px;
+    .reddiv {
         display: flex;
-        /* padding-right: 50%; */
-/* } */
+        flex-direction: column;
+        color: #7a7878;
+        align-items: center;
+        height: 80vh;
+        justify-content: flex-start;
+        padding-left: 2%;
+        gap: 1rem;
 
-
-/* 
-    input[type='text'],
-    [type='email'],
-    select,
-    textarea {
-        font-size: 0.875em;
     }
-}  */
+
+    .status {
+        text-align: center;
+    }
+}
+
+@media (max-width: 785px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 40px;
+
+    }
+
+    .reddiv {
+        display: flex;
+        flex-direction: column;
+        color: #7a7878;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 2%;
+        gap: 1rem;
+        padding-bottom: 0;
+        align-self: normal;
+    }
+
+    .contactForm_div {
+        align-items: center;
+        padding-right: 0;
+    }
+
+    .contact_h1 {
+        text-align: center;
+    }
+
+    .h1_title_contact {
+        letter-spacing: 0px;
+    }
+}
 
 @media (max-width: 480px) {
     body {
@@ -446,52 +418,19 @@ textarea {
         /* display: flex; */
         justify-content: flex-end;
         flex-direction: column;
-        padding-left: 20%;
+        /* padding-left: 20%; */
     }
 
 
     .testtest {
         display: flex;
         flex-direction: column;
-        padding-left: 13%;
+        /* padding-left: 13%; */
 
     }
 }
 
-/* @media (min-width: 420px) {
-    body {
-        display: flex;
-        flex-direction: column;
 
-    }
-
-    #container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-
-    }
-
-    .contact_h2 {
-        text-align: center;
-    }
-
-    .h3_FindUsAt {
-        text-align: center;
-    }
-
-    .reddiv {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        justify-content: space-around;
-        padding-top: 20%;
-        text-align: center;
-        padding-left: 20%;
-    }
-
-
-} */
 
 
 .h1_title_contact {
@@ -499,7 +438,7 @@ textarea {
     color: #7a7878;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 9px;
+
     text-align: center;
     /* text-transform: uppercase; */
     display: flex;
