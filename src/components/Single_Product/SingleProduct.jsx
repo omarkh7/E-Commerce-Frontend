@@ -11,6 +11,8 @@ function SingleProduct() {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [isProductDisabled, setIsProductDisabled] = useState(false);
+  const [cart, setCart] = useState([]);
+
 
   console.log("selectedSize: ", selectedSize);
   console.log("selectedColor: ", selectedColor);
@@ -47,35 +49,39 @@ function SingleProduct() {
 
   // }
 
-  //SIZE
-  const handleSelectedSizeChange = (event) => {
-    const selectedSize = event.target.value;
-    setSelectedSize(selectedSize);
-    // const selectedAttr = alldata[0].attribute.find(
-    //   (attr) => attr.size === selectedSize
-    // );
-  };
+  // //SIZE
+  // const handleSelectedSizeChange = (event) => {
+  //   const selectedSize = event.target.value;
+  //   setSelectedSize(selectedSize);
+  //   // const selectedAttr = alldata[0].attribute.find(
+  //   //   (attr) => attr.size === selectedSize
+  //   // );
+  // };
 
-  //COLOR
-  const handleSelectedColorChange = (event) => {
-    const selectedColor = event.target.value;
-    setSelectedColor(selectedColor);
-    // const selectedAttr = alldata[0].attribute.find(
-    //   (attr) => attr.color === selectedColor
-    // );
-  };
+  // //COLOR
+  // const handleSelectedColorChange = (event) => {
+  //   const selectedColor = event.target.value;
+  //   setSelectedColor(selectedColor);
+  //   // const selectedAttr = alldata[0].attribute.find(
+  //   //   (attr) => attr.color === selectedColor
+  //   // );
+  // };
 
-  //Quantity
-  const handleSelectedQuantityChange = (event) => {
-    const selectedQuantity = event.target.value;
-    setSelectedQuantity(selectedQuantity);
-    // const selectedAttr = alldata[0].attribute.find(
-    //   (attr) => attr.quantity === selectedQuantity
-    // );
-  };
+  // //Quantity
+  // const handleSelectedQuantityChange = (event) => {
+  //   const selectedQuantity = event.target.value;
+  //   setSelectedQuantity(selectedQuantity);
+  //   // const selectedAttr = alldata[0].attribute.find(
+  //   //   (attr) => attr.quantity === selectedQuantity
+  //   // );
+  // };
 
   const handleIncrease = () => {
-    setSelectedQuantity(selectedQuantity + 1);
+    const attribute = alldata[0].attribute.find((attribute) => attribute.size == selectedSize && attribute.color == selectedColor);
+    if (attribute && selectedQuantity < attribute.quantity) {
+      setSelectedQuantity(selectedQuantity + 1);
+    }
+    
   };
 
   const handleDecrease = () => {
@@ -83,6 +89,47 @@ function SingleProduct() {
       setSelectedQuantity(selectedQuantity - 1);
     }
   };
+  
+  
+   const addToCart = () => {
+     const selectedAttr = alldata[0].attribute.find(
+       (attr) => attr.size == selectedSize && attr.color == selectedColor
+     );
+     if (selectedAttr && selectedQuantity <= selectedAttr.quantity) {
+       const cartItem = {
+         productId: alldata[0]._id,
+         price: alldata[0].price,
+         color: selectedColor,
+         size: selectedSize,
+         quantity: selectedQuantity,
+       };
+       let existingCartItems =
+         JSON.parse(localStorage.getItem("cart")) || [];
+       let cartItemExists = false;
+       existingCartItems = existingCartItems.map((item) => {
+         if (
+           item.productId == cartItem.productId &&
+           item.color == cartItem.color &&
+           item.size == cartItem.size
+         ) {
+           cartItemExists = true;
+           return {
+             ...item,
+             quantity: item.quantity + cartItem.quantity,
+           };
+         }
+         return item;
+       });
+       if (!cartItemExists) {
+         existingCartItems.push(cartItem);
+       }
+       localStorage.setItem("cart", JSON.stringify(existingCartItems));
+       alert("Product added to cart");
+     } else {
+       alert("Product not available with selected attributes");
+     }
+   };
+ 
 
   return (
     <div className="product-details-container">
@@ -118,7 +165,7 @@ function SingleProduct() {
                       id="attribute-size"
                       name="attribute-size"
                       value={selectedSize}
-                      onChange={handleSelectedSizeChange}
+                      onChange={(e)=>setSelectedSize(e.target.value)}
                     >
                       <option value="">Select a Size</option>
                       {allSizes.map((size, index) => (
@@ -136,7 +183,7 @@ function SingleProduct() {
                       id="attribute-color"
                       name="attribute-color"
                       value={selectedColor}
-                      onChange={handleSelectedColorChange}
+                      onChange={(e)=>setSelectedColor(e.target.value)}
                     >
                       <option value="">Select a Color</option>
                       {allColors.map((color, index) => (
@@ -171,7 +218,8 @@ function SingleProduct() {
               <div className="product-actions">
                 <button
                   className="add-to-cart-button"
-                  disabled={isProductDisabled}
+                      disabled={isProductDisabled}
+                      onClick={addToCart}
                 >
                   Add to Cart
                 </button>
