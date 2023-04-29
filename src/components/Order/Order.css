@@ -176,7 +176,7 @@ tr:hover {
     display: none;
 }
 
-@media screen and (max-width:1455px) {
+@media screen and (max-width:1628px) {
     .cart-table-view {
         display: flex;
         flex-direction: column;
@@ -189,7 +189,7 @@ tr:hover {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        height: 45vh;
+        height: 80%;
         align-items: center;
         width: 50%;
         border: 0.2px solid #f3f9f1;
