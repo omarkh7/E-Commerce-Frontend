@@ -15,7 +15,8 @@
 
 @media screen and (max-width:973px) {
     .results-list {
-            width: 70vw;
+            width: 98%;
+          
             top: 16vh;
             left: 1%;
         }

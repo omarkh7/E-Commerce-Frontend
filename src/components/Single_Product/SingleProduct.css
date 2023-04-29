@@ -1,105 +1,4 @@
-/* .product-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .product-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-    width: 100%;
-  }
-  
-  .product-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-  }
-  
-  .product-image {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  .product-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-  }
-  
-  .product-name {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .product-description {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .product-price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .product-attributes {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  
-  .product-attribute {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-  }
-  
-  .attribute-title {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .attribute-value {
-    margin: 0;
-  }
-  
-  .product-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .add-to-cart-button {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    }
-    
-    .add-to-cart-button:hover {
-    background-color: #0062cc;
-    }
-    
-    .product-not-available {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: red;
-    margin-top: 20px;
-    }
-   */
+
 
    .product-details-container {
     display: flex;
@@ -110,36 +9,31 @@
   
   .product-details {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 50px;
-    width: 100%;
+    margin: 5rem auto;
+        width: 100%;
   }
   
-  .product-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-  }
-  
-  .product-image {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
+
   
   .product-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     width: 50%;
+    padding-right: 15rem;
+    padding-left: 5rem;
   }
   
   .product-name {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 3px;
+  }
+  .product-category{
+margin-bottom:20px ;
+font-size: 1rem;
   }
   
   .product-description {
@@ -153,55 +47,84 @@
     margin-bottom: 20px;
   }
   
-  .product-attributes {
+
+  
+  .all-product-attribute {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    row-gap: 25px;
+   
   }
-  
-  .product-attribute {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-  }
-  
-  .attribute-title {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .attribute-value {
-    margin: 0;
-  }
-  
-  .product-size {
-    margin-bottom: 10px;
-  }
-  
-  .product-color {
-    margin-bottom: 10px;
-  }
+
+
   
   .product-actions {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
   }
-  
-  .add-to-cart-button {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+
+
+  /*=============================== COUNTER / QUANTITY =============================*/
+
+
+  .product-attribute-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: fit-content;
+    border: 1px solid #00000030;
+    border-radius: 4px;
   }
   
+  .product-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .counter-button {
+    background-color: #fff;
+ border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+  
+  .counter-value {
+    font-size: 1.2rem;
+    margin: 0 10px;
+  }
+  
+  /*=============================== ADD TO CART =============================*/
+
+  .add-to-cart-button {
+    background: #080808;
+    color: #ffffff;
+    border: 1px solid #080808;
+    padding: 0 45px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 44px;
+    height: 40px;
+    line-height: 1.2;
+    vertical-align: top;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
+    text-transform: none;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    width: fit-content;}
+  
   .add-to-cart-button:hover {
-    background-color: #0062cc;
+    background-color: transparent;
+    color: #080808;
+    border-color: #080808;
+    transform: scale(1.1);
   }
   
   .product-not-available {
@@ -211,43 +134,35 @@
     margin-top: 20px;
   }
   
-  .dropdown {
-    position: relative;
-    display: inline-block;
+
+  /*=============================== ATTRIBUTE =============================*/
+
+  .product-attribute{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
   }
   
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    margin-top: 5px;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-item {
-    cursor: pointer;
+  .product-attribute select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: 1rem;
-    padding: 5px;
+   background-color:  #F8F8F8;
   }
   
-  .dropdown-item:hover {
-    background-color: #f1f1f1;
+  .product-attribute select:focus {
+    outline: none;
+    border: 1px solid #00000030;
   }
   
 
 
+  
 
 
-  /* IMAGESS */
-
-
+  /*=============================== IMAGESS =============================*/
   .image-wrapper {
     width: 700px;
     height: 500px;
@@ -315,3 +230,31 @@
     pointer-events: none;
   }
   
+
+  
+@media screen and (max-width: 768px) {
+
+
+  .product-details-container{
+    display: block;
+  }
+  .product-details{
+    display: block;
+  }
+.image-wrapper{
+  width:300px;
+  height: 200px;
+}
+
+.product-info{
+width: 100%;
+padding: 0rem 2rem;
+}
+.product-name{
+  font-size: 1.7rem;
+}
+.product-attribute{
+  width: 50%;
+}
+
+}

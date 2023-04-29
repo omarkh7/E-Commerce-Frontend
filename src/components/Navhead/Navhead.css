@@ -79,7 +79,9 @@ header {
         background-color: white;
         height: 18vh;
         justify-content: flex-start;
-        flex-direction: column;
+        /* flex-direction: column; */
+        flex-direction: row;
+        align-items: center;
     }
 
     .right-side-header {
@@ -91,14 +93,19 @@ header {
          flex-direction: row;
          justify-content: space-between;
          align-items: center;
-         width: 100%;
+         /* width: 100%; */
+         width: 60%;
       padding: 1vh;
-
-         background-color: white;
-        
+         background-color: none;
+  
      }
     
-     
-     
+     .logo-header {
+        height: 60px;
+        width: 100px;
+        margin: 0;
+
+     }
+ 
 }
 
