@@ -10,41 +10,9 @@ const Order = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitted, setISSubmitted] = useState(false);
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || [
-      {
-        product_id: "64469d3c30a3f02fc407edfd",
-        size: "41",
-        color: "White",
-        quantity: "1",
-        price: "200",
-        name: "Dunk Low 3D Swoosh",
-        image: "http://localhost:8000/images/1682349372097-4.webp",
-      },
-      {
-        product_id: "64469c4430a3f02fc407edee",
-        size: "41",
-        color: "black",
-        quantity: "2",
-        price: "200",
-        name: "Air Jordan 1 Mid White Metallic",
-        image: "http://localhost:8000/images/1682349124408-01.webp",
-      },
-      {
-        product_id: "6448ef1d240b2b75493d78d0",
-        size: "41",
-        color: "Pink",
-        quantity: "2",
-        price: "565",
-        name: "Air Jordan 1 Retro High OG Washed Pink",
-        image: "http://localhost:8000/images/1682501405226-6.webp",
-      },
-    ]
-  );
+    JSON.parse(localStorage.getItem("cart")));
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
+  
   const handleSubmitOrder = async () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -66,6 +34,8 @@ const Order = () => {
       );
       console.log("response", response.data.data);
       setISSubmitted(true);
+      localStorage.removeItem("cart");
+      setCart([]);
     } catch (error) {
       console.error(error.response.data.error);
       setErrorMessage(error.response.data.error);
@@ -92,6 +62,11 @@ const Order = () => {
     });
     setCart(updatedCart);
   };
+  console.log('productorder', cart)
+  
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div>

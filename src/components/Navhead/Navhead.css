@@ -79,25 +79,32 @@ header {
         background-color: white;
         height: 18vh;
         justify-content: flex-start;
-        flex-direction: column;
+        /* flex-direction: column; */
+        flex-direction: row;
+        align-items: center;
     }
 
     .right-side-header {
-        display: none;
-    }
+         display: none;
+     }
+    
+     .icons-mobileversion {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+         /* width: 100%; */
+         width: 60%;
+      padding: 1vh;
+         background-color: none;
+  
+     }
+    
+     .logo-header {
+        height: 60px;
+        width: 100px;
+        margin: 0;
 
-    .icons-mobileversion {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-        padding: 1vh;
-
-        background-color: white;
-
-    }
-
-
-
+     }
+ 
 }
