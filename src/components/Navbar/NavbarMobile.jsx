@@ -34,16 +34,96 @@ function NavbarMobile() {
               Home
             </motion.div>
           </Link>
-          <Link to='shop' style={{ textDecoration: "none" }}>
+
+          <Link
+            to='/single-category/643fe9acc1397ac9890562cd'
+            onClick={() =>
+              (window.location.href =
+                "/single-category/643fe9acc1397ac9890562cd")
+            }
+            style={{ textDecoration: "none" }}
+          >
             <motion.div
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
               transition={{ delay: 0.1 }}
             >
-              Shop
+              Hightop sneakers
             </motion.div>
           </Link>
+          <Link
+            to='/single-category/6437ba63a671878f61ce7e40'
+            onClick={() =>
+              (window.location.href =
+                "/single-category/6437ba63a671878f61ce7e40")
+            }
+            style={{ textDecoration: "none" }}
+          >
+            <motion.div
+              initial={animatedForm}
+              animate={animatedTo}
+              onClick={() => closeMobileMenu()}
+              transition={{ delay: 0.1 }}
+            >
+              Lowtop sneakers
+            </motion.div>
+          </Link>
+          <Link
+            to='/single-category/6437ba7ba671878f61ce7e426437ba7ba671878f61ce7e42'
+            style={{ textDecoration: "none" }}
+            onClick={() =>
+              (window.location.href =
+                "/single-category/6437ba63a671878f61ce7e40")
+            }
+          >
+            <motion.div
+              initial={animatedForm}
+              animate={animatedTo}
+              onClick={() => closeMobileMenu()}
+              transition={{ delay: 0.1 }}
+            >
+              Athletic shoes
+            </motion.div>
+          </Link>
+          <Link
+            to='/single-category/643feab292947e7429c6dfc2'
+            onClick={() =>
+              (window.location.href =
+                "/single-category/6437ba63a671878f61ce7e40")
+            }
+            style={{ textDecoration: "none" }}
+          >
+            <motion.div
+              initial={animatedForm}
+              animate={animatedTo}
+              onClick={() => closeMobileMenu()}
+              transition={{ delay: 0.1 }}
+            >
+              Retro Shoes
+            </motion.div>
+          </Link>
+          <a
+            href='#'
+            onClick={() =>
+              (window.location.href =
+                "/single-category/643feb6092947e7429c6dfc4retroretro")
+            }
+            style={{ textDecoration: "none" }}
+          >
+            Slides
+          </a>
+          <a
+            href='#'
+            onClick={() =>
+              (window.location.href =
+                "/single-category/643feb6d92947e7429c6dfc6")
+            }
+            style={{ textDecoration: "none" }}
+          >
+            Socks
+          </a>
+
           <Link to='about' style={{ textDecoration: "none" }}>
             <motion.div
               initial={animatedForm}

@@ -53,3 +53,11 @@ body.mobile-navigation-open {
   cursor: pointer;
   font-weight: 200;
 }
+
+.navlink-mobile a{
+  color:#1a1a1a;
+}
+
+.navlink-mobile a:hover{
+  color:#b6d7a8
+}

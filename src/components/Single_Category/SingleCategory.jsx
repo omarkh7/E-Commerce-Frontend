@@ -16,6 +16,7 @@ function SingleCategory() {
   const fetchAllProduct = async () => {
     try {
       const response = await axios.get(apiURL);
+      console(response.data.products)
       setallproductData(response.data.products);
       setLoading(false);
     } catch (error) {

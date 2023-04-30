@@ -34,10 +34,22 @@ function Navbar() {
             >
               Lowtop sneakers{" "}
             </Link>
-            <Link to='/single-category/6437ba7ba671878f61ce7e426437ba7ba671878f61ce7e42'>
+            <Link
+              to='/single-category/6437ba7ba671878f61ce7e426437ba7ba671878f61ce7e42'
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/6437ba63a671878f61ce7e40")
+              }
+            >
               Athletic shoes
             </Link>
-            <Link to='/single-category/643feab292947e7429c6dfc2'>
+            <Link
+              to='/single-category/643feab292947e7429c6dfc2'
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/6437ba63a671878f61ce7e40")
+              }
+            >
               Retro Shoes{" "}
             </Link>
             {/* <Link to="/single-category/643feb6092947e7429c6dfc4retroretro"
