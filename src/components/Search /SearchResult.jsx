@@ -2,10 +2,7 @@ import React from "react";
 import "./SearchResult.css";
 import { Link } from "react-router-dom";
 
-const SearchResult = ({ result}) => {
-
-
- 
+const SearchResult = ({ result }) => {
   return (
     <Link
       to={`single-category/${result._id}`}

@@ -16,7 +16,12 @@
   }
   
 
-  
+  .message-added{
+    color: rgb(2, 150, 2);
+    font-size: 25px;
+    padding-left: 1rem;
+
+  }
   .product-info {
     display: flex;
     flex-direction: column;

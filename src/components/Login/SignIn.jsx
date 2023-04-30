@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = ({ onSignupClick }) => {
-  const [email,setEmail] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [errMsg, setErrMsg] = useState("");
 
@@ -30,9 +30,8 @@ const SignIn = ({ onSignupClick }) => {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setErrMsg("you are loggedin ");
-         setTimeout(() => setErrMsg(""), 3000);
+        setTimeout(() => setErrMsg(""), 3000);
         navigate("/");
-        
       })
       .catch((err) => {
         if (!err?.response) {
@@ -48,12 +47,11 @@ const SignIn = ({ onSignupClick }) => {
         // errRef.current.focus();
       });
   };
-  
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     await fetchLogin({ email, password });
-  }
+  };
 
   return (
     <div>
@@ -72,7 +70,6 @@ const SignIn = ({ onSignupClick }) => {
             autoComplete='off'
             placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
-            
           ></input>
         </div>
         <div className='userPassword-title'>
@@ -86,7 +83,7 @@ const SignIn = ({ onSignupClick }) => {
         <div className='login-button-container'>
           <div onClick={() => onSignupClick()}>Don't hava an account?</div>
 
-          <button className='login-btn' >Login</button>
+          <button className='login-btn'>Login</button>
         </div>
       </form>
     </div>

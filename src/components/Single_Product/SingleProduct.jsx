@@ -12,7 +12,7 @@ function SingleProduct() {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [isProductDisabled, setIsProductDisabled] = useState(false);
   const [cart, setCart] = useState([]);
-
+ const [message, setMessage] = useState("");
 
   console.log("selectedSize: ", selectedSize);
   console.log("selectedColor: ", selectedColor);
@@ -97,18 +97,20 @@ function SingleProduct() {
      );
      if (selectedAttr && selectedQuantity <= selectedAttr.quantity) {
        const cartItem = {
-         productId: alldata[0]._id,
+         product_id: alldata[0]._id,
          price: alldata[0].price,
          color: selectedColor,
          size: selectedSize,
          quantity: selectedQuantity,
+         image: alldata[0].image,
+         name:alldata[0].name
        };
        let existingCartItems =
          JSON.parse(localStorage.getItem("cart")) || [];
        let cartItemExists = false;
        existingCartItems = existingCartItems.map((item) => {
          if (
-           item.productId == cartItem.productId &&
+           item.product_id == cartItem.product_id &&
            item.color == cartItem.color &&
            item.size == cartItem.size
          ) {
@@ -124,11 +126,14 @@ function SingleProduct() {
          existingCartItems.push(cartItem);
        }
        localStorage.setItem("cart", JSON.stringify(existingCartItems));
-       alert("Product added to cart");
-     } else {
-       alert("Product not available with selected attributes");
-     }
+       setMessage("Product added to cart!");
+       window.location.reload()
+      
+     
+     } 
    };
+
+
  
 
   return (
@@ -140,34 +145,33 @@ function SingleProduct() {
           const allquantity = product.attribute.map((attr) => attr.quantity);
 
           return (
-            <div key={product._id} className="product-details">
-              <div className="image-wrapper">
+            <div key={product._id} className='product-details'>
+              <div className='image-wrapper'>
                 <ul>
                   {product.images &&
                     product.images.map((image, index) => (
                       <li key={index}>
-                        <img src={image} alt="" />
+                        <img src={image} alt='' />
                       </li>
                     ))}
                 </ul>
               </div>
-              <div className="product-info">
-                
-                <h1 className="product-name">{product.name}</h1>
-                <p className="product-category">{product.category.name}</p>
-                <p className="product-description">{product.description}</p>
-                <h2 className="product-price">{product.price} $</h2>
+              <div className='product-info'>
+                <h1 className='product-name'>{product.name}</h1>
+                <p className='product-category'>{product.category.name}</p>
+                <p className='product-description'>{product.description}</p>
+                <h2 className='product-price'>{product.price} $</h2>
 
                 {/* SIZES */}
-                <div className="all-product-attribute">
-                  <div className="product-attribute">
+                <div className='all-product-attribute'>
+                  <div className='product-attribute'>
                     <select
-                      id="attribute-size"
-                      name="attribute-size"
+                      id='attribute-size'
+                      name='attribute-size'
                       value={selectedSize}
-                      onChange={(e)=>setSelectedSize(e.target.value)}
+                      onChange={(e) => setSelectedSize(e.target.value)}
                     >
-                      <option value="">Select a Size</option>
+                      <option value=''>Select a Size</option>
                       {allSizes.map((size, index) => (
                         <option key={index} value={size}>
                           {size}
@@ -176,16 +180,16 @@ function SingleProduct() {
                     </select>
 
                     {/* COLORS */}
-                  </div >
+                  </div>
 
-                  <div className="product-attribute">
+                  <div className='product-attribute'>
                     <select
-                      id="attribute-color"
-                      name="attribute-color"
+                      id='attribute-color'
+                      name='attribute-color'
                       value={selectedColor}
-                      onChange={(e)=>setSelectedColor(e.target.value)}
+                      onChange={(e) => setSelectedColor(e.target.value)}
                     >
-                      <option value="">Select a Color</option>
+                      <option value=''>Select a Color</option>
                       {allColors.map((color, index) => (
                         <option key={index} value={color}>
                           {color}
@@ -196,36 +200,36 @@ function SingleProduct() {
 
                   {/* Quantity */}
 
-                  <div className="product-attribute-quantity">
-                    <div className="product-counter">
+                  <div className='product-attribute-quantity'>
+                    <div className='product-counter'>
                       <button
-                        className="counter-button"
+                        className='counter-button'
                         onClick={handleDecrease}
                       >
                         -
                       </button>
-                      <span className="counter-value">{selectedQuantity}</span>
+                      <span className='counter-value'>{selectedQuantity}</span>
                       <button
-                        className="counter-button"
+                        className='counter-button'
                         onClick={handleIncrease}
                       >
                         +
                       </button>
                     </div>
                   </div>
-              
-             
-              <div className="product-actions">
-                <button
-                  className="add-to-cart-button"
+
+                  <div className='product-actions'>
+                    <button
+                      className='add-to-cart-button'
                       disabled={isProductDisabled}
                       onClick={addToCart}
-                >
-                  Add to Cart
-                </button>
+                    >
+                      Add to Cart
+                    </button>
+                    <p className="message-added">{message}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            </div>
             </div>
           );
         })

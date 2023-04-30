@@ -7,14 +7,17 @@
   margin-left: 11rem;
   margin-top: -2rem;
 }
+
 body.mobile-navigation-open {
   background-color: #1a1a1a;
   /* replace with your desired dark color */
 }
+
 .hamburger {
   color: black;
   font-size: 30px;
 }
+
 .hamburger:hover {
   color: #b6d7a8;
   font-size: 30px;
@@ -32,6 +35,7 @@ body.mobile-navigation-open {
   z-index: 100;
   font-size: 22px
 }
+
 .navlink-mobile div {
   color: black;
 }

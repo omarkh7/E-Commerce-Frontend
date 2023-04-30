@@ -8,16 +8,15 @@ import SocailMediaIcons from "./SocailMediaIcons";
 import SignIn from "./SignIn";
 
 const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
 
-   const [isLogin, setIsLogin] = useState(true);
+  const handleSignupClick = () => {
+    setIsLogin(false);
+  };
 
-   const handleSignupClick = () => {
-     setIsLogin(false);
-   };
-
-   const handleBackToLoginClick = () => {
-     setIsLogin(true);
-   };
+  const handleBackToLoginClick = () => {
+    setIsLogin(true);
+  };
 
   return (
     <div className='login-container'>
@@ -30,7 +29,10 @@ const Login = () => {
           {isLogin ? (
             <SignIn onSignupClick={handleSignupClick} />
           ) : (
-              <SignUp onBackToLoginClick={handleBackToLoginClick} setIsLogin={setIsLogin} />
+            <SignUp
+              onBackToLoginClick={handleBackToLoginClick}
+              setIsLogin={setIsLogin}
+            />
           )}
           {isLogin ? <SocailMediaIcons /> : ""}
         </div>
