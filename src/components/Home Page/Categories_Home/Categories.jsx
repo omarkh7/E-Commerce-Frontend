@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 
 function Categories() {
+
+
   const [alldata, setAllData] = useState([]);
   // const [loading,setLoading] = useState(true);
 
