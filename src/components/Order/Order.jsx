@@ -109,19 +109,20 @@ const Order = () => {
                         <button
                           className='increment-btn-cart'
                           onClick={() =>
-                            updateQuantity(item.product_id, +item.quantity + 1)
-                          }
-                        >
-                          +
-                        </button>
-                        {item.quantity}
-                        <button
-                          className='increment-btn-cart'
-                          onClick={() =>
                             updateQuantity(item.product_id, +item.quantity - 1)
                           }
                         >
                           -
+                        </button>
+                        {item.quantity}
+
+                        <button
+                          className='increment-btn-cart'
+                          onClick={() =>
+                            updateQuantity(item.product_id, +item.quantity + 1)
+                          }
+                        >
+                          +
                         </button>
                       </td>
                       <td>{item.price}</td>
@@ -146,7 +147,7 @@ const Order = () => {
             ) : (
               <>
                 {cart.map((item) => (
-                  <div key={item.id} className='cart-items-rspnv'>
+                  <div key={item.product_id} className='cart-items-rspnv'>
                     <div className='list-rspnv delete-icon'>
                       <AiFillDelete
                         className='delete-icon-row'
