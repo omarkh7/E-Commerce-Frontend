@@ -10,7 +10,7 @@ const Order = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitted, setISSubmitted] = useState(false);
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")));
+    JSON.parse(localStorage.getItem("cart")) || []);
 
   
   const handleSubmitOrder = async () => {
@@ -47,7 +47,8 @@ const Order = () => {
   const handleDelete = (id) => {
     setCart((cart) => cart.filter((i) => i.product_id !== id));
     
-      localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.reload();
   };
 
   const updateQuantity = (itemId, newQuantity) => {

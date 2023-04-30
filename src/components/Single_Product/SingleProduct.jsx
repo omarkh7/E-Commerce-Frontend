@@ -110,7 +110,7 @@ function SingleProduct() {
        let cartItemExists = false;
        existingCartItems = existingCartItems.map((item) => {
          if (
-           item.productId == cartItem.product_id &&
+           item.product_id == cartItem.product_id &&
            item.color == cartItem.color &&
            item.size == cartItem.size
          ) {
@@ -127,9 +127,13 @@ function SingleProduct() {
        }
        localStorage.setItem("cart", JSON.stringify(existingCartItems));
        setMessage("Product added to cart!");
+       window.location.reload()
+      
      
      } 
    };
+
+
  
 
   return (
