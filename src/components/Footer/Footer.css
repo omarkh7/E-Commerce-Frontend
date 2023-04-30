@@ -49,7 +49,7 @@
   }
   
   .footer__column a:hover {
-    color: #0077b5;
+    color: #a9d890;
   }
   
   .footer__contact p {
@@ -68,7 +68,7 @@
   }
   
   .footer__contact a:hover {
-    color: #0077b5;
+    color: #a9d890;
   }
    
   .img_footer{
@@ -77,6 +77,11 @@
 
   .instagram-footer{
     font-size:20px;
+  }
+  .copywrite-footer{
+    margin: 1.2rem auto ;
+    text-align: center;
+ 
   }
 
   @media screen and (max-width: 768px) {

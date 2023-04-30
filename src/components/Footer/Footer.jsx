@@ -6,6 +6,7 @@ import { FaFacebook, FaInstagram} from "react-icons/fa";
 
 function Footer() {
   return (
+    <div>
     <div className='footer'>
       <div className='footer__column'>
         <img className='img_footer' src={Logo} alt='description' />
@@ -55,7 +56,12 @@ function Footer() {
           </a>
         </div>
       </div>
+    
     </div>
+      <div className="copywrite-footer">
+      <p>© 2023 StepUp All Rights Reserved</p>
+            </div>
+            </div>
   );
 }
 
