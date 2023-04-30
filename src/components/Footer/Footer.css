@@ -75,6 +75,10 @@
     width:40%;
   }
 
+  .instagram-footer{
+    font-size:20px;
+  }
+
   @media screen and (max-width: 768px) {
 .footer{
   flex-direction: column;

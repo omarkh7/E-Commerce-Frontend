@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import Logo from "../../assets/images/logo2-b.png";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram} from "react-icons/fa";
 
 function Footer() {
   return (
@@ -10,11 +11,12 @@ function Footer() {
         <img className='img_footer' src={Logo} alt='description' />
       </div>
       <div className='footer__column'>
-        <Link to='/' style={{ textDecoration: "none" }}>
-          {" "}
-          <h3>Home</h3>
-        </Link>
+        <h3>Home</h3>
+
         <ul>
+          <Link to='/' style={{ textDecoration: "none" }}>
+            <li>Home</li>
+          </Link>
           <Link to='about' style={{ textDecoration: "none" }}>
             <li>About us</li>
           </Link>
@@ -46,9 +48,11 @@ function Footer() {
         <p>Email: step88up@gmail.com</p>
         <div>
           <a href='https://instagram.com/stepupleb_?igshid=YmMyMTA2M2Y='>
-            Instagram
+            <FaInstagram className='instagram-footer' />
           </a>
-          <a href='https://www.facebook.com/stepuplb'>Facebook</a>
+          <a href='https://www.facebook.com/stepuplb'>
+            <FaFacebook className='instagram-footer' />
+          </a>
         </div>
       </div>
     </div>

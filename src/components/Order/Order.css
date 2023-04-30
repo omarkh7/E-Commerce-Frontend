@@ -16,6 +16,15 @@ table {
 
 
 }
+.created-at-order{
+    display: flex;
+    flex-direction: row;
+    
+}
+.created-at-order p{
+    color:grey;
+    padding-left: 0.5rem;
+}
 
 th,
 td {
@@ -35,6 +44,13 @@ tr:hover {
     padding-top: 4rem;
 }
 
+.cart-description-title,
+.order-detail-title,
+.created-at-order,
+.cart-total-price {
+    color: #080808;
+}
+
 .cart-discription {
     display: flex;
     flex-direction: column;
@@ -42,7 +58,7 @@ tr:hover {
     height: 80%;
     width: 25%;
     border: 0.2px solid #f3f9f1;
-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding: 1rem;
     color: gray;
     font-weight: 400;
@@ -120,6 +136,12 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-top: 1px solid gray;
     padding-top: 0.8rem;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction:row;
+}
+.cart-total-price p{
+    color:grey;
+    padding-left: 0.5rem;
 }
 
 .cart-icon-cart {

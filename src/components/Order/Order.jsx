@@ -234,14 +234,19 @@ const Order = () => {
                   ))}
                 </ul>
               </div>
-              <div>Created At: {new Date().toLocaleString()}</div>
+              <div className='created-at-order'>
+                Created At: <p>{new Date().toLocaleString()}</p>
+              </div>
               <div className='cart-total-price'>
-                Total Price :{" "}
-                {cart.reduce(
-                  (total, item) => total + item.price * item.quantity,
-                  0
-                )}{" "}
-                $
+                Total Price :
+                <p>
+                  {" "}
+                  {cart.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}{" "}
+                  $
+                </p>
               </div>
             </div>
             <div className='submit-cart'>
