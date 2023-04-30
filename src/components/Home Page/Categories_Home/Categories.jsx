@@ -6,17 +6,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
+
 function Categories() {
 
 
   const [alldata, setAllData] = useState([]);
+  // const [loading,setLoading] = useState(true);
 
   const apiURL = "http://localhost:8000/api/category/allcategories";
 
   const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setAllData(response.data.data);
+      console.log("Products", response.data);
+      setAllData(response.data?.productList || []);
     } catch (error) {
       console.error(error);
     }
@@ -52,28 +55,22 @@ function Categories() {
     alignItems: "center",
   };
 
-
-
   return (
     <div className="container_categories">
       <div>
         <Slider {...responsiveSettings} style={sliderStyle}>
           {alldata.length > 0 ? (
             alldata.map((item) => (
-              
               <div className="img_text_categories_home" key={item._id}>
-              <Link to={`single-category/${item._id}`} >
-
-                <img
-                  className="img_categories_home"
-                  src={`http://localhost:8000/${item.image}`}
-                  alt={item.name}
-                />
-                <h6 className="text_under_categories">{item.name}</h6>
-              </Link>
-
+                <Link to={`single-category/${item._id}`}>
+                  <img
+                    className="img_categories_home"
+                    src={`http://localhost:8000/${item.image}`}
+                    alt={item.name}
+                  />
+                  <h6 className="text_under_categories">{item.name}</h6>
+                </Link>
               </div>
-
             ))
           ) : (
             <p>No data available</p>

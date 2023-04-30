@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../../../Loader/Loader";
 
 function Athletic() {
-const [alldata, setallData] = useState([]);
+const [alldata, setAllData] = useState([]);
+const [loading,setLoading] = useState(true);
+
 
   const apiURL = "http://localhost:8000/api/products/getproducts";
 
   const fetchAllData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setallData(response.data.productList);
-      console.log("Products", response.data.productList);
+      console.log("Products", response.data);
+      setAllData(response.data?.productList || []); 
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchAllData();
   }, []);
+  if(loading){
+    return <div> <Loader/> </div>
+  }
 
   if (alldata && alldata.length > 0) {
     const filteredData = alldata.filter((item) =>

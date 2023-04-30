@@ -8,15 +8,9 @@ import NavbarMobile from "../Navbar/NavbarMobile";
 import SearchResultsList from "../Search /SearchResultsList";
 import LoadingSearch from "../Search /LoadingSearch";
 
-
 function Navhead() {
-
-
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
- 
- 
 
   return (
     <header className='navhead pre-header'>
@@ -42,15 +36,11 @@ function Navhead() {
 
       <div className='icons-mobileversion'>
         <div>
-          <SearchBar
-            setResults={setResults}
-            setIsLoading={setIsLoading}
-           
-          />
+          <SearchBar setResults={setResults} setIsLoading={setIsLoading} />
           {isLoading ? (
             <LoadingSearch />
           ) : (
-              <SearchResultsList results={results} />
+            <SearchResultsList results={results} />
           )}
         </div>
         <div>
