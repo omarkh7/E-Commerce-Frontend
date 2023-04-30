@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Loader from "../../../Loader/Loader";
 
 function Lowtop() {
-const [alldata, setallData ] = useState([]);
-const apiURL = "http://localhost:8000/api/products/getproducts";
+  const [alldata, setAllData] = useState([]);
+  
+  const apiURL = "http://localhost:8000/api/products/getproducts";
 
-const fetchAllData = async() => {
+  const fetchAllData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setallData(response.data.productList);
-      console.log("Products", response.data.productList);
+      console.log("Products", response.data);
+      setAllData(response.data?.productList || []);
+     
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      
     }
   };
 
-useEffect(() =>
-{fetchAllData();
-}, []);
+  useEffect(() => {
+    fetchAllData();
+  }, []);
 
-
-
-
-
-
-
-
-
-
-
+  
   if (alldata && alldata.length > 0) {
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("6437ba63a671878f61ce7e40")
     );
     console.log("filter", filteredData);
     return (
+     
       <div>
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
@@ -48,10 +43,10 @@ useEffect(() =>
           <p>No data available</p>
         )}
       </div>
+      
     );
-  } else {
-    return <p>No data available</p>;
-  }
+ 
+}
 }
 
 export default Lowtop;

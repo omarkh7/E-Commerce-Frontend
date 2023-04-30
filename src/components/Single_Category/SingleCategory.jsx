@@ -3,11 +3,13 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import "./SingleCategory.css";
 import { Link } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 function SingleCategory() {
   const { categoryId } = useParams();
 
   const [allproduct, setallproductData] = useState([]);
+  const [loading,setLoading] = useState(true);
 
   const apiURL = `http://localhost:8000/api/products/getproductsbycategory/${categoryId}`;
 
@@ -15,14 +17,19 @@ function SingleCategory() {
     try {
       const response = await axios.get(apiURL);
       setallproductData(response.data.products);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchAllProduct();
   }, []);
+  if(loading){
+    return <div> <Loader/> </div>
+  }
 
   if (!allproduct || allproduct.length === 0) {
     return <p>No data available</p>;

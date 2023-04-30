@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../../../Loader/Loader";
 
 function Hightop() {
   const [alldata, setallData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const apiURL = "http://localhost:8000/api/products/getproducts";
 
-  const fetchAllData = async () => {
+  const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setallData(response.data.productList);
-      console.log("Products", response.data.productList);
+      console.log("Products", response.data);
+      setallData(response.data?.productList || []);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchAllData();
+    fetchallData();
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   if (alldata && alldata.length > 0) {
     const filteredData = alldata.filter((item) =>
@@ -43,4 +51,5 @@ function Hightop() {
     return <p>No data available</p>;
   }
 }
+
 export default Hightop;
