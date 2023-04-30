@@ -18,7 +18,6 @@ function NavbarMobile() {
 
   const animatedForm = { opacity: 0, y: -40 };
   const animatedTo = { opacity: 1, y: 0 };
-  
 
   return (
     <div className='mobile-navigation'>
