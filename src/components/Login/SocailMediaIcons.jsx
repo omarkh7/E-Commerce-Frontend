@@ -21,7 +21,7 @@ const SocailMediaIcons = () => {
       <a href='mailto:step88up@gmail.com'>
         <FaRegEnvelope className='facebook' />
       </a>
-      <a>
+      <a href='https://wa.me/'>
         <FaWhatsappSquare />
       </a>
     </div>

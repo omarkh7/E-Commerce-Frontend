@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import Logo from "../../assets/images/logo2-b.png";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -9,28 +10,45 @@ function Footer() {
         <img className='img_footer' src={Logo} alt='description' />
       </div>
       <div className='footer__column'>
-        <h3>Home</h3>
+        <Link to='/' style={{ textDecoration: "none" }}>
+          {" "}
+          <h3>Home</h3>
+        </Link>
         <ul>
-          <li>About us</li>
-          <li>Contact us</li>
+          <Link to='about' style={{ textDecoration: "none" }}>
+            <li>About us</li>
+          </Link>
+          <Link to='contact' style={{ textDecoration: "none" }}>
+            <li>Contact us</li>
+          </Link>
         </ul>
       </div>
       <div className='footer__column'>
         <h3>Other Links</h3>
         <ul>
-          <li>Terms and Conditions</li>
-          <li>Refund and Return</li>
-          <li>Privacy Policy</li>
+          <a href='/terms'>
+            <li>Terms and Conditions</li>
+          </a>
+          <a href='/refund'>
+            {" "}
+            <li>Refund and Return</li>
+          </a>
+          <a href='/privacy'>
+            {" "}
+            <li>Privacy Policy</li>
+          </a>
         </ul>
       </div>
 
       <div className='footer__column footer__contact'>
         <h3>Contact Us</h3>
-        <p>Phone: 123-456-7890</p>
-        <p>Email: contact@example.com</p>
+        <p>Phone: +961 76 503 378</p>
+        <p>Email: step88up@gmail.com</p>
         <div>
-          <a href='your-instagram-url'>Instagram</a>
-          <a href='your-facebook-url'>Facebook</a>
+          <a href='https://instagram.com/stepupleb_?igshid=YmMyMTA2M2Y='>
+            Instagram
+          </a>
+          <a href='https://www.facebook.com/stepuplb'>Facebook</a>
         </div>
       </div>
     </div>

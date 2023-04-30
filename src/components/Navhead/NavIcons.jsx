@@ -22,11 +22,11 @@ function NavIcons() {
         </Link>
       </div>
 
-      <div className='icon-header bag-header'>
+      <div className='flex-icon-header'>
         <Link to='/order' style={{ textDecoration: "none" }}>
-          <BsBag id='icon-header' className="bag-icon"/>
-          <span className='span-cart'>{cartItemsCount}</span>
+          <BsBag id='icon-header' className='bag-icon' />
         </Link>
+        <span className='span-cart'>{cartItemsCount}</span>
       </div>
     </div>
   );
