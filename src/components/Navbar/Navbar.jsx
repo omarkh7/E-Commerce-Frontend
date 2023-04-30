@@ -85,7 +85,7 @@ function Navbar() {
         <div className='navbar-divstyle'>Contact Us </div>
       </Link>
       <div className='nav-dropdown'>
-        <div className='dropdown-button navbar-divstyle'> Conditions</div>
+        <div className='dropdown-button navbar-divstyle'> Other Links</div>
 
         <div className='dropdown-menu'>
           <a href='/terms'>Terms and Conditions</a>

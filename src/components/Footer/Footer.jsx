@@ -4,35 +4,33 @@ import Logo from "../../assets/images/logo2-b.png";
 
 function Footer() {
   return (
-    <div className="footer">
-      <div className="footer__column">
-        <img className="img_footer" src={Logo} alt="description" />
-       
+    <div className='footer'>
+      <div className='footer__column'>
+        <img className='img_footer' src={Logo} alt='description' />
       </div>
-      <div className="footer__column">
-        <h3>Title 1</h3>
+      <div className='footer__column'>
+        <h3>Home</h3>
         <ul>
-          <li>Menu item 1</li>
-          <li>Menu item 2</li>
-          <li>Menu item 3</li>
+          <li>About us</li>
+          <li>Contact us</li>
         </ul>
       </div>
-      <div className="footer__column">
-        <h3>Title 2</h3>
+      <div className='footer__column'>
+        <h3>Other Links</h3>
         <ul>
-          <li>Menu item 1</li>
-          <li>Menu item 2</li>
-          <li>Menu item 3</li>
+          <li>Terms and Conditions</li>
+          <li>Refund and Return</li>
+          <li>Privacy Policy</li>
         </ul>
       </div>
- 
-      <div className="footer__column footer__contact">
+
+      <div className='footer__column footer__contact'>
         <h3>Contact Us</h3>
         <p>Phone: 123-456-7890</p>
         <p>Email: contact@example.com</p>
         <div>
-          <a href="your-instagram-url">Instagram</a>
-          <a href="your-facebook-url">Facebook</a>
+          <a href='your-instagram-url'>Instagram</a>
+          <a href='your-facebook-url'>Facebook</a>
         </div>
       </div>
     </div>

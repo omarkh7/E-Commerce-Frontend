@@ -42,10 +42,11 @@ tr:hover {
     height: 80%;
     width: 25%;
     border: 0.2px solid #f3f9f1;
-    box-shadow: 10px 5px 10px 10px rgba(0, 0, 0, 0.131);
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding: 1rem;
     color: gray;
     font-weight: 400;
+    border-radius: 15px;
 }
 
 .cart-description-title {
