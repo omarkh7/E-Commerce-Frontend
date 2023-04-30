@@ -2,6 +2,7 @@ import "./SingleProduct.css";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 
 function SingleProduct() {
   const { productId } = useParams();
@@ -13,6 +14,8 @@ function SingleProduct() {
   const [isProductDisabled, setIsProductDisabled] = useState(false);
   const [cart, setCart] = useState([]);
  const [message, setMessage] = useState("");
+ const [loading,setLoading] = useState(true);
+
 
   console.log("selectedSize: ", selectedSize);
   console.log("selectedColor: ", selectedColor);
@@ -25,56 +28,25 @@ function SingleProduct() {
       const response = await axios.get(apiURL);
       console.log("hello:", response.data.product);
       setAllData([response.data.product]);
+      setLoading(false);
+
     } catch (error) {
       console.error(error);
+      setLoading(false);
+
     }
   };
 
   useEffect(() => {
     fetchallData();
-    // Disable();
+   
   }, []);
+  
+  if(loading){
+    return <div> <Loader/> </div>
+  }
 
-  // const Disable = async ()=>{
 
-  //   const selectedAttr = alldata[0].attribute.find(
-  //     (attr) =>
-  //       attr.size === selectedSize && attr.color === selectedColor
-  //   );
-  //   if (selectedAttr && selectedQuantity > selectedAttr.quantity) {
-  //     setIsProductDisabled(true);
-  //   } else {
-  //     setIsProductDisabled(false);
-  //   }
-
-  // }
-
-  // //SIZE
-  // const handleSelectedSizeChange = (event) => {
-  //   const selectedSize = event.target.value;
-  //   setSelectedSize(selectedSize);
-  //   // const selectedAttr = alldata[0].attribute.find(
-  //   //   (attr) => attr.size === selectedSize
-  //   // );
-  // };
-
-  // //COLOR
-  // const handleSelectedColorChange = (event) => {
-  //   const selectedColor = event.target.value;
-  //   setSelectedColor(selectedColor);
-  //   // const selectedAttr = alldata[0].attribute.find(
-  //   //   (attr) => attr.color === selectedColor
-  //   // );
-  // };
-
-  // //Quantity
-  // const handleSelectedQuantityChange = (event) => {
-  //   const selectedQuantity = event.target.value;
-  //   setSelectedQuantity(selectedQuantity);
-  //   // const selectedAttr = alldata[0].attribute.find(
-  //   //   (attr) => attr.quantity === selectedQuantity
-  //   // );
-  // };
 
   const handleIncrease = () => {
     const attribute = alldata[0].attribute.find((attribute) => attribute.size == selectedSize && attribute.color == selectedColor);

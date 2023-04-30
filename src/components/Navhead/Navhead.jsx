@@ -7,6 +7,7 @@ import NavIcons from "../Navhead/NavIcons";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import SearchResultsList from "../Search /SearchResultsList";
 import LoadingSearch from "../Search /LoadingSearch";
+import { Link } from 'react-router-dom';
 
 function Navhead() {
   const [results, setResults] = useState([]);
@@ -15,7 +16,9 @@ function Navhead() {
   return (
     <header className='navhead pre-header'>
       <div>
+      <Link to="/">
         <img className='logo-header' src={Logo} alt='logo' />
+        </Link>
       </div>
 
       <div className='nav-navbar'>
