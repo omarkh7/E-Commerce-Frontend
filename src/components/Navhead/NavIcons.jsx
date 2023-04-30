@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../Navhead/NavIcons.css";
 import { FaRegUser } from "react-icons/fa";
-import { BsBag } from "react-icons/bs";
+import { FiShoppingBag } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 function NavIcons() {
@@ -24,7 +24,7 @@ function NavIcons() {
 
       <div className='flex-icon-header'>
         <Link to='/order' style={{ textDecoration: "none" }}>
-          <BsBag id='icon-header' className='bag-icon' />
+          <FiShoppingBag id='icon-header' className='bag-icon' />
         </Link>
         <span className='span-cart'>{cartItemsCount}</span>
       </div>

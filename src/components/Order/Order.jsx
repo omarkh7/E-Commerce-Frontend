@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
 import axios from "axios";
-import { AiFillDelete } from "react-icons/ai";
-import { BsCart } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
+import { FiShoppingBag } from "react-icons/fi";
 import { FaCheckCircle } from "react-icons/fa";
 
 const Order = () => {
@@ -127,7 +127,7 @@ const Order = () => {
                       </td>
                       <td>{item.price}</td>
                       <td>
-                        <AiFillDelete
+                        <AiOutlineDelete
                           className='delete-icon-row'
                           onClick={() => handleDelete(item.product_id)}
                         />
@@ -149,7 +149,7 @@ const Order = () => {
                 {cart.map((item) => (
                   <div key={item.product_id} className='cart-items-rspnv'>
                     <div className='list-rspnv delete-icon'>
-                      <AiFillDelete
+                      <AiOutlineDelete
                         className='delete-icon-row'
                         onClick={() => handleDelete(item.id)}
                       />
@@ -220,7 +220,7 @@ const Order = () => {
           <div className='cart-discription'>
             <h3 className='cart-description-title'>
               {" "}
-              <BsCart className='cart-icon-cart' /> Cart Description
+              <FiShoppingBag className='cart-icon-cart' /> Cart Description
             </h3>
             <div className='order-details'>
               <div>
