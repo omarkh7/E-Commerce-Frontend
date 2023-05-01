@@ -79,7 +79,7 @@ function Navbar() {
         </div>
       </div>
       <Link to='about' style={{ textDecoration: "none" }}>
-        <div className='navbar-divstyle'>About US </div>
+        <div className='navbar-divstyle'>About Us </div>
       </Link>
       <Link to='contact' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Contact Us </div>
