@@ -7,18 +7,9 @@ import About from "./components/About Me/About";
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/Single_Product/SingleProduct';
 import SingleCategory from './components/Single_Category/SingleCategory';
-// import ContactForm from "./components/Contact us /ContactForm";
 import Order from './components/Order/Order';
 import ContactForm from "./components/Contact us /ContactForm";
-
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login/Login';
-import Navhead from './components/Navhead/Navhead'
-import Home from './components/Home Page/Home';
-import About from './components/About Me/About';
-import Contact from './components/Contact us /Contact';
-import Shop from './components/Shop/Shop';
 import DashCategory from './components/Dashboard/Sidebar/Pages/DashCategory';
 import DashPages from './components/Dashboard/Sidebar/Pages/DashPages';
 import DashOrders from './components/Dashboard/Sidebar/Pages/DashOrders';
