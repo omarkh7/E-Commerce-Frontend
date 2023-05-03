@@ -17,6 +17,7 @@ const Order = () => {
     setIsLoading(true);
     setErrorMessage("");
     const token = localStorage.getItem("token");
+    window.location.href="/order"
     if (!token) {
       window.location.href = "/login";
     }
