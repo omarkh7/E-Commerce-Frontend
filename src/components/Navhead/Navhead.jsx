@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/logo2-removebg-preview.png";
+import Logo from "../../assets/images/logo2-b.png";
 import "../Navhead/Navhead.css";
 import Navbar from "../Navbar/Navbar";
 import SearchBar from "../Search /SearchBar";
@@ -7,18 +7,18 @@ import NavIcons from "../Navhead/NavIcons";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import SearchResultsList from "../Search /SearchResultsList";
 import LoadingSearch from "../Search /LoadingSearch";
-
+import { Link } from 'react-router-dom';
 
 function Navhead() {
-
-
   const [results, setResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <header className='navhead pre-header'>
       <div>
+      <Link to="/">
         <img className='logo-header' src={Logo} alt='logo' />
+        </Link>
       </div>
 
       <div className='nav-navbar'>
@@ -40,8 +40,11 @@ function Navhead() {
       <div className='icons-mobileversion'>
         <div>
           <SearchBar setResults={setResults} setIsLoading={setIsLoading} />
-          {isLoading ? <LoadingSearch/> : <SearchResultsList results={results} />  }
-         
+          {isLoading ? (
+            <LoadingSearch />
+          ) : (
+            <SearchResultsList results={results} />
+          )}
         </div>
         <div>
           <NavIcons />

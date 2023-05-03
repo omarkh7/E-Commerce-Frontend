@@ -159,6 +159,7 @@ table tr:nth-child(odd) {
 
 
 .inputadd {
+    padding: 10px;
     width: 100%;
     margin-bottom: 1em;
     border-radius: 5px;
@@ -167,7 +168,8 @@ table tr:nth-child(odd) {
     font-size: 16px;
     color: #6ad3b1;
     background-color: #11171d;
-
+    /* height: 20px; */
+    display: flex;
 }
 
 .inputadd {
@@ -176,15 +178,16 @@ table tr:nth-child(odd) {
 }
 
 .buttonadd {
-    width: 100%;
+    width: 25%;
     padding: 1em;
-    background-color: #6ad3b1;
+    background-color: #a9d890;
     color: #11171d;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: all 0.5s ease;
+    /* text-align: center; */
 }
 
 .buttonadd:hover {
@@ -203,6 +206,10 @@ table tr:nth-child(odd) {
 
 .container-info {
     margin: 20px auto;
+}
+
+.contact-formm{
+    
 }
 
 @media (max-width: 767px) {

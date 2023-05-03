@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import "../Login/Login.css";
 import CoverImage from "../../assets/images/image00069.jpeg";
-import LogoImage from "../../assets/images/logo2-removebg-preview.png";
+import LogoImage from "../../assets/images/logo2-b.png";
 import SignUp from "./SignUp";
 import SocailMediaIcons from "./SocailMediaIcons";
 
 import SignIn from "./SignIn";
 
 const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
 
-   const [isLogin, setIsLogin] = useState(true);
+  const handleSignupClick = () => {
+    setIsLogin(false);
+  };
 
-   const handleSignupClick = () => {
-     setIsLogin(false);
-   };
-
-   const handleBackToLoginClick = () => {
-     setIsLogin(true);
-   };
+  const handleBackToLoginClick = () => {
+    setIsLogin(true);
+  };
 
   return (
     <div className='login-container'>
@@ -27,13 +26,15 @@ const Login = () => {
         </div>
         <div className='form-container'>
           <img src={LogoImage} alt='logo' className='logoImage-login' />
-          { isLogin ? (
+          {isLogin ? (
             <SignIn onSignupClick={handleSignupClick} />
           ) : (
-            <SignUp onBackToLoginClick={handleBackToLoginClick}/>
+            <SignUp
+              onBackToLoginClick={handleBackToLoginClick}
+              setIsLogin={setIsLogin}
+            />
           )}
-
-          <SocailMediaIcons />
+          {isLogin ? <SocailMediaIcons /> : ""}
         </div>
       </div>
     </div>
