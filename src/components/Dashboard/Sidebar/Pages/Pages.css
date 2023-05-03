@@ -1,0 +1,231 @@
+table {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table thead,
+table tbody,
+table thead tr,
+table th {
+    display: block;
+}
+
+table thead {
+    float: left;
+}
+
+table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+}
+
+table td,
+table th {
+    padding: 0.625em;
+    line-height: 1.5em;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+table th {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.14);
+    border-bottom: 1px dashed #aaa;
+}
+
+table tbody tr {
+    display: table-cell;
+}
+
+table tbody td {
+    display: block;
+}
+
+table tr:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (min-width: 50em) {
+    table {
+        display: table;
+    }
+
+    table thead {
+        display: table-header-group;
+        float: none;
+    }
+
+    table tbody {
+        display: table-row-group;
+    }
+
+    table thead tr,
+    table tbody tr {
+        display: table-row;
+    }
+
+    table th,
+    table tbody td {
+        display: table-cell;
+    }
+
+    table td,
+    table th {
+        width: auto;
+    }
+}
+
+.buttonedit {
+    margin: 20px;
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+        7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: #464040;
+    border: none;
+    z-index: 1;
+}
+
+.buttonedit:hover {
+
+    color: #464040;
+    border-radius: 5px;
+    border: 0.5px solid #464040;
+    background-color: transparent;
+
+}
+
+.buttondelete {
+    margin: 20px;
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+        7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: #ff0000;
+    border: none;
+    z-index: 1;
+}
+
+
+.buttondelete:hover {
+    color: #ff0000;
+    border-radius: 5px;
+    border: 0.5px solid #ff0000;
+    background-color: transparent;
+
+
+}
+
+.buttondelete:hover:after {
+    top: 0;
+    height: 100%;
+}
+
+.buttondelete:active {
+    top: 2px;
+}
+
+
+
+
+
+
+.inputadd {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    font-size: 16px;
+    color: #6ad3b1;
+    background-color: #11171d;
+    /* height: 20px; */
+    display: flex;
+}
+
+.inputadd {
+    border-bottom: 2px solid #6ad3b1;
+    outline: none;
+}
+
+.buttonadd {
+    width: 25%;
+    padding: 1em;
+    background-color: #a9d890;
+    color: #11171d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.5s ease;
+    /* text-align: center; */
+}
+
+.buttonadd:hover {
+    background-color: #11171d;
+    border: 1px solid #6ad3b1;
+    border-radius: 5px;
+    color: #6ad3b1;
+}
+
+
+.compflex {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+.container-info {
+    margin: 20px auto;
+}
+
+.contact-formm{
+    
+}
+
+@media (max-width: 767px) {
+
+
+    table tbody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table thead {
+        display: none
+    }
+
+    table tr {
+        text-align: center;
+    }
+}
