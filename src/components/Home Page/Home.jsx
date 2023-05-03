@@ -4,9 +4,11 @@ import ProductsHome from "./Products_Home/ProductsHome";
 import Slider from "./Slider/Slider";
 import "./Home.css";
 import Loader from "../Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulate loading for 2 seconds
@@ -17,6 +19,12 @@ function Home() {
 
   if (loading) {
     return <Loader />;
+  }
+  const handleCLick = () => {
+    navigate('about')
+  }
+  const handleClickExplore = () => {
+     navigate("contact");
   }
 
   return (
@@ -43,7 +51,7 @@ function Home() {
           </p>
           <br />
           <br />
-          <button className="home_button">Explore more</button>
+          <button className="home_button"  onClick={handleCLick}>Explore more</button>
         </div>
       </div>
       <div className="container_home_2">
@@ -63,7 +71,7 @@ function Home() {
           </p>
           <br />
           <br />
-          <button className="home_button">Explore more</button>
+          <button className="home_button" onClick={handleClickExplore}>Explore more</button>
         </div>
         <div className="column_home_2"></div>
       </div>

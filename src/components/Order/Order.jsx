@@ -36,6 +36,7 @@ const Order = () => {
       setISSubmitted(true);
       localStorage.removeItem("cart");
       setCart([]);
+     
     } catch (error) {
       console.error(error.response.data.error);
       setErrorMessage(error.response.data.error);
