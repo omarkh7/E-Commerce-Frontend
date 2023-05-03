@@ -1,13 +1,15 @@
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
 import "./App.css";
 import Login from "./components/Login/Login";
 import Navhead from "./components/Navhead/Navhead";
 import Home from "./components/Home Page/Home";
 import About from "./components/About Me/About";
-import Footer from './components/Footer/Footer';
-import SingleProduct from './components/Single_Product/SingleProduct';
-import SingleCategory from './components/Single_Category/SingleCategory';
-import Order from './components/Order/Order';
+import Footer from "./components/Footer/Footer";
+import SingleProduct from "./components/Single_Product/SingleProduct";
+import SingleCategory from "./components/Single_Category/SingleCategory";
+import Order from "./components/Order/Order";
 import ContactForm from "./components/Contact us /ContactForm";
 import './App.css';
 import DashCategory from './components/Dashboard/Sidebar/Pages/DashCategory';
@@ -17,13 +19,17 @@ import DashProducts from './components/Dashboard/Sidebar/Pages/DashProducts';
 import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
 
 function App() {
-  
-   
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    window.localStorage.getItem("loggedIn")
+  );
+
+  useEffect(() => {
+    setIsLoggedIn(window.localStorage.getItem("loggedIn"));
+  }, []);
 
   return (
-      <div className="App">
-        <Navhead />
+    <div className="App">
+      <Navhead />
 
         <Routes>
           <Route path='/' element={<Home />} />
