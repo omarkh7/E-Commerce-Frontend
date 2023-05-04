@@ -3,7 +3,6 @@ import axios from "axios";
 import "./ProductsHome.css";
 import { Link } from "react-router-dom";
 
-
 function ProductsHome() {
   const [alldata, setAllData] = useState([]);
   // const [loading,setLoading] = useState(true);
@@ -30,25 +29,31 @@ function ProductsHome() {
   // }
 
   return (
-    <div className="container_products">
-      <div className="group_title_product">
-        <h1 className="title_product">Our Products</h1>
+    <div className='container_products'>
+      <div className='group_title_product'>
+        <h1 className='title_product'>Our Products</h1>
         <p>List of our products</p>
       </div>
-      <div className="container_products_ticp">
+      <div className='container_products_ticp'>
         {alldata.length > 0 ? (
-          alldata.map((item) => (
-            <div className="ticp" key={item._id}>
-              <Link to={`single-product/${item._id}`}>
-                <img className="img_products_home" src={`${item.image}`} />
-                <Fragment>
-                  <h5>{item.category ? item.category.name : "N/A"}</h5>
-                </Fragment>{" "}
-                <h5 className="title_product_item"> {item.name}</h5>
-                <h5>{item.price} $</h5>
-              </Link>
-            </div>
-          ))
+          alldata
+            .sort((a, b) => b._id.localeCompare(a._id))
+            .slice(0, 8)
+            .map((item) => (
+              <div className='ticp' key={item._id}>
+                {item.is_new_release && (
+                  <p className='new-release-home'>New release!</p>
+                )}
+                <Link to={`single-product/${item._id}`}>
+                  <img className='img_products_home' src={`${item.image}`} />
+                  <Fragment>
+                    <h5>{item.category ? item.category.name : "N/A"}</h5>
+                  </Fragment>{" "}
+                  <h5 className='title_product_item'> {item.name}</h5>
+                  <h5>{item.price} $</h5>
+                </Link>
+              </div>
+            ))
         ) : (
           <p>No data available</p>
         )}

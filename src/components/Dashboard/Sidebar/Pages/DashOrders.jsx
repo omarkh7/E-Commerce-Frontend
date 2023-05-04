@@ -120,7 +120,7 @@ function DashOrders() {
                     </div>
                 )}
                 <div>
-                    <table>
+                    <table className="table-dashOrder">
                         <thead>
                             <tr>
                                 <th scope="col">NB</th>

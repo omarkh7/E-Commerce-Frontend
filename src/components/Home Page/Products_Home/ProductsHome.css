@@ -45,6 +45,11 @@ row-gap: 3rem;}
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.new-release-home{
+  color:red;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 768px) {
   .container_products_ticp {
     display: flex;

@@ -129,6 +129,9 @@ function SingleProduct() {
                 </ul>
               </div>
               <div className='product-info'>
+                {product.is_new_release && (
+                  <p className='new-release-home'>New release!</p>
+                )}
                 <h1 className='product-name'>{product.name}</h1>
                 <p className='product-category'>{product.category.name}</p>
                 <p className='product-description'>{product.description}</p>
@@ -198,7 +201,7 @@ function SingleProduct() {
                     >
                       Add to Cart
                     </button>
-                    <p className="message-added">{message}</p>
+                    <p className='message-added'>{message}</p>
                   </div>
                 </div>
               </div>

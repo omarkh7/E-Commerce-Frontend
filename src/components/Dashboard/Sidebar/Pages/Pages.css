@@ -1,4 +1,4 @@
-table {
+.table-dashOrder {
     display: block;
     width: 100%;
     margin: 1em 0;
@@ -7,25 +7,25 @@ table {
     border-radius: 10px;
 }
 
-table thead,
-table tbody,
-table thead tr,
-table th {
+.table-dashOrder thead,
+.table-dashOrder tbody,
+.table-dashOrder thead tr,
+.table-dashOrder th {
     display: block;
 }
 
-table thead {
+.table-dashOrder thead {
     float: left;
 }
 
-table tbody {
+.table-dashOrder tbody {
     width: auto;
     position: relative;
     overflow-x: auto;
 }
 
-table td,
-table th {
+.table-dashOrder td,
+.table-dashOrder th {
     padding: 0.625em;
     line-height: 1.5em;
     box-sizing: border-box;
@@ -33,50 +33,50 @@ table th {
     overflow-y: auto;
 }
 
-table th {
+.table-dashOrder th {
     text-align: center;
     background: rgba(0, 0, 0, 0.14);
     border-bottom: 1px dashed #aaa;
 }
 
-table tbody tr {
+.table-dashOrder tbody tr {
     display: table-cell;
 }
 
-table tbody td {
+.table-dashOrder tbody td {
     display: block;
 }
 
-table tr:nth-child(odd) {
+.table-dashOrder tr:nth-child(odd) {
     background: rgba(0, 0, 0, 0.07);
 }
 
 @media screen and (min-width: 50em) {
-    table {
+    .table-dashOrder {
         display: table;
     }
 
-    table thead {
+    .table-dashOrder thead {
         display: table-header-group;
         float: none;
     }
 
-    table tbody {
+    .table-dashOrder tbody {
         display: table-row-group;
     }
 
-    table thead tr,
-    table tbody tr {
+    .table-dashOrder thead tr,
+    .table-dashOrder tbody tr {
         display: table-row;
     }
 
-    table th,
-    table tbody td {
+    .table-dashOrder th,
+    .table-dashOrder tbody td {
         display: table-cell;
     }
 
-    table td,
-    table th {
+    .table-dashOrder td,
+    .table-dashOrder th {
         width: auto;
     }
 }
