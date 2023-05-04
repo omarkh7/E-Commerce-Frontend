@@ -3,6 +3,7 @@ import { FaAlignRight, FaRegTimesCircle } from "react-icons/fa";
 import "../Navbar/NavbarMobile.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function NavbarMobile() {
   const [open, setOpen] = useState(false);
@@ -18,6 +19,27 @@ function NavbarMobile() {
 
   const animatedForm = { opacity: 0, y: -40 };
   const animatedTo = { opacity: 1, y: 0 };
+
+  const handleClick = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        "http://localhost:8000/api/users/auth/user-role",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.data.role === "admin") {
+        window.location.href = "/dashboard";
+      } else {
+        window.location.href = "/error";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className='mobile-navigation'>
@@ -142,6 +164,17 @@ function NavbarMobile() {
               transition={{ delay: 0.3 }}
             >
               Contact Us
+            </motion.div>
+            <motion.div
+              initial={animatedForm}
+              animate={animatedTo}
+              onClick={() => {
+                closeMobileMenu()
+                handleClick();
+              }}
+              transition={{ delay: 0.3 }}
+            >
+              Dashboard
             </motion.div>
           </Link>
           <Link to='terms' style={{ textDecoration: "none" }}>

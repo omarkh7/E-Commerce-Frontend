@@ -17,6 +17,7 @@ import DashPages from './components/Dashboard/Sidebar/Pages/DashPages';
 import DashOrders from './components/Dashboard/Sidebar/Pages/DashOrders';
 import DashProducts from './components/Dashboard/Sidebar/Pages/DashProducts';
 import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
+import Page404 from "./components/404PAge/Page404";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -40,8 +41,10 @@ function App() {
           <Route path='/refund' element={<Home />} />
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
           <Route path='/single-category/:categoryId' element={<SingleCategory/>} />
-          <Route path='/order' element={<Order />} />
-           <Route
+        <Route path='/order' element={<Order />} />
+        <Route path='/dashboard' element={<DashCategory />} />
+        <Route path='/error' element={<Page404/>}/>
+           {/* <Route
               exact
               path='/DashPages'
               element={<DashPages />} />
@@ -62,7 +65,7 @@ function App() {
             <Route
               exact
               path='DashProducts'
-              element={<DashProducts />} />
+              element={<DashProducts />} /> */}
           </Routes>
     
         <Footer />
