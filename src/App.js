@@ -11,7 +11,6 @@ import SingleProduct from "./components/Single_Product/SingleProduct";
 import SingleCategory from "./components/Single_Category/SingleCategory";
 import Order from "./components/Order/Order";
 import ContactForm from "./components/Contact us /ContactForm";
-import './App.css';
 import DashCategory from './components/Dashboard/Sidebar/Pages/DashCategory';
 import DashPages from './components/Dashboard/Sidebar/Pages/DashPages';
 import DashOrders from './components/Dashboard/Sidebar/Pages/DashOrders';
@@ -32,6 +31,14 @@ function App() {
       <Navhead />
 
         <Routes>
+
+
+        <Route
+          exact
+          path="/order"
+          element={isLoggedIn === "true" ? <Order /> : <Login />}
+        />
+
           <Route path='/' element={<Home />} />
           <Route path='/about' element ={<About />} />
           <Route path='/contact' element= {<ContactForm />} />
@@ -40,7 +47,6 @@ function App() {
           <Route path='/refund' element={<Home />} />
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
           <Route path='/single-category/:categoryId' element={<SingleCategory/>} />
-          <Route path='/order' element={<Order />} />
            <Route
               exact
               path='/DashPages'

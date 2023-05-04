@@ -14,16 +14,23 @@ function NavIcons() {
     console.log('cartitem',cartItemsCount)
   }, [localStorage.getItem("cart")]);
 
+
+  const logOut = () => {
+    window.localStorage.removeItem("loggedIn");
+    window.localStorage.removeItem("token");
+    window.location.reload(true);
+  };
+
   return (
     <div className='icon-header-div'>
       <div className='icon-header'>
-        <Link to='/login' style={{ textDecoration: "none" }}>
+        <Link to='/login' onClick={logOut} style={{ textDecoration: "none" }}>
           <FaRegUser id='icon-header' />
         </Link>
       </div>
 
       <div className='flex-icon-header'>
-        <Link to='/order' style={{ textDecoration: "none" }}>
+        <Link to='/order'  style={{ textDecoration: "none" }}>
           <FiShoppingBag id='icon-header' className='bag-icon' />
         </Link>
         <span className='span-cart'>{cartItemsCount}</span>
