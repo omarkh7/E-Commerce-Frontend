@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Navbar/Navbar.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 function Navbar() {
+
+  const [isAdmin, setISAdmin] = useState(false);
+
+const handleClick = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get("http://localhost:8000/api/users/auth/user-role", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.data.role === "admin") {
+      setISAdmin(true);
+    } 
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   return (
     <div className='navbar'>
       {" "}
@@ -84,6 +105,14 @@ function Navbar() {
       <Link to='contact' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Contact Us </div>
       </Link>
+
+      { isAdmin ? ( <div className='navbar-divstyle' onClick={handleClick}>
+        Dashboard{" "}
+      </div>) : ''}
+      
+      <div className='navbar-divstyle' onClick={handleClick}>
+        Dashboard{" "}
+      </div>
       <div className='nav-dropdown'>
         <div className='dropdown-button navbar-divstyle'> Other Links</div>
 
