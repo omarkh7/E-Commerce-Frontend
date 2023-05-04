@@ -24,7 +24,7 @@ function NavIcons() {
   return (
     <div className='icon-header-div'>
       <div className='icon-header'>
-        <Link to='/login' onClick={logOut} style={{ textDecoration: "none" }}>
+        <Link to='/login'  style={{ textDecoration: "none" }}>
           <FaRegUser id='icon-header' />
         </Link>
       </div>

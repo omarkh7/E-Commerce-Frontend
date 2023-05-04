@@ -28,6 +28,7 @@ const SignIn = ({ onSignupClick }) => {
       .post("http://localhost:8000/api/users/login", { email, password })
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("role", res.data.role);
         window.localStorage.setItem("loggedIn", true);
         setErrMsg("you are loggedin ");
         setTimeout(() => setErrMsg(""), 3000);

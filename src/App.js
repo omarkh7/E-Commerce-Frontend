@@ -39,17 +39,21 @@ function App() {
           path="/order"
           element={isLoggedIn === "true" ? <Order /> : <Login />}
         />
+         <Route
+          exact
+          path="/dashboard"
+          element={isLoggedIn === "true" ? <DashCategory /> : <Login />}
+        />
+
 
           <Route path='/' element={<Home />} />
           <Route path='/about' element ={<About />} />
           <Route path='/contact' element= {<ContactForm />} />
-          <Route path='/login' element= {<Login />} />
+          <Route path='/login' element= {<Login/>} />
           <Route path='/terms' element={<Home />} />
           <Route path='/refund' element={<Home />} />
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
           <Route path='/single-category/:categoryId' element={<SingleCategory/>} />
-        <Route path='/order' element={<Order />} />
-        <Route path='/dashboard' element={<DashCategory />} />
         <Route path='/error' element={<Page404/>}/>
            {/* <Route
               exact

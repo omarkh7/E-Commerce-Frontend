@@ -6,27 +6,37 @@ import axios from "axios";
 
 function Navbar() {
 
-  const [isAdmin, setISAdmin] = useState(false);
+  const isAdmin = localStorage.getItem("role") === "admin";
+  const role = isAdmin ? "admin" : "user";
 
-const handleClick = async () => {
-  try {
-    const token = localStorage.getItem("token");
-    const response = await axios.get("http://localhost:8000/api/users/auth/user-role", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (response.data.role === "admin") {
-      setISAdmin(true);
-    } 
-  } catch (error) {
-    console.error(error);
-  }
-};
-
+// const fetchedAdmin = async () => {
+//   try {
+//     const token = localStorage.getItem("token");
+//     const response = await axios.get("http://localhost:8000/api/users/auth/user-role", {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     if (response.data.role === "admin") {
+//     } 
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
   return (
     <div className='navbar'>
       {" "}
+  
+
+{role === "admin" && (
+   <Link  to="/dashboard" style={{ textDecoration: "none" }}>
+ <div className="navbar-divstyle" >
+      Dashboard
+        </div>
+       </Link>
+            )}
+
+
       <Link to='/' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Home </div>
       </Link>{" "}
@@ -106,13 +116,9 @@ const handleClick = async () => {
         <div className='navbar-divstyle'>Contact Us </div>
       </Link>
 
-      { isAdmin ? ( <div className='navbar-divstyle' onClick={handleClick}>
-        Dashboard{" "}
-      </div>) : ''}
+    
       
-      <div className='navbar-divstyle' onClick={handleClick}>
-        Dashboard{" "}
-      </div>
+    
       <div className='nav-dropdown'>
         <div className='dropdown-button navbar-divstyle'> Other Links</div>
 
