@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Pages.css";
 import Sidebar from "../Sidebar";
+import secureLocalStorage from "react-secure-storage";
 
 function DashOrders() {
   const form = useRef();
@@ -13,16 +14,15 @@ function DashOrders() {
 
   async function fetchData() {
     try {
-      // Retrieve the token from local storage
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTMzMmFmYmY0ODFlMDU5ODZjYzExOSIsImlhdCI6MTY4MzE3NDA5MX0.P7OBVddyCTvPlbCpHA5_KvfJY8jejYGXgQ0trPWEBhk";
 
-      // Set the authorization header for Axios
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-      // Make the GET request
+         const token = secureLocalStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:8000/api/authorized/orders"
+        "http://localhost:8000/api/authorized/orders",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       // Set the items in state
@@ -39,8 +39,14 @@ function DashOrders() {
 
   // console.log('sida', allOrders.map())
 
-  const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8000/api/authorized/orders/${id}`);
+    const deleteUser = async (id) => {
+      
+    const token = secureLocalStorage.getItem("token");
+    await axios.delete(`http://localhost:8000/api/authorized/orders/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     toast.success("Deleted Successfully", 2000);
     await fetchData();
   };
@@ -65,10 +71,17 @@ function DashOrders() {
       payment_status: selectedInfo.payment_status,
       cart: updatedCart,
     };
-
+  
+    const token = secureLocalStorage.getItem("token");
+      
     await axios.put(
       `http://localhost:8000/api/authorized/orders/${selectedInfo._id}`,
-      updatedInfo
+      updatedInfo,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     toast.success("Updated Successfully", 2000);
@@ -133,8 +146,6 @@ function DashOrders() {
                 <th scope='col'>phoneNumber</th>
                 <th scope='col'>countInStock</th>
                 <th scope='col'>name</th>
-                <th scope='col'>image</th>
-                <th scope='col'>images</th>
                 <th scope='col'>Total Price</th>
               </tr>
             </thead>
@@ -165,8 +176,6 @@ function DashOrders() {
                     {info.cart.map((info) => info.product_id.countInStock)}
                   </td>
                   <td>{info.cart.map((info) => info.product_id.name)}</td>
-                  <td>{info.cart.map((info) => info.product_id.image)}</td>
-                  <td>{info.cart.map((info) => info.product_id.images)}</td>
                   <td>{info.total_price}</td>
                   <td>
                     <button
