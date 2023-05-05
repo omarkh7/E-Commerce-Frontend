@@ -9,101 +9,59 @@ const logOut = () => {
 };
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
- 
-
   const InfomenuItem = [
     {
-      path: "/DashCategory",
+      path: "/dashcategories",
       name: "Categories",
       icon: <FaTh />,
     },
 
     {
-      path: "/DashOrders",
+      path: "/dashorders",
       name: "Orders",
       icon: <FaTh />,
     },
     {
-      path: "/DashPages",
+      path: "/dashpages",
       name: "Pages",
       icon: <FaTh />,
     },
     {
-      path: "/DashProducts",
+      path: "/dashproducts",
       name: "Products",
       icon: <FaTh />,
     },
     {
-      path: "/DashUsers",
+      path: "/dashusers",
       name: "Users",
       icon: <FaTh />,
     },
- 
   ];
 
   return (
-    <div className='containerdash'>
-      <div style={{ width: isOpen ? "225px" : "50px" }} className='sidebar'>
-        <div className='top_section'>
-          <h1 style={{ display: isOpen ? "block" : "none" }} className='logo'>
-            Admin
-          </h1>
-          <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className='bars'>
-            <FaBars onClick={toggle} />
-          </div>
+    <div className="containerdash">
+      <div className="sidebar">
+        <div className="top_section">
+          <h1 className="logo">Admin</h1>
+
+          <div className="bars"></div>
         </div>
 
-        <NavLink
-          to='#'
-          className='link'
-          activeClassName='active'
-          onClick={toggleDropdown}
-        >
-          <div className='icon'>
-            <FaSquare />
-          </div>
-          <div
-            style={{ display: isOpen ? "block" : "none" }}
-            className='link_text'
+        {InfomenuItem.map((item, index) => (
+          <NavLink
+            to={item.path}
+            key={index}
+            className="link dropdown_item"
+            activeClassName="active"
           >
-            Info Dash
-            <FaCaretDown
-              style={{
-                marginLeft: "5px",
-                transform: isDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-              }}
-            />
-          </div>
-        </NavLink>
-        {isDropdownOpen &&
-          InfomenuItem.map((item, index) => (
-            <NavLink
-              to={item.path}
-              key={index}
-              className='link dropdown_item'
-              activeClassName='active'
-            >
-              <div className='icon'>{item.icon}</div>
-              <div
-                style={{ display: isOpen ? "block" : "none" }}
-                className='link_text'
-              >
-                {item.name}
-              </div>
-            </NavLink>
-          ))}
+            <div className="icon">{item.icon}</div>
+            <div className="link_text">{item.name}</div>
+          </NavLink>
+        ))}
 
         <br></br>
-
-
-        
       </div>
-      <div className='content'>{children}</div>
+      <div className="content">{children}</div>
     </div>
   );
 };

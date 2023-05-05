@@ -92,6 +92,8 @@ function DashOrders() {
     <div className='compflex'>
       <Sidebar />
       <div className='container-info'>
+      <h1 className="Item-dash-header">Orders</h1>
+
         {isUpdateMode && (
           <div className='container-info'>
             <p>Order Status</p>

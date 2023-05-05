@@ -109,6 +109,8 @@ function DashPages() {
     <div className='compflex'>
       <Sidebar />
       <div className='container-info'>
+      <h1 className="Item-dash-header">Pages</h1>
+
         <div>
           <form
             ref={selectedInfo}

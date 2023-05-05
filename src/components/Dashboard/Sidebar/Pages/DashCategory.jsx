@@ -105,6 +105,7 @@ function DashCategory() {
     <div className='compflex'>
       <Sidebar />
       <div className='container-info'>
+        <h1 className="Item-dash-header">Categories</h1>
         <div>
           <form
             ref={selectedInfo}

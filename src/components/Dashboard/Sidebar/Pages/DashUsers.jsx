@@ -95,6 +95,8 @@ function YourComponent() {
       <Sidebar />
       <div className='container-info'>
         <div>
+        <h1 className="Item-dash-header">Users</h1>
+
            <form
                         ref={selectedInfo}
                         className="contact-formm"
