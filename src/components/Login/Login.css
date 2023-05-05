@@ -145,13 +145,13 @@ input:focus {
     display: flex;
     flex-direction: row;
     gap: 1vw;
-    font-size: 25px;
-    color: gray;
+font-size: 2rem;
+    color: #080808;
     margin-top: 6vh;
 }
 
 .facebook {
-    color: grey;
+    color: #080808;
 }
 
 .errmsg {
