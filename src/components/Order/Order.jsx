@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
 import axios from "axios";
-import { AiOutlineDelete } from "react-icons/ai";
-import { FiShoppingBag } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
+import { BsCart } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
+import  secureLocalStorage  from  "react-secure-storage";
+
 
 const Order = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,8 +18,7 @@ const Order = () => {
   const handleSubmitOrder = async () => {
     setIsLoading(true);
     setErrorMessage("");
-    const token = localStorage.getItem("token");
-    window.location.href="/order"
+    const token = secureLocalStorage.getItem("token");
     if (!token) {
       window.location.href = "/login";
     }
@@ -37,7 +38,6 @@ const Order = () => {
       setISSubmitted(true);
       localStorage.removeItem("cart");
       setCart([]);
-     
     } catch (error) {
       console.error(error.response.data.error);
       setErrorMessage(error.response.data.error);
@@ -129,7 +129,7 @@ const Order = () => {
                       </td>
                       <td>{item.price}</td>
                       <td>
-                        <AiOutlineDelete
+                        <AiFillDelete
                           className='delete-icon-row'
                           onClick={() => handleDelete(item.product_id)}
                         />
@@ -151,7 +151,7 @@ const Order = () => {
                 {cart.map((item) => (
                   <div key={item.product_id} className='cart-items-rspnv'>
                     <div className='list-rspnv delete-icon'>
-                      <AiOutlineDelete
+                      <AiFillDelete
                         className='delete-icon-row'
                         onClick={() => handleDelete(item.id)}
                       />
@@ -222,7 +222,7 @@ const Order = () => {
           <div className='cart-discription'>
             <h3 className='cart-description-title'>
               {" "}
-              <FiShoppingBag className='cart-icon-cart' /> Cart Description
+              <BsCart className='cart-icon-cart' /> Cart Description
             </h3>
             <div className='order-details'>
               <div>
@@ -236,19 +236,14 @@ const Order = () => {
                   ))}
                 </ul>
               </div>
-              <div className='created-at-order'>
-                Created At: <p>{new Date().toLocaleString()}</p>
-              </div>
+              <div>Created At: {new Date().toLocaleString()}</div>
               <div className='cart-total-price'>
-                Total Price :
-                <p>
-                  {" "}
-                  {cart.reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )}{" "}
-                  $
-                </p>
+                Total Price :{" "}
+                {cart.reduce(
+                  (total, item) => total + item.price * item.quantity,
+                  0
+                )}{" "}
+                $
               </div>
             </div>
             <div className='submit-cart'>
