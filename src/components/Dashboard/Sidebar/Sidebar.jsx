@@ -14,6 +14,7 @@ const Sidebar = ({ children }) => {
     const toggle = () => setIsOpen(!isOpen);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
+<<<<<<< HEAD
     const BlogmenuItem = [
         {
             path: "/dashblogs",
@@ -21,13 +22,29 @@ const Sidebar = ({ children }) => {
             icon: <FaSquare />,
         },
     ];
+=======
+    // const BlogmenuItem = [
+    //     {
+    //         path: "/dashblogs",
+    //         name: "Blogs",
+    //         icon: <FaSquare />,
+    //     },
+    // ];
+>>>>>>> master
 
     const InfomenuItem = [
         {
             path: "/DashCategory",
             name: "Categories",
             icon: <FaTh />,
+<<<<<<< HEAD
         },
+=======
+        },  
+        
+    
+
+>>>>>>> master
         {
             path: "/DashOrders",
             name: "Orders",
@@ -141,7 +158,11 @@ const Sidebar = ({ children }) => {
 
                 <br></br>
 
+<<<<<<< HEAD
                 {BlogmenuItem.map((item, index) => (
+=======
+                {/* {BlogmenuItem.map((item, index) => (
+>>>>>>> master
                     <NavLink
                         className="link"
                         to={item.path}
@@ -156,7 +177,11 @@ const Sidebar = ({ children }) => {
                             {item.name}
                         </div>
                     </NavLink>
+<<<<<<< HEAD
                 ))}
+=======
+                ))} */}
+>>>>>>> master
 
 
                 <button

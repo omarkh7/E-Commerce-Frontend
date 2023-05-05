@@ -154,8 +154,21 @@ table tr:nth-child(odd) {
 }
 
 
+<<<<<<< HEAD
 
 
+=======
+.checkbox_dash{
+    height:30px;
+    width: 40px;
+    padding-left: 40%;
+}
+
+
+/* .Payment_status_dash {
+    display: flex;
+} */
+>>>>>>> master
 
 
 .inputadd {
@@ -180,7 +193,11 @@ table tr:nth-child(odd) {
 .buttonadd {
     width: 25%;
     padding: 1em;
+<<<<<<< HEAD
     background-color: #a9d890;
+=======
+    background-color: #b6d7a8;
+>>>>>>> master
     color: #11171d;
     border: none;
     border-radius: 5px;
@@ -204,12 +221,37 @@ table tr:nth-child(odd) {
 
 }
 
+<<<<<<< HEAD
 .container-info {
     margin: 20px auto;
 }
 
 .contact-formm{
     
+=======
+.contact-formm {
+/* padding-left: 50%; */
+/* margin-left: 40%; */
+/* text-align: center; */
+display: flex;
+/* flex-direction: column; */
+flex-wrap: wrap;
+align-items: center;
+padding-left: 400px;
+}
+
+
+.contact-formmm {
+   
+padding: 30px; 
+   }
+
+.container-info {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+>>>>>>> master
 }
 
 @media (max-width: 767px) {
