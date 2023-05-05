@@ -25,10 +25,6 @@ function About() {
     setaboutimage(response.data.data.image);
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   return (
     <>
       <div className='hero-image-about'></div>

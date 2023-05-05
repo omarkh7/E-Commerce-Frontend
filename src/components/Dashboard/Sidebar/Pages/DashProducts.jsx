@@ -16,25 +16,6 @@ function Dashproducts() {
         name: "",
         price: "",
         description: "",
-<<<<<<< HEAD
-        countInStock: "",
-        category: "",
-        sizes: "",
-        colors: "",
-        image: null,
-        images: null,
-    });
-    // <th scope="col">NB</th>
-    // <th scope="col">Name</th>
-    // <th scope="col">Price</th>
-    // <th scope="col">description</th>
-    // <th scope="col">countInStock</th>
-    // <th scope="col">Image</th>
-    // <th scope="col">Images</th>
-    // <th scope="col">Category</th>
-    // <th scope="col">Sizes</th>
-    // <th scope="col">Colors</th>
-=======
         category: "",
         size:"",
         color:"",
@@ -43,7 +24,6 @@ function Dashproducts() {
         images:null,
     });
   
->>>>>>> master
 
 
 
@@ -54,10 +34,6 @@ function Dashproducts() {
         try {
             const res = await axios.get(APIKEY);
             setAllProducts(res.data.productList)
-<<<<<<< HEAD
-            // console.log("Products", res.data.productList)
-=======
->>>>>>> master
         } catch (error) {
             console.log(error)
         }
@@ -71,16 +47,6 @@ function Dashproducts() {
         e.preventDefault();
         const formData = new FormData();
         formData.append("name", newInfo.name);
-<<<<<<< HEAD
-        formData.append("price", newInfo.price);
-        formData.append("description", newInfo.description);
-        formData.append("countInStock", newInfo.countInStock);
-        formData.append("category", newInfo.category);
-        formData.append("sizes", newInfo.sizes);
-        formData.append("colors", newInfo.colors);
-        formData.append("image", infoImage);
-        formData.append("images", infoImage);
-=======
         // formData.append("attribute", newInfo.attribute[color]);
         formData.append("price", newInfo.price);
         formData.append("description", newInfo.description);
@@ -90,7 +56,6 @@ function Dashproducts() {
         formData.append("color", newInfo.color);
         formData.append("image", infoImage.images);
         formData.append("images", infoImage.images);
->>>>>>> master
 
         try {
             const response = await axios.post(
@@ -107,17 +72,6 @@ function Dashproducts() {
             toast.success("Added Successfully", 2000);
             Products();
             setNewInfo({
-<<<<<<< HEAD
-                name: '',
-                price: '',
-                description: '',
-                countInStock: '',
-                category: '',
-                sizes: '',
-                colors: '',
-                image: '',
-                images: '',
-=======
                 name: newInfo.name,
                 price: newInfo.price,
                 description: newInfo.description,
@@ -128,7 +82,6 @@ function Dashproducts() {
                 quantity:newInfo.quantity,
                 image: newInfo.images,
                 images: newInfo.images,
->>>>>>> master
             });
         } catch (error) {
             console.error(error);
@@ -163,11 +116,7 @@ function Dashproducts() {
         formData.append("countInStock", selectedInfo.countInStock);
         formData.append("category", selectedInfo.category);
         formData.append("sizes", selectedInfo.sizes);
-<<<<<<< HEAD
-        formData.append("colors", selectedInfo.colors);
-=======
         formData.append("colors", selectedInfo.color);
->>>>>>> master
         formData.append("image", infoImage);
         formData.append("images", infoImage);
 
@@ -193,11 +142,7 @@ function Dashproducts() {
                 <div>
                     <form
                         ref={selectedInfo}
-<<<<<<< HEAD
-                        className="contact-formm"
-=======
                         className="contact-formmm"
->>>>>>> master
                         encType="multipart/form-data"
                     >
                         <input
@@ -244,29 +189,17 @@ function Dashproducts() {
                         /><input
                             className="inputadd"
                             type="text"
-<<<<<<< HEAD
-                            value={newInfo.sizes}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, sizes: e.target.value })
-=======
                             value={newInfo.size}
                             onChange={(e) =>
                                 setNewInfo({ ...newInfo, size: e.target.value })
->>>>>>> master
                             }
                             placeholder="Enter Sizes"
                         /><input
                             className="inputadd"
                             type="text"
-<<<<<<< HEAD
-                            value={newInfo.colors}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, colors: e.target.value })
-=======
                             value={newInfo.color}
                             onChange={(e) =>
                                 setNewInfo({ ...newInfo, color: e.target.value })
->>>>>>> master
                             }
                             placeholder="Enter Colors"
                         />
@@ -386,10 +319,7 @@ function Dashproducts() {
                                 <th scope="col">Colors</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Images</th>
-<<<<<<< HEAD
-=======
                                 <th scope="col">Buttons</th>
->>>>>>> master
 
 
 

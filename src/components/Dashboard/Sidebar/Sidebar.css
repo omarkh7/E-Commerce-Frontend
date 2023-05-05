@@ -10,19 +10,12 @@
 }
 
 .sidebar {
-<<<<<<< HEAD
-    background: #223950;
-    color: #fff;
-    height: 100vh;
-    transition: all 0.5s;
-=======
     background: #7a7878;
     color: #fff;
     height: 100vh;
     transition: all 0.5s;
     position: sticky;
     top: calc(50px + var(--admin-bar, 0px) + var(--header-sticky-height, 0px) * var(--sticky-shrink, 100)/100);
->>>>>>> master
 }
 
 .top_section {

@@ -41,12 +41,10 @@ function DashCategory() {
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        // console.log("newinfo ", newInfo);
-        // console.log("infoImage ", infoImage)
+      
         const formData = new FormData();
         formData.append("name", newInfo.info_name);
         formData.append("image", infoImage);
-        // console.log("formdafat ", formData.infoImage)
         try {
             const response = await axios.post(
                 "http://localhost:8000/api/category/createcategory", formData,

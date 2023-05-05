@@ -53,42 +53,6 @@ function YourComponent() {
         }
     }
 
-<<<<<<< HEAD
-    const handleAdd = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("fullName", newInfo.fullName);
-        formData.append("email", newInfo.email);
-        formData.append("password", newInfo.password);
-        formData.append("phoneNumber", newInfo.phoneNumber);
-        formData.append("location", newInfo.location);
-        try {
-            const response = await axios.post(
-                "http://localhost:8000/api/users/register", formData,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
-            // console.log(response)
-
-
-            toast.success("Added Successfully", 2000);
-            fetchData();
-            setNewInfo({
-                fullName: '',
-                email: '',
-                password: '',
-                phoneNumber: '',
-                location: '',
-
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    };
-=======
     // const handleAdd = async (e) => {
     //     e.preventDefault();
     //     const formData = new FormData();
@@ -123,7 +87,6 @@ function YourComponent() {
     //         console.error(error);
     //     }
     // };
->>>>>>> master
 
 
     const deleteUser = async (id) => {
@@ -139,11 +102,7 @@ function YourComponent() {
             <Sidebar />
             <div className="container-info">
                 <div>
-<<<<<<< HEAD
-                    <form
-=======
                     {/* <form
->>>>>>> master
                         ref={selectedInfo}
                         className="contact-formm"
                         encType="multipart/form-data"
@@ -189,21 +148,12 @@ function YourComponent() {
                                 setNewInfo({ ...newInfo, location: e.target.value })
                             }
                             placeholder="Enter Location"
-<<<<<<< HEAD
-                        />
-
-                        <button className="buttonadd" onClick={handleAdd}>
-                            Add
-                        </button>
-                    </form>
-=======
                         /> */}
 
                         {/* <button className="buttonadd" onClick={handleAdd}>
                             Add
                         </button> */}
                     {/* </form> */}
->>>>>>> master
                 </div>
 
                 <div>
@@ -213,11 +163,7 @@ function YourComponent() {
                                 <th scope="col">NB</th>
                                 <th scope="col">FullName</th>
                                 <th scope="col">Email</th>
-<<<<<<< HEAD
-                                <th scope="col">Password</th>
-=======
                                 {/* <th scope="col">Password</th> */}
->>>>>>> master
                                 <th scope="col">PhoneNumber</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Role</th>
@@ -231,11 +177,7 @@ function YourComponent() {
                                         <td>{index + 1}</td>
                                         <td>{info.fullName}</td>
                                         <td>{info.email}</td>
-<<<<<<< HEAD
-                                        <td>{info.password}</td>
-=======
                                         {/* <td>{info.password}</td> */}
->>>>>>> master
                                         <td>{info.phoneNumber}</td>
                                         <td>{info.location}</td>
                                         <td>{info.role}</td>

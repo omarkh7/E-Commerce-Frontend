@@ -3,7 +3,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Sidebar from "../Sidebar";
 
-
 const CreateProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
@@ -20,7 +19,7 @@ const CreateProduct = () => {
   const [images, setImages] = useState([]);
 
   const [newInfo, setNewInfo] = useState({
-    name: "",
+    name: '',
     price: "",
     description: "",
     category: "",
@@ -28,48 +27,48 @@ const CreateProduct = () => {
     color: "",
     quantity: "",
     images: null,
+    image: null,
   });
 
-    const handleAdd = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('category', category);
-    formData.append('price', price);
+    formData.append("name",newInfo.name);
+    formData.append("price", newInfo.price);
+    formData.append("description", newInfo.description);
+    formData.append("category", newInfo.category);
 
     // Append multiple images
     for (let i = 0; i < images.length; i++) {
-      formData.append('images', images[i]);
+      formData.append("images", images[i]);
     }
 
     // Append size, color, and quantity as arrays
     for (let i = 0; i < size.length; i++) {
-      formData.append('size[]', size[i]);
-      formData.append('color[]', color[i]);
-      formData.append('quantity[]', quantity[i]);
+      formData.append("size[]", newInfo.size[i]);
+      formData.append("color[]", newInfo.color[i]);
+      formData.append("quantity[]", newInfo.quantity[i]);
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/products/createproduct', formData);
+      const response = await axios.post(
+        "http://localhost:8000/api/products/createproduct",
+        formData
+      );
 
       if (response.status !== 200) {
-        throw new Error('Failed to create product');
+        throw new Error("Failed to create product");
       }
 
       const product = response.data;
-      console.log('Product created:', product);
+      console.log("Product created:", product);
       // Do something with the created product
     } catch (error) {
-      console.error('Error creating product:', error);
+      console.error("Error creating product:", error);
       // Handle the error
     }
   };
-
-
-
-
   const APIKEY = "http://localhost:8000/api/products/getproducts";
 
   const Products = async () => {
@@ -125,292 +124,254 @@ const CreateProduct = () => {
       `http://localhost:8000/api/products/deleteproduct/${id}`
     );
     toast.success("Deleted Successfully", 2000);
-    // await fetchData();
+    await allProducts();
   };
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   const formData = new FormData();
-  //   formData.append("name", name);
-  //   formData.append("description", description);
-
-  //   try {
-  //     const category = await axios.get(
-  //       `http://localhost:8000/api/category/getCategoryByName/${categoryName}`
-  //     );
-  //     formData.append("category", category.data.category._id);
-  //   } catch (error) {
-  //     console.error("Error retrieving category:", error);
-  //     // Handle the error
-  //     return;
-  //   }
-
-  //   formData.append("price", price);
-
-  //   // Append multiple images
-  //   for (let i = 0; i < images.length; i++) {
-  //     formData.append("images", images[i]);
-  //   }
-
-  //   // Append size, color, and quantity as arrays
-  //   for (let i = 0; i < size.length; i++) {
-  //     formData.append("size[]", size[i]);
-  //     formData.append("color[]", color[i]);
-  //     formData.append("quantity[]", quantity[i]);
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:8000/api/products/createproduct",
-  //       formData
-  //     );
-
-  //     if (response.status !== 200) {
-  //       throw new Error("Failed to create product");
-  //     }
-
-  //     const product = response.data;
-  //     console.log("Product created:", product);
-  //     // Do something with the created product
-  //   } catch (error) {
-  //     console.error("Error creating product:", error);
-  //     // Handle the error
-  //   }
-  // };
-
   return (
-<div className="compflex">
-            <Sidebar />
-            <div className="container-info">
-                <div>
-                    <form
-                        ref={selectedInfo}
-                        className="contact-formmm"
-                        encType="multipart/form-data"
-                    >
-                        <input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.name}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, name: e.target.value })
-                            }
-                            placeholder="Enter Name"
-                        />
-                        <input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.price}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, price: e.target.value })
-                            }
-                            placeholder="Enter Price"
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.description}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, description: e.target.value })
-                            }
-                            placeholder="Enter description"
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.countInStock}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, countInStock: e.target.value })
-                            }
-                            placeholder="Enter Quantity"
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.category}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, category: e.target.value })
-                            }
-                            placeholder="Enter Category"
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.size}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, size: e.target.value })
-                            }
-                            placeholder="Enter Sizes"
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={newInfo.color}
-                            onChange={(e) =>
-                                setNewInfo({ ...newInfo, color: e.target.value })
-                            }
-                            placeholder="Enter Colors"
-                        />
-                        <input
-                            className="inputadd"
-                            type="file"
-                            value={newInfo.image}
-                            onChange={(e) => handleImage(e)}
-
-                        /><input
-                            className="inputadd"
-                            type="file"
-                            value={newInfo.images}
-                            onChange={(e) => handleImage(e)}
-
-                        />
-                        <button className="buttonadd" onClick={handleAdd}>
-                            Add
-                        </button>
-                    </form>
-                </div>
-                {isUpdateMode && (
-                    <div className="container-info">
-                        <input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.name}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, name: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.price}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, price: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.description}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, description: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.countInStock}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, countInStock: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.category}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, category: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.sizes}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, sizes: e.target.value })
-                            }
-                        /><input
-                            className="inputadd"
-                            type="text"
-                            value={selectedInfo.colors}
-                            onChange={(e) =>
-                                setSelectedInfo({ ...selectedInfo, colors: e.target.value })
-                            }
-                        />
-                        <input
-                            className="inputadd"
-                            type="file"
-                            value={newInfo.image}
-                            onChange={(e) =>
-                                setInfoImage(e.target.files[0],
-                                )
-                            }
-                        /> <input
-                            className="inputadd"
-                            type="file"
-                            value={newInfo.images}
-                            onChange={(e) =>
-                                setInfoImage(e.target.files[0],
-                                )
-                            }
-                        />
-
-
-                        <div className="compflexbutton">
-                            <button className="buttonadd" onClick={() => updateUser()}>
-                                Save
-                            </button>
-                            <button
-                                className="buttonadd"
-                                onClick={() => setIsUpdateMode(false)}
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                )}
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">NB</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">description</th>
-                                <th scope="col">countInStock</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Sizes</th>
-                                <th scope="col">Colors</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Images</th>
-                                <th scope="col">Buttons</th>
-
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {allProducts
-                                .map((info, index) => (
-                                    <tr key={index}>
-                                        <td>{index + 1}</td>
-                                        <td>{info.name}</td>
-                                        <td>{info.price}</td>
-                                        <td>{info.description}</td>
-                                        <td>{info.countInStock}</td>
-                                        <td>{info.category.name}</td>
-                                        <td>{info.attribute.map((info, index) => (<p>Size {index}: {info.size}</p>)
-                                        )}</td>
-                                        <td>{info.attribute.map((info, index) => (<p>Color {index}: {info.color}</p>)
-                                        )}</td>
-                                        <td><img src={info.image} alt={info.image} /></td>
-                                        <td><img src={info.images} alt={info.images} /></td>
-
-
-                                        <td>
-                                            <button
-                                                className="buttonedit"
-                                                onClick={() => handleUpdate(info)}
-                                            >
-                                                Edit
-                                            </button>
-                                            <button
-                                                className="buttondelete"
-                                                onClick={() => deleteUser(info._id)}>
-
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                        </tbody>
-                    </table>
-                </div>
-                <ToastContainer />
-            </div>
+    <div className="compflex">
+      <Sidebar />
+      <div className="container-info">
+        <div>
+          <form
+            ref={selectedInfo}
+            className="contact-formmm"
+            encType="multipart/form-data"
+          >
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.name}
+              onChange={(e) => setNewInfo({ ...newInfo, name: e.target.value })}
+              placeholder="Enter Name"
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.price}
+              onChange={(e) =>
+                setNewInfo({ ...newInfo, price: e.target.value })
+              }
+              placeholder="Enter Price"
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.description}
+              onChange={(e) =>
+                setNewInfo({ ...newInfo, description: e.target.value })
+              }
+              placeholder="Enter description"
+            />            
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.category}
+              onChange={(e) =>
+                setNewInfo({ ...newInfo, category: e.target.value })
+              }
+              placeholder="Enter Category"
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.size}
+              onChange={(e) => setNewInfo({ ...newInfo, size: e.target.value })}
+              placeholder="Enter Sizes"
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={newInfo.color}
+              onChange={(e) =>
+                setNewInfo({ ...newInfo, color: e.target.value })
+              }
+              placeholder="Enter Colors"
+            /> <input
+              className="inputadd"
+              type="text"
+              value={newInfo.quantity}
+              onChange={(e) =>
+                setNewInfo({ ...newInfo, quantity: e.target.value })
+              }
+              placeholder="Enter Quantity"
+            />
+            <input
+              className="inputadd"
+              type="file"
+              value={newInfo.image}
+              onChange={(e) => handleImage(e)}
+            />
+            <input
+              className="inputadd"
+              type="file"
+              value={newInfo.images}
+              onChange={(e) => handleImage(e)}
+            />
+            <button className="buttonadd" onClick={handleFormSubmit}>
+              Add
+            </button>
+          </form>
         </div>
-    );
-}
+        {isUpdateMode && (
+          <div className="container-info">
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.name}
+              onChange={(e) =>
+                setSelectedInfo({ ...selectedInfo, name: e.target.value })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.price}
+              onChange={(e) =>
+                setSelectedInfo({ ...selectedInfo, price: e.target.value })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.description}
+              onChange={(e) =>
+                setSelectedInfo({
+                  ...selectedInfo,
+                  description: e.target.value,
+                })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.countInStock}
+              onChange={(e) =>
+                setSelectedInfo({
+                  ...selectedInfo,
+                  countInStock: e.target.value,
+                })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.category}
+              onChange={(e) =>
+                setSelectedInfo({ ...selectedInfo, category: e.target.value })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.sizes}
+              onChange={(e) =>
+                setSelectedInfo({ ...selectedInfo, sizes: e.target.value })
+              }
+            />
+            <input
+              className="inputadd"
+              type="text"
+              value={selectedInfo.colors}
+              onChange={(e) =>
+                setSelectedInfo({ ...selectedInfo, colors: e.target.value })
+              }
+            />
+            <input
+              className="inputadd"
+              type="file"
+              value={newInfo.image}
+              onChange={(e) => setInfoImage(e.target.files[0])}
+            />{" "}
+            <input
+              className="inputadd"
+              type="file"
+              value={newInfo.images}
+              onChange={(e) => setInfoImage(e.target.files[0])}
+            />
+            <div className="compflexbutton">
+              <button className="buttonadd" onClick={() => updateUser()}>
+                Save
+              </button>
+              <button
+                className="buttonadd"
+                onClick={() => setIsUpdateMode(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">NB</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">description</th>
+                <th scope="col">countInStock</th>
+                <th scope="col">Category</th>
+                <th scope="col">Sizes</th>
+                <th scope="col">Colors</th>
+                <th scope="col">Image</th>
+                <th scope="col">Images</th>
+                <th scope="col">Buttons</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allProducts.map((info, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{info.name}</td>
+                  <td>{info.price}</td>
+                  <td>{info.description}</td>
+                  <td>{info.countInStock}</td>
+                  <td>{info.category.name}</td>
+                  <td>
+                    {info.attribute.map((info, index) => (
+                      <p>
+                        Size {index}: {info.size}
+                      </p>
+                    ))}
+                  </td>
+                  <td>
+                    {info.attribute.map((info, index) => (
+                      <p>
+                        Color {index}: {info.color}
+                      </p>
+                    ))}
+                  </td>
+                  <td>
+                    <img src={info.image} alt={info.image} />
+                  </td>
+                  <td>
+                    <img src={info.images} alt={info.images} />
+                  </td>
+
+                  <td>
+                    <button
+                      className="buttonedit"
+                      onClick={() => handleUpdate(info)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="buttondelete"
+                      onClick={() => deleteUser(info._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <ToastContainer />
+      </div>
+    </div>
+  );
+};
 
 //     <div className="compflex">
 //       <Sidebar />
