@@ -48,6 +48,9 @@ row-gap: 3rem;}
 .new-release-home{
   color:red;
   font-weight: 500;
+  position: absolute;
+  font-size: 40px;
+  margin-right: 13rem;
 }
 
 @media screen and (max-width: 768px) {

@@ -2,6 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import "./ProductsHome.css";
 import { Link } from "react-router-dom";
+import { RiBookmarkFill } from "react-icons/ri";
+
 
 function ProductsHome() {
   const [alldata, setAllData] = useState([]);
@@ -42,8 +44,9 @@ function ProductsHome() {
             .map((item) => (
               <div className='ticp' key={item._id}>
                 {item.is_new_release && (
-                  <p className='new-release-home'>New release!</p>
+                  <p className='new-release-home'> <RiBookmarkFill/></p>
                 )}
+               
                 <Link to={`single-product/${item._id}`}>
                   <img className='img_products_home' src={`${item.image}`} />
                   <Fragment>
