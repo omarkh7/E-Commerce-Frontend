@@ -7,9 +7,9 @@ const Dashboard = () => {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
 
   return (
-    <div>
+    <div className="dashboard">
       <Sidebar />
-    
+    <h1>StepUp Dashboard</h1>
     </div>
   );
 };

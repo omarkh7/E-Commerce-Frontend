@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
-import { FaTh, FaBars, FaCaretDown, FaSquare } from "react-icons/fa";
-
-const logOut = () => {
-  window.localStorage.clear();
-  window.location.href = "./login-admin";
-};
+import { FaTh} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ children }) => {
   const InfomenuItem = [
@@ -42,7 +38,10 @@ const Sidebar = ({ children }) => {
     <div className="containerdash">
       <div className="sidebar">
         <div className="top_section">
+         
+        <Link to="/dashboard">
           <h1 className="logo">Admin</h1>
+        </Link>
 
           <div className="bars"></div>
         </div>

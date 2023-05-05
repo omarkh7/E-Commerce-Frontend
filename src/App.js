@@ -19,6 +19,7 @@ import DashUsers from "./components/Dashboard/Sidebar/Pages/DashUsers";
 import Page404 from "./components/404PAge/Page404";
 import secureLocalStorage from "react-secure-storage";
 import Scroll from "./components/Scroll/Scroll";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -56,7 +57,7 @@ function App() {
           exact
           path="/dashboard"
           element={
-            isLoggedIn === true && isAdmin ? <DashCategory /> : <Login />
+            isLoggedIn === true && isAdmin ? <Dashboard /> : <Login />
           }
         />
         <Route
@@ -88,6 +89,7 @@ function App() {
           path="/dashproducts"
           element={isLoggedIn === true && isAdmin ? <DashProducts /> : <Login />}
         />
+   
 
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
