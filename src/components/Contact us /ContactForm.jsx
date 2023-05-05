@@ -19,7 +19,6 @@ const ContactForm = () => {
       "ZEAGTqdyPelINi3Lv"
     );
 
-    console.log("email sent");
     setName("");
     setEmail("");
     setMessage("");

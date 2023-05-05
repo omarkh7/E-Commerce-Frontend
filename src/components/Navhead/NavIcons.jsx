@@ -12,7 +12,7 @@ function NavIcons(props) {
   const handleLogout = () => {
     window.localStorage.clear();
     console.log("ppppp ",props)
-
+window.location.reload();
     props.setIsLoggedIn();
   };
 
@@ -22,7 +22,6 @@ function NavIcons(props) {
     setCartItemsCount(cartItems.length);
     console.log("cartitem", cartItemsCount);
   }, [localStorage.getItem("cart")]);
-
 
 
   return (
@@ -39,6 +38,8 @@ function NavIcons(props) {
           <BiLogOut id="icon-header" onClick={handleLogout} />
         )}
       </div>
+
+
 
       <div className="flex-icon-header">
         <Link to="/order" style={{ textDecoration: "none" }}>

@@ -16,7 +16,7 @@ function Navhead(props) {
 
   return (
     <header className='navhead pre-header'>
-      <div>Navhead
+      <div>
       <Link to="/">
         <img className='logo-header' src={Logo} alt='logo' />
         </Link>

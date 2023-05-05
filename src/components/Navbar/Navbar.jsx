@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import "../Navbar/Navbar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import  secureLocalStorage  from  "react-secure-storage";
+
 
 
 function Navbar() {
 
-  const isAdmin = localStorage.getItem("role") === "admin";
-  const role = isAdmin ? "admin" : "user";
+  const role = secureLocalStorage.getItem("role");
+  const isAdmin = role === "admin";
 
   return (
     <div className='navbar'>
       {" "}
   
 
-{role === "admin" && (
+{isAdmin && (
    <Link  to="/dashboard" style={{ textDecoration: "none" }}>
  <div className="navbar-divstyle" >
       Dashboard

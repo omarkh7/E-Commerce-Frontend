@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Login/Login.css";
 import { FaRegUserCircle, FaLock } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import  secureLocalStorage  from  "react-secure-storage";
 
 const SignIn = ({ onSignupClick }) => {
   const [email, setEmail] = useState();
@@ -10,28 +10,19 @@ const SignIn = ({ onSignupClick }) => {
   const [errMsg, setErrMsg] = useState("");
 
   const errRef = useRef();
-  // const emailRef = useRef();
-
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   emailRef.current.focus();
-  // }, []);
-
+ 
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    // }
+  // fetchLogin();
   }, []);
 
   const fetchLogin = async () => {
     axios
       .post("http://localhost:8000/api/users/login", { email, password })
       .then((res) => {
-        window.localStorage.setItem("token", res.data.token);
-        window.localStorage.setItem("role", res.data.role);
-        window.localStorage.setItem("loggedIn", true);
+        secureLocalStorage.setItem("token", res.data.token);
+        secureLocalStorage.setItem("role", res.data.role);
+        secureLocalStorage.setItem("loggedIn", true);
         setErrMsg("you are loggedin ");
-        navigate("/");
 
         setTimeout(() => setErrMsg(""), 3000);
         window.location.reload();

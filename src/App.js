@@ -17,16 +17,23 @@ import DashOrders from './components/Dashboard/Sidebar/Pages/DashOrders';
 import DashProducts from './components/Dashboard/Sidebar/Pages/DashProducts';
 import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
 import Page404 from "./components/404PAge/Page404";
+import  secureLocalStorage  from  "react-secure-storage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const role = secureLocalStorage.getItem("role");
+  const isAdmin = role === "admin";
+
+
+
 
   useEffect(() => {
     changeLoggedIn()
   }, []);
 
   const changeLoggedIn = ()=>{
-    let loggedin =  window.localStorage.getItem("loggedIn");
+    let loggedin =  secureLocalStorage.getItem	("loggedIn");
     if(loggedin)
       setIsLoggedIn(true)
     else
@@ -39,19 +46,28 @@ function App() {
 
         <Routes>
 
+        <Route
+          exact
+          path="/dashboard"
+          element={isLoggedIn === true && isAdmin ? <DashCategory /> : <Login />}
+        />
 
         <Route
           exact
           path="/order"
-          element={isLoggedIn === "true" ? <Order /> : <Login />}
-        />
-         <Route
-          exact
-          path="/dashboard"
-          element={isLoggedIn === "true" ? <DashCategory /> : <Login />}
+          element={isLoggedIn === true ? <Order /> : <Login />}
         />
         
-          <Route path='/login' element= {<Login/>} />
+      
+
+        
+        <Route
+          exact
+          path="/login"
+          element={isLoggedIn === true ? <Home /> : <Login />}
+        />
+
+
 
 
 
