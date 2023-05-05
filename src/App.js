@@ -62,31 +62,31 @@ function App() {
         <Route
           exact
           path="/dashpages"
-          element={isLoggedIn === true ? <DashPages /> : <Login />}
+          element={isLoggedIn === true && isAdmin? <DashPages /> : <Login />}
         />
 
         <Route
           exact
           path="/dashcategories"
-          element={isLoggedIn === true ? <DashCategory /> : <Login />}
+          element={isLoggedIn === true && isAdmin ? <DashCategory /> : <Login />}
         />
 
         <Route
           exact
           path="/dashorders"
-          element={isLoggedIn === true ? <DashOrders /> : <Login />}
+          element={isLoggedIn === true && isAdmin? <DashOrders /> : <Login />}
         />
 
         <Route
           exact
           path="/dashusers"
-          element={isLoggedIn === true ? <DashUsers /> : <Login />}
+          element={isLoggedIn === true && isAdmin? <DashUsers /> : <Login />}
         />
 
         <Route
           exact
           path="/dashproducts"
-          element={isLoggedIn === true ? <DashProducts /> : <Login />}
+          element={isLoggedIn === true && isAdmin ? <DashProducts /> : <Login />}
         />
 
         <Route path="/" element={<Home />} />
