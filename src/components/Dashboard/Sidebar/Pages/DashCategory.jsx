@@ -133,7 +133,7 @@ function DashCategory() {
         </div>
 
         {isUpdateMode && (
-          <div className='container-info'>
+          <div className='container-info-edit'>
             <input
               className='inputadd'
               type='text'

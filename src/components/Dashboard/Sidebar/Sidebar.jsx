@@ -14,13 +14,7 @@ const Sidebar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  // const BlogmenuItem = [
-  //     {
-  //         path: "/dashblogs",
-  //         name: "Blogs",
-  //         icon: <FaSquare />,
-  //     },
-  // ];
+ 
 
   const InfomenuItem = [
     {
@@ -49,40 +43,7 @@ const Sidebar = ({ children }) => {
       name: "Users",
       icon: <FaTh />,
     },
-    // {
-    //     path: "/dashbio",
-    //     name: "Bio",
-    //     icon: <FaTh />,
-    // },
-    // {
-    //     path: "/dashendorsements&compliments",
-    //     name: "Endor&Compl",
-    //     icon: <FaTh />,
-    // },
-    // {
-    //     path: "/dashhighlights",
-    //     name: "Highlights",
-    //     icon: <FaTh />,
-    // },
-    // ,
-    // {
-    //     path: "/dashwnews&articles",
-    //     name: "News & Articles",
-    //     icon: <FaTh />,
-    // },
-    // {
-    //     path: "/dashsocialmediaaccounts",
-    //     name: "Social Accounts",
-    //     icon: <FaTh />,
-    // },
-    // { path: "/dashtalks&workshops", name: "Talks & Workshops", icon: <FaTh /> },
-
-    // { path: "/dashworkexperience", name: "Work Experience", icon: <FaTh /> },
-    // {
-    //     path: "/dashwriteupsprojects",
-    //     name: "Writeups Projects",
-    //     icon: <FaTh />,
-    // },
+ 
   ];
 
   return (
@@ -139,30 +100,8 @@ const Sidebar = ({ children }) => {
 
         <br></br>
 
-        {/* {BlogmenuItem.map((item, index) => (
-                    <NavLink
-                        className="link"
-                        to={item.path}
-                        key={index}
-                        activeClassName="active"
-                    >
-                        <div className="icon">{item.icon}</div>
-                        <div
-                            style={{ display: isOpen ? "block" : "none" }}
-                            className="link_text"
-                        >
-                            {item.name}
-                        </div>
-                    </NavLink>
-                ))} */}
 
-        <button
-          style={{ display: isOpen ? "block" : "none" }}
-          className='logoutBTN'
-          onClick={logOut}
-        >
-          Logout
-        </button>
+        
       </div>
       <div className='content'>{children}</div>
     </div>

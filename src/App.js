@@ -18,6 +18,7 @@ import DashProducts from './components/Dashboard/Sidebar/Pages/DashProducts';
 import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
 import Page404 from "./components/404PAge/Page404";
 import  secureLocalStorage  from  "react-secure-storage";
+import Scroll from "./components/Scroll/Scroll";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -102,7 +103,7 @@ function App() {
               path='DashProducts'
               element={<DashProducts />} />
           </Routes>
-    
+    <Scroll/>
         <Footer />
       </div>
     

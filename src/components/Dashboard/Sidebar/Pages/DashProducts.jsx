@@ -217,7 +217,7 @@ function Dashproducts() {
           </form>
         </div>
         {isUpdateMode && (
-          <div className='container-info'>
+          <div className='container-info-edit'>
             <input
               className='inputadd'
               type='text'
@@ -306,9 +306,9 @@ function Dashproducts() {
           </div>
         )}
         <div>
-          <table>
-            <thead>
-              <tr>
+          <table >
+            {/* <thead>
+              <tr className="product-table-thead-tr">
                 <th scope='col'>NB</th>
                 <th scope='col'>Name</th>
                 <th scope='col'>Price</th>
@@ -321,10 +321,10 @@ function Dashproducts() {
                 <th scope='col'>Images</th>
                 <th scope='col'>Buttons</th>
               </tr>
-            </thead>
-            <tbody>
+            </thead> */}
+            <tbody className="product-table-tbody">
               {allProducts.map((info, index) => (
-                <tr key={index}>
+                <tr className="product-table-tbody-tr" key={index}>
                   <td>{index + 1}</td>
                   <td>{info.name}</td>
                   <td>{info.price}</td>
@@ -345,8 +345,8 @@ function Dashproducts() {
                       </p>
                     ))}
                   </td>
-                  <td>
-                    <img src={info.image} alt={info.image} />
+                  <td className="product-dash-image">
+                    <img src={info.image} alt={info.image}  />
                   </td>
                   <td>
                     <img src={info.images} alt={info.images} />

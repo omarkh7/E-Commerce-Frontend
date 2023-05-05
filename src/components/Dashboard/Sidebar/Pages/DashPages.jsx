@@ -112,7 +112,7 @@ function DashPages() {
         <div>
           <form
             ref={selectedInfo}
-            className='contact-formm'
+            // className='contact-formm'
             encType='multipart/form-data'
           >
             <input
@@ -154,7 +154,7 @@ function DashPages() {
         </div>
 
         {isUpdateMode && (
-          <div className='container-info'>
+          <div className='container-info-edit'>
             <input
               className='inputadd'
               type='text'
@@ -203,7 +203,7 @@ function DashPages() {
           </div>
         )}
         <div>
-          <table>
+          <table className="dashboard-table">
             <thead>
               <tr>
                 <th scope='col'>NB</th>
