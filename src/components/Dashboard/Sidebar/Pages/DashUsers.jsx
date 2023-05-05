@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Pages.css";
 import Sidebar from "../Sidebar";
+import secureLocalStorage from "react-secure-storage";
 
 function YourComponent() {
   const form = useRef();
@@ -26,18 +27,19 @@ function YourComponent() {
     fetchData();
   }, []);
 
-  async function fetchData() {
+    async function fetchData() {
+        
+    const token = secureLocalStorage.getItem("token");
+      
     try {
-      // Retrieve the token from local storage
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGE5NTRjOTU5OTRhM2Q2MWEwNWJlOSIsImlhdCI6MTY4MjYxMTI4MywiZXhwIjoxNjgyNjEzMDgzfQ.QPq8g25pRVDt91P12qvirDYmd4z_3sp3RoNHrFT3kIk";
-
-      // Set the authorization header for Axios
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-      // Make the GET request
+        
       const response = await axios.get(
-        "http://localhost:8000/api/users/getall"
+        "http://localhost:8000/api/users/getall",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       // Set the items in state
@@ -48,39 +50,39 @@ function YourComponent() {
     }
   }
 
-  // const handleAdd = async (e) => {
-  //     e.preventDefault();
-  //     const formData = new FormData();
-  //     formData.append("fullName", newInfo.fullName);
-  //     formData.append("email", newInfo.email);
-  //     formData.append("password", newInfo.password);
-  //     formData.append("phoneNumber", newInfo.phoneNumber);
-  //     formData.append("location", newInfo.location);
-  //     try {
-  //         const response = await axios.post(
-  //             "http://localhost:8000/api/users/register", formData,
-  //             {
-  //                 headers: {
-  //                     'Content-Type': 'application/x-www-form-urlencoded'
-  //                 },
-  //             }
-  //         );
-  //         console.log("RESPONSE",response)
+  const handleAdd = async (e) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("fullName", newInfo.fullName);
+      formData.append("email", newInfo.email);
+      formData.append("password", newInfo.password);
+      formData.append("phoneNumber", newInfo.phoneNumber);
+      formData.append("location", newInfo.location);
+      try {
+          const response = await axios.post(
+              "http://localhost:8000/api/users/register", formData,
+              {
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                  },
+              }
+          );
+          console.log("RESPONSE",response)
 
-  //         toast.success("Added Successfully", 2000);
-  //         fetchData();
-  //         setNewInfo({
-  //             fullName: '',
-  //             email: '',
-  //             password: '',
-  //             phoneNumber: '',
-  //             location: '',
+          toast.success("Added Successfully", 2000);
+          fetchData();
+          setNewInfo({
+              fullName: '',
+              email: '',
+              password: '',
+              phoneNumber: '',
+              location: '',
 
-  //         });
-  //     } catch (error) {
-  //         console.error(error);
-  //     }
-  // };
+          });
+      } catch (error) {
+          console.error(error);
+      }
+  };
 
   const deleteUser = async (id) => {
     await axios.delete(`http://localhost:8000/api/users/delete/${id}`);
@@ -93,7 +95,7 @@ function YourComponent() {
       <Sidebar />
       <div className='container-info'>
         <div>
-          {/* <form
+           <form
                         ref={selectedInfo}
                         className="contact-formm"
                         encType="multipart/form-data"
@@ -139,12 +141,12 @@ function YourComponent() {
                                 setNewInfo({ ...newInfo, location: e.target.value })
                             }
                             placeholder="Enter Location"
-                        /> */}
+                        /> 
 
-          {/* <button className="buttonadd" onClick={handleAdd}>
+         <button className="buttonadd" onClick={handleAdd}>
                             Add
-                        </button> */}
-          {/* </form> */}
+                        </button> 
+          </form> 
         </div>
 
         <div>

@@ -79,7 +79,7 @@ function App() {
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
           <Route path='/single-category/:categoryId' element={<SingleCategory/>} />
         <Route path='/error' element={<Page404/>}/>
-           {/* <Route
+           <Route
               exact
               path='/DashPages'
               element={<DashPages />} />
@@ -100,7 +100,7 @@ function App() {
             <Route
               exact
               path='DashProducts'
-              element={<DashProducts />} /> */}
+              element={<DashProducts />} />
           </Routes>
     
         <Footer />
