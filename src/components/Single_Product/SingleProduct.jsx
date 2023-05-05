@@ -9,12 +9,13 @@ function SingleProduct() {
 
   const [alldata, setAllData] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [isProductDisabled, setIsProductDisabled] = useState(false);
   const [cart, setCart] = useState([]);
  const [message, setMessage] = useState("");
- const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  
 
 
   console.log("selectedSize: ", selectedSize);
@@ -106,15 +107,16 @@ function SingleProduct() {
    };
 
 
- 
+   const specificData = alldata && alldata[0].attribute.filter((i) => i.size == selectedSize)
+  console.log('specificData',specificData)
 
   return (
     <div className="product-details-container">
       {alldata ? (
         alldata.map((product) => {
           const allSizes = product.attribute.map((attr) => attr.size);
-          const allColors = product.attribute.map((attr) => attr.color);
-          const allquantity = product.attribute.map((attr) => attr.quantity);
+          // const allColors = product.attribute.map((attr) => attr.color);
+          // const allquantity = product.attribute.map((attr) => attr.quantity);
 
           return (
             <div key={product._id} className='product-details'>
@@ -165,10 +167,15 @@ function SingleProduct() {
                       onChange={(e) => setSelectedColor(e.target.value)}
                     >
                       <option value=''>Select a Color</option>
-                      {allColors.map((color, index) => (
+                      {/* {allColors.map((color, index) => (
                         <option key={index} value={color}>
                           {color}
                         </option>
+                      ))} */}
+                      {specificData.map((item, index) => (
+                      <option key={index} value={item.color}>
+                        {item.color}
+                      </option>
                       ))}
                     </select>
                   </div>
