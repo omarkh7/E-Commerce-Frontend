@@ -31,6 +31,8 @@ const SignIn = ({ onSignupClick }) => {
         window.localStorage.setItem("role", res.data.role);
         window.localStorage.setItem("loggedIn", true);
         setErrMsg("you are loggedin ");
+        navigate("/");
+
         setTimeout(() => setErrMsg(""), 3000);
         window.location.reload();
       })

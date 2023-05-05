@@ -19,17 +19,23 @@ import DashUsers from './components/Dashboard/Sidebar/Pages/DashUsers'
 import Page404 from "./components/404PAge/Page404";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    window.localStorage.getItem("loggedIn")
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(window.localStorage.getItem("loggedIn"));
+    changeLoggedIn()
   }, []);
+
+  const changeLoggedIn = ()=>{
+    let loggedin =  window.localStorage.getItem("loggedIn");
+    if(loggedin)
+      setIsLoggedIn(true)
+    else
+      setIsLoggedIn(false)
+  }
 
   return (
     <div className="App">
-      <Navhead />
+      <Navhead isLoggedIn={isLoggedIn} setIsLoggedIn={changeLoggedIn}/>
 
         <Routes>
 
@@ -44,12 +50,14 @@ function App() {
           path="/dashboard"
           element={isLoggedIn === "true" ? <DashCategory /> : <Login />}
         />
+        
+          <Route path='/login' element= {<Login/>} />
+
 
 
           <Route path='/' element={<Home />} />
           <Route path='/about' element ={<About />} />
           <Route path='/contact' element= {<ContactForm />} />
-          <Route path='/login' element= {<Login/>} />
           <Route path='/terms' element={<Home />} />
           <Route path='/refund' element={<Home />} />
           <Route path='/single-product/:productId' element={<SingleProduct/>} />
