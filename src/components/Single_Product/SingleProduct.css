@@ -235,7 +235,10 @@ font-size: 1rem;
     pointer-events: none;
   }
   
-
+  .new-release{
+    font-size: 20px;
+    color:#a9d890;
+  }
   
 @media screen and (max-width: 768px) {
 

@@ -46,11 +46,23 @@ row-gap: 3rem;}
 }
 
 .new-release-home{
-  color:red;
+  color:#000000;
   font-weight: 500;
   position: absolute;
-  font-size: 40px;
-  margin-right: 13rem;
+  margin-right: 16.5rem;
+ 
+}
+
+.new-release-home::after{
+  content: "new";
+  background-color: #a9d890;
+  color: white;
+  padding: 12px 8px;
+  border-radius: 50%;
+  font-weight: 500;
+  position: absolute;
+  font-size: 12px;
+ 
 }
 
 @media screen and (max-width: 768px) {

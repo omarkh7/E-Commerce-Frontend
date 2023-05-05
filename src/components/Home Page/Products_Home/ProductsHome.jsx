@@ -44,7 +44,7 @@ function ProductsHome() {
             .map((item) => (
               <div className='ticp' key={item._id}>
                 {item.is_new_release && (
-                  <p className='new-release-home'> <RiBookmarkFill/></p>
+                  <p className='new-release-home'> </p>
                 )}
                
                 <Link to={`single-product/${item._id}`}>
