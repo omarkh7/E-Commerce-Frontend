@@ -132,9 +132,9 @@ function DashOrders() {
           </div>
         )}
         <div>
-          <table>
-            <thead>
-              <tr>
+          <table className="order-dash-table">
+            <thead >
+              <tr className="order-table-thead-tr">
                 <th scope='col'>NB</th>
                 <th scope='col'>quantity</th>
                 <th scope='col'>Order Status</th>
@@ -149,9 +149,9 @@ function DashOrders() {
                 <th scope='col'>Total Price</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody  className="order-table-tbody">
               {allOrders.map((info, index) => (
-                <tr>
+                <tr >
                   <td>{index + 1}</td>
                   <td>{info.cart.map((info) => info.quantity)}</td>
                   <td>{info.status ? "Delivered" : "pending"}</td>
