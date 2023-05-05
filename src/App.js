@@ -56,41 +56,43 @@ function App() {
         <Route
           exact
           path="/dashboard"
-          element={
-            isLoggedIn === true && isAdmin ? <Dashboard /> : <Login />
-          }
+          element={isLoggedIn === true && isAdmin ? <Dashboard /> : <Login />}
         />
         <Route
           exact
           path="/dashpages"
-          element={isLoggedIn === true && isAdmin? <DashPages /> : <Login />}
+          element={isLoggedIn === true && isAdmin ? <DashPages /> : <Login />}
         />
 
         <Route
           exact
           path="/dashcategories"
-          element={isLoggedIn === true && isAdmin ? <DashCategory /> : <Login />}
+          element={
+            isLoggedIn === true && isAdmin ? <DashCategory /> : <Login />
+          }
         />
 
         <Route
           exact
           path="/dashorders"
-          element={isLoggedIn === true && isAdmin? <DashOrders /> : <Login />}
+          element={isLoggedIn === true && isAdmin ? <DashOrders /> : <Login />}
         />
 
         <Route
           exact
           path="/dashusers"
-          element={isLoggedIn === true && isAdmin? <DashUsers /> : <Login />}
+          element={isLoggedIn === true && isAdmin ? <DashUsers /> : <Login />}
         />
 
         <Route
           exact
           path="/dashproducts"
-          element={isLoggedIn === true && isAdmin ? <DashProducts /> : <Login />}
+          element={
+            isLoggedIn === true && isAdmin ? <DashProducts /> : <Login />
+          }
         />
-   
 
+        <Route path="/*" element={<Page404 />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactForm />} />
@@ -101,7 +103,6 @@ function App() {
           path="/single-category/:categoryId"
           element={<SingleCategory />}
         />
-        <Route path="/error" element={<Page404 />} />
       </Routes>
       <Scroll />
       <Footer />
