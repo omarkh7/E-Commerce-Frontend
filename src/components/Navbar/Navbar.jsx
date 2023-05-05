@@ -9,20 +9,6 @@ function Navbar() {
   const isAdmin = localStorage.getItem("role") === "admin";
   const role = isAdmin ? "admin" : "user";
 
-// const fetchedAdmin = async () => {
-//   try {
-//     const token = localStorage.getItem("token");
-//     const response = await axios.get("http://localhost:8000/api/users/auth/user-role", {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     if (response.data.role === "admin") {
-//     } 
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
   return (
     <div className='navbar'>
       {" "}

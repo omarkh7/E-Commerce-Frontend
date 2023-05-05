@@ -9,13 +9,14 @@ import SearchResultsList from "../Search /SearchResultsList";
 import LoadingSearch from "../Search /LoadingSearch";
 import { Link } from 'react-router-dom';
 
-function Navhead() {
+function Navhead(props) {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+
   return (
     <header className='navhead pre-header'>
-      <div>
+      <div>Navhead
       <Link to="/">
         <img className='logo-header' src={Logo} alt='logo' />
         </Link>
@@ -30,7 +31,7 @@ function Navhead() {
           <SearchResultsList results={results} />
         </div>
         <div className='navicons'>
-          <NavIcons />
+          <NavIcons isLoggedin={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn}/>
         </div>
       </div>
       <div className='nav-navMobile'>
@@ -47,7 +48,7 @@ function Navhead() {
           )}
         </div>
         <div>
-          <NavIcons />
+          <NavIcons isLoggedin={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn}/>
         </div>
       </div>
     </header>

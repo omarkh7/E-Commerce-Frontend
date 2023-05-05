@@ -50,14 +50,9 @@ const SignUp = ({ onBackToLoginClick, setIsLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (fullName && email && password && location && phoneNumber) {
-    //   fetchRegister();
-    //   onBackToLoginClick();
-    // } else {
-    //   console.log("Please fill out all required fields");
-    // }
+ 
     fetchRegister();
-    // setIsLogin(true)
+  
   };
 
   return (
