@@ -47,7 +47,7 @@ function ProductsHome() {
                   <p className='new-release-home'> </p>
                 )}
                
-                <Link to={`single-product/${item._id}`}>
+                <Link to={`/single-product/${item._id}`}>
                   <img className='img_products_home' src={`${item.image}`} />
                   <Fragment>
                     <h5>{item.category ? item.category.name : "N/A"}</h5>

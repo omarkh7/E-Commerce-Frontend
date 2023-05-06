@@ -5,14 +5,14 @@
 .compflexbutton {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 10px
 }
 
 .sidebar {
-    background: #223950;
+    background: #a9d890;
     color: #fff;
-    height: 100vh;
+
     transition: all 0.5s;
 }
 
@@ -21,9 +21,15 @@
     align-items: center;
     padding: 20px 15px;
 }
+.top_section >a {
+    text-decoration: none;
+
+}
 
 .logo {
     font-size: 30px;
+    color: #fff;
+    
 }
 
 .bars {
@@ -41,13 +47,13 @@
 }
 
 .link:hover {
-    background: lightskyblue;
+    background: rgba(0, 0, 0, 0.342);
     color: #000;
     transition: all 0.5s;
 }
 
 .active {
-    background: lightskyblue;
+    background:  rgba(0, 0, 0, 0.342);
     color: #000;
 }
 
@@ -62,17 +68,7 @@
     text-decoration: none;
 }
 
-.logoutBTN {
-    margin: 20px;
-    padding: 1em;
-    background-color: #6ad3b1;
-    color: #11171d;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.5s ease;
-}
+
 
 @media (max-width: 767px) {
 
