@@ -132,7 +132,7 @@ function SingleProduct() {
               </div>
               <div className='product-info'>
                 {product.is_new_release && (
-                  <p className='new-release-home'>New release!</p>
+                  <p className="new-release">New release!</p>
                 )}
                 <h1 className='product-name'>{product.name}</h1>
                 <p className='product-category'>{product.category.name}</p>
