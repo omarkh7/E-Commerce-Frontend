@@ -14,12 +14,13 @@ import ContactForm from "./components/Contact us /ContactForm";
 import DashCategory from "./components/Dashboard/Sidebar/Pages/DashCategory";
 import DashPages from "./components/Dashboard/Sidebar/Pages/DashPages";
 import DashOrders from "./components/Dashboard/Sidebar/Pages/DashOrders";
-import DashProducts from "./components/Dashboard/Sidebar/Pages/DashProducts";
+// import DashProducts from "./components/Dashboard/Sidebar/Pages/DashProducts";
 import DashUsers from "./components/Dashboard/Sidebar/Pages/DashUsers";
 import Page404 from "./components/404PAge/Page404";
 import secureLocalStorage from "react-secure-storage";
 import Scroll from "./components/Scroll/Scroll";
 import Dashboard from "./components/Dashboard/Dashboard";
+import DashAddProduct from "./components/Dashboard/Sidebar/Pages/DashAddProduct";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -88,7 +89,7 @@ function App() {
           exact
           path="/dashproducts"
           element={
-            isLoggedIn === true && isAdmin ? <DashProducts /> : <Login />
+            isLoggedIn === true && isAdmin ? <DashAddProduct /> : <Login />
           }
         />
 

@@ -146,7 +146,6 @@ function DashOrders() {
                 <th scope='col'>size</th>
                 <th scope='col'>FullName</th>
                 <th scope='col'>phoneNumber</th>
-                <th scope='col'>countInStock</th>
                 <th scope='col'>name</th>
                 <th scope='col'>Total Price</th>
               </tr>
@@ -174,9 +173,7 @@ function DashOrders() {
                   <td>{info.user_id?.fullName ?? ""}</td>
                   <td>{info.user_id?.phoneNumber ?? ""}</td>
 
-                  <td>
-                    {info.cart.map((info) => info.product_id.countInStock)}
-                  </td>
+
                   <td>{info.cart.map((info) => info.product_id.name)}</td>
                   <td>{info.total_price}</td>
                   <td>

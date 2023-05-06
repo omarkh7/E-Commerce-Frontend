@@ -134,7 +134,7 @@ function Dashproducts() {
     <div className='compflex'>
       <Sidebar />
       <div className='container-info'>
-      <h1 className="Item-dash-header">Products</h1>
+        <h1 className='Item-dash-header'>Products</h1>
 
         <div>
           <form
@@ -209,6 +209,7 @@ function Dashproducts() {
             />
             <input
               className='inputadd'
+              multiple='multiple'
               type='file'
               value={newInfo.images}
               onChange={(e) => handleImage(e)}
@@ -308,25 +309,10 @@ function Dashproducts() {
           </div>
         )}
         <div>
-          <table >
-            {/* <thead>
-              <tr className="product-table-thead-tr">
-                <th scope='col'>NB</th>
-                <th scope='col'>Name</th>
-                <th scope='col'>Price</th>
-                <th scope='col'>description</th>
-                <th scope='col'>countInStock</th>
-                <th scope='col'>Category</th>
-                <th scope='col'>Sizes</th>
-                <th scope='col'>Colors</th>
-                <th scope='col'>Image</th>
-                <th scope='col'>Images</th>
-                <th scope='col'>Buttons</th>
-              </tr>
-            </thead> */}
-            <tbody className="product-table-tbody">
+          <table>            
+            <tbody className='product-table-tbody'>
               {allProducts.map((info, index) => (
-                <tr className="product-table-tbody-tr" key={index}>
+                <tr className='product-table-tbody-tr' key={index}>
                   <td>{index + 1}</td>
                   <td>{info.name}</td>
                   <td>{info.price}</td>
@@ -347,8 +333,8 @@ function Dashproducts() {
                       </p>
                     ))}
                   </td>
-                  <td className="product-dash-image">
-                    <img src={info.image} alt={info.image}  />
+                  <td className='product-dash-image'>
+                    <img src={info.image} alt={info.image} />
                   </td>
                   <td>
                     <img src={info.images} alt={info.images} />
@@ -356,13 +342,13 @@ function Dashproducts() {
 
                   <td>
                     <button
-                      className='buttonedit'
+                      className='buttonedit-product'
                       onClick={() => handleUpdate(info)}
                     >
                       Edit
                     </button>
                     <button
-                      className='buttondelete'
+                      className='buttondelete-product'
                       onClick={() => deleteUser(info._id)}
                     >
                       Delete

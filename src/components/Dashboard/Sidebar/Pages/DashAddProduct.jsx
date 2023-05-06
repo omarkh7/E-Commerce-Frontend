@@ -3,30 +3,22 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Sidebar from "../Sidebar";
 
-const CreateProduct = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [isUpdateMode, setIsUpdateMode] = useState(false);
+const DashAddProduct = () => {
   const [selectedInfo, setSelectedInfo] = useState({});
+  const [allProducts, setAllProducts] = useState([]);
   const [infoImage, setInfoImage] = useState(null);
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [categoryName, setCategoryName] = useState("");
-  const [size, setSize] = useState([]);
-  const [color, setColor] = useState([]);
-  const [quantity, setQuantity] = useState([]);
-  const [price, setPrice] = useState("");
   const [images, setImages] = useState([]);
 
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [attributes, setAttributes] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [newInfo, setNewInfo] = useState({
     name: "",
     price: "",
     description: "",
     category: "",
-    size: "",
-    color: "",
-    quantity: "",
-    images: null,
+    attribute: [{ size: "", color: "", quantity: "" }],
+    images: [],
     image: null,
   });
 
@@ -38,37 +30,72 @@ const CreateProduct = () => {
     formData.append("price", newInfo.price);
     formData.append("description", newInfo.description);
     formData.append("category", newInfo.category);
+    formData.append("image", newInfo.image);
+    formData.append("attribute", JSON.stringify(newInfo.attribute));
 
-    // Append multiple images
-    for (let i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
-    }
-
-    // Append size, color, and quantity as arrays
-    for (let i = 0; i < size.length; i++) {
-      formData.append("size[]", newInfo.size[i]);
-      formData.append("color[]", newInfo.color[i]);
-      formData.append("quantity[]", newInfo.quantity[i]);
+    for (let i = 0; i < newInfo.images.length; i++) {
+      formData.append("images", newInfo.images[i]);
     }
 
     try {
       const response = await axios.post(
         "http://localhost:8000/api/products/createproduct",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-
       if (response.status !== 200) {
         throw new Error("Failed to create product");
       }
 
-      const product = response.data;
-      console.log("Product created:", product);
-      // Do something with the created product
+      setNewInfo({
+        name: "",
+        price: "",
+        description: "",
+        category: "",
+        attribute: [{ size: "", color: "", quantity: "" }],
+        images: [],
+        image: null,
+      });
     } catch (error) {
       console.error("Error creating product:", error);
-      // Handle the error
     }
   };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/category/allcategories"
+      );
+      setCategories(response.data.data);
+      console.log("cat", categories);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  function handleImage(e) {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setNewInfo((prevInfo) => ({ ...prevInfo, image: selectedFile }));
+    }
+  }
+
+  function handleImages(e) {
+    const filesArray = Array.from(e.target.files);
+    console.log("files", filesArray);
+    if (filesArray.length > 0) {
+      setNewInfo((prevInfo) => ({ ...prevInfo, images: filesArray }));
+    }
+  }
+
   const APIKEY = "http://localhost:8000/api/products/getproducts";
 
   const Products = async () => {
@@ -84,8 +111,55 @@ const CreateProduct = () => {
     Products();
   }, []);
 
-  const handleImage = (e) => {
-    setInfoImage(e.target.files[0]);
+  const deleteProduct = async (id) => {
+    await axios.delete(
+      `http://localhost:8000/api/products/deleteproduct/${id}`
+    );
+    toast.success("Deleted Successfully", 2000);
+    await Products();
+  };
+
+  const updateProduct = async (id) => {
+    const formData = new FormData();
+    formData.append("name", selectedInfo.name);
+    formData.append("price", selectedInfo.price);
+    formData.append("description", selectedInfo.description);
+    formData.append("category", selectedInfo.category);
+    formData.append("attribute", JSON.stringify(selectedInfo.attribute));
+
+    for (let i = 0; i < newInfo.images.length; i++) {
+      formData.append("images", newInfo.images[i]);
+    }
+
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/products/updateproduct/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      toast.success("Updated Successfully", 2000);
+      setIsUpdateMode(false);
+      Products();
+      if (response.status !== 200) {
+        throw new Error("Failed to update product");
+      }
+
+      setNewInfo({
+        name: "",
+        price: "",
+        description: "",
+        category: "",
+        attribute: [{ size: "", color: "", quantity: "" }],
+        images: [],
+        image: null,
+      });
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
   };
 
   const handleUpdate = (info) => {
@@ -93,45 +167,12 @@ const CreateProduct = () => {
     setIsUpdateMode(true);
   };
 
-  const updateUser = async () => {
-    const formData = new FormData();
-    formData.append("name", selectedInfo.name);
-    formData.append("price", selectedInfo.price);
-    formData.append("description", selectedInfo.description);
-    formData.append("category", selectedInfo.category);
-    formData.append("size", selectedInfo.size);
-    formData.append("color", selectedInfo.color);
-    formData.append("quantity", selectedInfo.quantity);
-    formData.append("images", infoImage);
-    console.log("UPDATE", isUpdateMode);
-
-    await axios.put(
-      `http://localhost:8000/api/pages/updatepage/${selectedInfo._id}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-    toast.success("Updated Successfully", 2000);
-    setIsUpdateMode(false);
-    Products();
-  };
-
-  const deleteUser = async (id) => {
-    await axios.delete(
-      `http://localhost:8000/api/products/deleteproduct/${id}`
-    );
-    toast.success("Deleted Successfully", 2000);
-    await allProducts();
-  };
-
   return (
     <div className='compflex'>
       <Sidebar />
       <div className='container-info'>
         <div>
+          <div className='add-new-product'> Add a new product</div>
           <form
             ref={selectedInfo}
             className='contact-formmm'
@@ -162,57 +203,146 @@ const CreateProduct = () => {
               }
               placeholder='Enter description'
             />
-            <input
-              className='inputadd'
-              type='text'
+
+            <select
+              id='category'
+              name='category'
               value={newInfo.category}
+              className='category-select'
               onChange={(e) =>
                 setNewInfo({ ...newInfo, category: e.target.value })
               }
-              placeholder='Enter Category'
-            />
-            <input
-              className='inputadd'
-              type='text'
-              value={newInfo.size}
-              onChange={(e) => setNewInfo({ ...newInfo, size: e.target.value })}
-              placeholder='Enter Sizes'
-            />
-            <input
-              className='inputadd'
-              type='text'
-              value={newInfo.color}
-              onChange={(e) =>
-                setNewInfo({ ...newInfo, color: e.target.value })
-              }
-              placeholder='Enter Colors'
-            />{" "}
-            <input
-              className='inputadd'
-              type='text'
-              value={newInfo.quantity}
-              onChange={(e) =>
-                setNewInfo({ ...newInfo, quantity: e.target.value })
-              }
-              placeholder='Enter Quantity'
-            />
+            >
+              <option value=''>Select a Category</option>
+              {categories?.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+            <ul>
+              {newInfo.attribute.map((attribute, index) => (
+                <li key={index} className='li-attribute'>
+                  <label>
+                    Size:
+                    <input
+                      type='text'
+                      name='size'
+                      className='attribute-input'
+                      value={attribute.size}
+                      required
+                      onChange={(e) => {
+                        const updatedAttribute = {
+                          ...newInfo.attribute[index],
+                          size: parseInt(e.target.value),
+                        };
+                        const updatedAttributes = [...newInfo.attribute];
+                        updatedAttributes[index] = updatedAttribute;
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: updatedAttributes,
+                        }));
+                      }}
+                    />
+                  </label>
+                  <label>
+                    Color:
+                    <input
+                      type='text'
+                      value={attribute.color}
+                      className='attribute-input'
+                      onChange={(e) => {
+                        const updatedAttribute = {
+                          ...newInfo.attribute[index],
+                          color: e.target.value,
+                        };
+                        const updatedAttributes = [...newInfo.attribute];
+                        updatedAttributes[index] = updatedAttribute;
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: updatedAttributes,
+                        }));
+                      }}
+                      required
+                    />
+                  </label>
+                  <label>
+                    Quantity:
+                    <input
+                      type='number'
+                      value={attribute.quantity}
+                      className='attribute-input'
+                      onChange={(e) => {
+                        const updatedAttribute = {
+                          ...newInfo.attribute[index],
+                          quantity: parseInt(e.target.value),
+                        };
+                        const updatedAttributes = [...newInfo.attribute];
+                        updatedAttributes[index] = updatedAttribute;
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: updatedAttributes,
+                        }));
+                      }}
+                      required
+                      min='0'
+                    />
+                  </label>
+                  {index == 0 ? (
+                    <button
+                      type='button'
+                      className='add-attribute'
+                      onClick={() => {
+                        console.log("newInfo", newInfo);
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: [
+                            ...newInfo.attribute,
+                            { size: "", color: "", quantity: 0 },
+                          ],
+                        }));
+                      }}
+                    >
+                      Add Attribute
+                    </button>
+                  ) : (
+                    <button
+                      type='button'
+                      className='add-attribute'
+                      onClick={() => {
+                        const updatedAttributes = [...newInfo.attribute];
+                        updatedAttributes.splice(index, 1);
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: updatedAttributes,
+                        }));
+                      }}
+                    >
+                      Remove Attribute
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
             <input
               className='inputadd'
               type='file'
-              value={newInfo.image}
               onChange={(e) => handleImage(e)}
             />
+
             <input
               className='inputadd'
               type='file'
-              value={newInfo.images}
-              onChange={(e) => handleImage(e)}
+              multiple
+              onChange={(e) => handleImages(e)}
             />
+
             <button className='buttonadd' onClick={handleFormSubmit}>
               Add
             </button>
           </form>
         </div>
+
         {isUpdateMode && (
           <div className='container-info'>
             <input
@@ -222,6 +352,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setSelectedInfo({ ...selectedInfo, name: e.target.value })
               }
+              placeholder='Enter Name'
             />
             <input
               className='inputadd'
@@ -230,6 +361,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setSelectedInfo({ ...selectedInfo, price: e.target.value })
               }
+              placeholder='Enter Price'
             />
             <input
               className='inputadd'
@@ -241,56 +373,120 @@ const CreateProduct = () => {
                   description: e.target.value,
                 })
               }
+              placeholder='Enter description'
             />
-            <input
-              className='inputadd'
-              type='text'
-              value={selectedInfo.countInStock}
-              onChange={(e) =>
-                setSelectedInfo({
-                  ...selectedInfo,
-                  countInStock: e.target.value,
-                })
-              }
-            />
-            <input
-              className='inputadd'
-              type='text'
+            <select
+              id='category'
+              name='category'
+              className='category-select'
               value={selectedInfo.category}
               onChange={(e) =>
                 setSelectedInfo({ ...selectedInfo, category: e.target.value })
               }
-            />
+            >
+              <option value=''>Select a Category</option>
+              {categories?.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+            <ul>
+              {selectedInfo.attribute.map((attribute, index) => (
+                <li key={index}>
+                  <label>Size:</label>
+                  <input
+                    type='text'
+                    name='size'
+                    // value={attribute.size}
+                    className='attribute-input'
+                    onChange={(e) =>
+                      setSelectedInfo({
+                        ...selectedInfo,
+                        size: e.target.value,
+                      })
+                    }
+                  />
+                  <label>
+                    Color:
+                    <input
+                      type='text'
+                      className='attribute-input'
+                      value={selectedInfo.color}
+                      onChange={(e) =>
+                        setSelectedInfo({
+                          ...selectedInfo,
+                          color: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </label>
+                  <label>
+                    Quantity:
+                    <input
+                      type='number'
+                      className='attribute-input'
+                      value={selectedInfo.quantity}
+                      onChange={(e) =>
+                        setSelectedInfo({
+                          ...selectedInfo,
+                          quantity: e.target.value,
+                        })
+                      }
+                      required
+                      min='0'
+                    />
+                  </label>
+                  {index == 0 ? (
+                    <button
+                      type='button'
+                      className='add-attribute'
+                      onClick={() => {
+                        console.log("newInfo", newInfo);
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: [
+                            ...newInfo.attribute,
+                            { size: "", color: "", quantity: 0 },
+                          ],
+                        }));
+                      }}
+                    >
+                      Add Attribute
+                    </button>
+                  ) : (
+                    <button
+                      type='button'
+                      className='add-attribute'
+                      onClick={() => {
+                        const updatedAttributes = [...newInfo.attribute];
+                        updatedAttributes.splice(index, 1);
+                        setNewInfo((prevInfo) => ({
+                          ...prevInfo,
+                          attribute: updatedAttributes,
+                        }));
+                      }}
+                    >
+                      Remove Attribute
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
             <input
               className='inputadd'
-              type='text'
-              value={selectedInfo.sizes}
-              onChange={(e) =>
-                setSelectedInfo({ ...selectedInfo, sizes: e.target.value })
-              }
-            />
-            <input
-              className='inputadd'
-              type='text'
-              value={selectedInfo.colors}
-              onChange={(e) =>
-                setSelectedInfo({ ...selectedInfo, colors: e.target.value })
-              }
+              type='file'
+              onChange={(e) => handleImage(e)}
             />
             <input
               className='inputadd'
               type='file'
-              value={newInfo.image}
-              onChange={(e) => setInfoImage(e.target.files[0])}
+              multiple
+              onChange={(e) => handleImages(e)}
             />{" "}
-            <input
-              className='inputadd'
-              type='file'
-              value={newInfo.images}
-              onChange={(e) => setInfoImage(e.target.files[0])}
-            />
             <div className='compflexbutton'>
-              <button className='buttonadd' onClick={() => updateUser()}>
+              <button className='buttonadd' onClick={updateProduct}>
                 Save
               </button>
               <button
@@ -304,7 +500,7 @@ const CreateProduct = () => {
         )}
         <div>
           <table>
-            <thead>
+            {/* <thead>
               <tr>
                 <th scope='col'>NB</th>
                 <th scope='col'>Name</th>
@@ -318,10 +514,10 @@ const CreateProduct = () => {
                 <th scope='col'>Images</th>
                 <th scope='col'>Buttons</th>
               </tr>
-            </thead>
-            <tbody>
+            </thead> */}
+            <tbody className='product-table-tbody'>
               {allProducts.map((info, index) => (
-                <tr key={index}>
+                <tr className='product-table-tbody-tr' key={index}>
                   <td>{index + 1}</td>
                   <td>{info.name}</td>
                   <td>{info.price}</td>
@@ -342,23 +538,23 @@ const CreateProduct = () => {
                       </p>
                     ))}
                   </td>
-                  <td>
+                  <td className='product-dash-image'>
                     <img src={info.image} alt={info.image} />
                   </td>
-                  <td>
+                  {/* <td>
                     <img src={info.images} alt={info.images} />
-                  </td>
+                  </td> */}
 
                   <td>
                     <button
-                      className='buttonedit'
+                      className='buttonedit-product'
                       onClick={() => handleUpdate(info)}
                     >
                       Edit
                     </button>
                     <button
-                      className='buttondelete'
-                      onClick={() => deleteUser(info._id)}
+                      className='buttondelete-product'
+                      onClick={() => deleteProduct(info._id)}
                     >
                       Delete
                     </button>
@@ -368,274 +564,11 @@ const CreateProduct = () => {
             </tbody>
           </table>
         </div>
+
         <ToastContainer />
       </div>
     </div>
   );
 };
 
-//     <div className="compflex">
-//       <Sidebar />
-//       <div className="container-info">
-//         <div>
-//           <form
-//             ref={selectedInfo}
-//             className="contact-formmm"
-//             encType="multipart/form-data"
-//           >
-//             <form onSubmit={handleFormSubmit}>
-//               <label htmlFor="name">Name:</label>
-//               <input
-//                 className="inputadd"
-//                 type="text"
-//                 id="name"
-//                 value={name}
-//                 onChange={(event) => setName(event.target.value)}
-//               />
-
-//               <label htmlFor="description">Description:</label>
-//               <textarea
-//                 className="inputadd"
-//                 id="description"
-//                 value={description}
-//                 onChange={(event) => setDescription(event.target.value)}
-//               ></textarea>
-
-//               <label htmlFor="category">Category:</label>
-//               <input
-//                 className="inputadd"
-//                 type="text"
-//                 id="category"
-//                 value={categoryName}
-//                 onChange={(event) => setCategoryName(event.target.value)}
-//               />
-
-//               {/* Add input fields for size, color, quantity */}
-//               {/* Example code for a single set of size, color, quantity fields */}
-//               <label htmlFor="size">Size:</label>
-//               <input
-//                 className="inputadd"
-//                 type="text"
-//                 id="size"
-//                 value={size[0]}
-//                 onChange={(event) => setSize([event.target.value])}
-//               />
-
-//               <label htmlFor="color">Color:</label>
-//               <input
-//                 className="inputadd"
-//                 type="text"
-//                 id="color"
-//                 value={color[0]}
-//                 onChange={(event) => setColor([event.target.value])}
-//               />
-
-//               <label htmlFor="quantity">Quantity:</label>
-//               <input
-//                 type="number"
-//                 id="quantity"
-//                 value={quantity[0]}
-//                 onChange={(event) => setQuantity([event.target.value])}
-//               />
-
-//               {/* Add input fields for price */}
-//               <label htmlFor="price">Price:</label>
-//               <input
-//                 className="inputadd"
-//                 type="number"
-//                 id="price"
-//                 value={price}
-//                 onChange={(event) => setPrice(event.target.value)}
-//               />
-
-//               {/* Add input field for images */}
-//               <label htmlFor="images">Images:</label>
-//               <input
-//                 className="inputadd"
-//                 type="file"
-//                 id="images"
-//                 multiple
-//                 onChange={(event) => setImages(event.target.files)}
-//               />
-//               <button type="submit">Create Product</button>
-//             </form>
-
-//             <tbody>
-//               {allProducts.map((info, index) => (
-//                 <tr key={index}>
-//                   <td>{index + 1}</td>
-//                   <td>{info.name}</td>
-//                   <td>{info.price}</td>
-//                   <td>{info.description}</td>
-//                   <td>{info.countInStock}</td>
-//                   <td>{info.category.name}</td>
-//                   <td>
-//                     {info.attribute.map((info, index) => (
-//                       <p>
-//                         Size {index}: {info.size}
-//                       </p>
-//                     ))}
-//                   </td>
-//                   <td>
-//                     {info.attribute.map((info, index) => (
-//                       <p>
-//                         Color {index}: {info.color}
-//                       </p>
-//                     ))}
-//                   </td>
-//                   <td>
-//                     <img src={info.image} alt={info.image} />
-//                   </td>
-//                   <td>
-//                     <img src={info.images} alt={info.images} />
-//                   </td>
-
-//                   <td>
-//                     <button
-//                       className="buttonedit"
-//                       onClick={() => handleUpdate(info)}
-//                     >
-//                       Edit
-//                     </button>
-//                     <button
-//                       className="buttondelete"
-//                       onClick={() => deleteUser(info._id)}
-//                     >
-//                       Delete
-//                     </button>
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-export default CreateProduct;
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const CreateProduct = () => {
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [category, setCategory] = useState('');
-//   const [size, setSize] = useState([]);
-//   const [color, setColor] = useState([]);
-//   const [quantity, setQuantity] = useState([]);
-//   const [price, setPrice] = useState('');
-//   const [images, setImages] = useState([]);
-
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append('name', name);
-//     formData.append('description', description);
-//     formData.append('category', category);
-//     formData.append('price', price);
-
-//     // Append multiple images
-//     for (let i = 0; i < images.length; i++) {
-//       formData.append('images', images[i]);
-//     }
-
-//     // Append size, color, and quantity as arrays
-//     for (let i = 0; i < size.length; i++) {
-//       formData.append('size[]', size[i]);
-//       formData.append('color[]', color[i]);
-//       formData.append('quantity[]', quantity[i]);
-//     }
-
-//     try {
-//       const response = await axios.post('http://localhost:8000/api/products/createproduct', formData);
-
-//       if (response.status !== 200) {
-//         throw new Error('Failed to create product');
-//       }
-
-//       const product = response.data;
-//       console.log('Product created:', product);
-//       // Do something with the created product
-//     } catch (error) {
-//       console.error('Error creating product:', error);
-//       // Handle the error
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleFormSubmit}>
-//       <label htmlFor="name">Name:</label>
-//       <input
-//         type="text"
-//         id="name"
-//         value={name}
-//         onChange={(event) => setName(event.target.value)}
-//       />
-
-//       <label htmlFor="description">Description:</label>
-//       <textarea
-//         id="description"
-//         value={description}
-//         onChange={(event) => setDescription(event.target.value)}
-//       ></textarea>
-
-//       <label htmlFor="category">Category:</label>
-//       <input
-//         type="text"
-//         id="category"
-//         value={category}
-//         onChange={(event) => setCategory(event.target.value)}
-//       />
-
-//       {/* Add input fields for size, color, quantity */}
-//       {/* Example code for a single set of size, color, quantity fields */}
-//       <label htmlFor="size">Size:</label>
-//       <input
-//         type="text"
-//         id="size"
-//         value={size[0]}
-//         onChange={(event) => setSize([event.target.value])}
-//       />
-
-//       <label htmlFor="color">Color:</label>
-//       <input
-//         type="text"
-//         id="color"
-//         value={color[0]}
-//         onChange={(event) => setColor([event.target.value])}
-//       />
-
-//       <label htmlFor="quantity">Quantity:</label>
-//       <input
-//         type="number"
-//         id="quantity"
-//         value={quantity[0]}
-//         onChange={(event) => setQuantity([event.target.value])}
-//       />
-
-//       {/* Add input fields for price */}
-//       <label htmlFor="price">Price:</label>
-//       <input
-//         type="number"
-//         id="price"
-//         value={price}
-//         onChange={(event) => setPrice(event.target.value)}
-//       />
-
-//       {/* Add input field for images */}
-//       <label htmlFor="images">Images:</label>
-//       <input
-//         type="file"
-//         id="images"
-//         multiple onChange={(event) => setImages(event.target.files)}
-// />
-// <button type="submit">Create Product</button>
-// </form>
-// );
-// };
-
-// export default CreateProduct;
+export default DashAddProduct;
