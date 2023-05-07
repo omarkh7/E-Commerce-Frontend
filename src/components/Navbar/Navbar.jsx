@@ -14,17 +14,11 @@ function Navbar() {
   return (
     <div className='navbar'>
       {" "}
-  
-
-{isAdmin && (
-   <Link  to="/dashboard" style={{ textDecoration: "none" }}>
- <div className="navbar-divstyle" >
-      Dashboard
-        </div>
-       </Link>
-            )}
-
-
+      {isAdmin && (
+        <Link to='/dashboard' style={{ textDecoration: "none" }}>
+          <div className='navbar-divstyle'>Dashboard</div>
+        </Link>
+      )}
       <Link to='/' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Home </div>
       </Link>{" "}
@@ -45,7 +39,8 @@ function Navbar() {
             </Link>
 
             <Link
-              to='/single-category/6437ba63a671878f61ce7e40'
+              to='/single-category/6437ba63a671878f61ce7e40
+'
               onClick={() =>
                 (window.location.href =
                   "/single-category/6437ba63a671878f61ce7e40")
@@ -54,10 +49,10 @@ function Navbar() {
               Lowtop sneakers{" "}
             </Link>
             <Link
-              to='/single-category/6437ba7ba671878f61ce7e426437ba7ba671878f61ce7e42'
+              to='/single-category/6437ba7ba671878f61ce7e42'
               onClick={() =>
                 (window.location.href =
-                  "/single-category/6437ba63a671878f61ce7e40")
+                  "/single-category/6437ba7ba671878f61ce7e42")
               }
             >
               Athletic shoes
@@ -66,7 +61,7 @@ function Navbar() {
               to='/single-category/643feab292947e7429c6dfc2'
               onClick={() =>
                 (window.location.href =
-                  "/single-category/6437ba63a671878f61ce7e40")
+                  "/single-category/643feab292947e7429c6dfc2")
               }
             >
               Retro Shoes{" "}
@@ -79,7 +74,7 @@ function Navbar() {
               href='#'
               onClick={() =>
                 (window.location.href =
-                  "/single-category/643feb6092947e7429c6dfc4retroretro")
+                  "/single-category/643feb6092947e7429c6dfc4")
               }
             >
               Slides
@@ -103,10 +98,6 @@ function Navbar() {
       <Link to='contact' style={{ textDecoration: "none" }}>
         <div className='navbar-divstyle'>Contact Us </div>
       </Link>
-
-    
-      
-    
       <div className='nav-dropdown'>
         <div className='dropdown-button navbar-divstyle'> Other Links</div>
 

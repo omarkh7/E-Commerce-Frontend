@@ -69,7 +69,7 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.15 }}
             >
               Hightop sneakers
             </motion.div>
@@ -86,7 +86,7 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.19 }}
             >
               Lowtop sneakers
             </motion.div>
@@ -103,7 +103,7 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.2 }}
             >
               Athletic shoes
             </motion.div>
@@ -120,38 +120,52 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.24 }}
             >
               Retro Shoes
             </motion.div>
           </Link>
-          <a
-            href='#'
-            onClick={() =>
-              (window.location.href =
-                "/single-category/643feb6092947e7429c6dfc4retroretro")
-            }
-            style={{ textDecoration: "none" }}
+          <motion.div
+            initial={animatedForm}
+            animate={animatedTo}
+            onClick={() => closeMobileMenu()}
+            transition={{ delay: 0.29 }}
           >
-            Slides
-          </a>
-          <a
-            href='#'
-            onClick={() =>
-              (window.location.href =
-                "/single-category/643feb6d92947e7429c6dfc6")
-            }
-            style={{ textDecoration: "none" }}
+            <a
+              href='#'
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/643feb6092947e7429c6dfc4retroretro")
+              }
+              style={{ textDecoration: "none" }}
+            >
+              Slides
+            </a>
+          </motion.div>
+          <motion.div
+            initial={animatedForm}
+            animate={animatedTo}
+            onClick={() => closeMobileMenu()}
+            transition={{ delay: 0.3 }}
           >
-            Socks
-          </a>
+            <a
+              href='#'
+              onClick={() =>
+                (window.location.href =
+                  "/single-category/643feb6d92947e7429c6dfc6")
+              }
+              style={{ textDecoration: "none" }}
+            >
+              Socks
+            </a>
+          </motion.div>
 
           <Link to='about' style={{ textDecoration: "none" }}>
             <motion.div
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.35 }}
             >
               About Us
             </motion.div>
@@ -161,11 +175,10 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.39 }}
             >
               Contact Us
             </motion.div>
- 
           </Link>
           <Link to='terms' style={{ textDecoration: "none" }}>
             <motion.div
@@ -182,7 +195,7 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.45 }}
             >
               Refund and Return
             </motion.div>
@@ -192,7 +205,7 @@ function NavbarMobile() {
               initial={animatedForm}
               animate={animatedTo}
               onClick={() => closeMobileMenu()}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.5 }}
             >
               Privacy Policy
             </motion.div>
