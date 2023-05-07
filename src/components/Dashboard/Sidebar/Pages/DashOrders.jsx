@@ -14,8 +14,7 @@ function DashOrders() {
 
   async function fetchData() {
     try {
-
-         const token = secureLocalStorage.getItem("token");
+      const token = secureLocalStorage.getItem("token");
       const response = await axios.get(
         "https://e-commerce-back-end-production.up.railway.app/api/authorized/orders",
         {
@@ -36,15 +35,16 @@ function DashOrders() {
     fetchData();
   }, []);
 
-
-    const deleteUser = async (id) => {
-      
+  const deleteUser = async (id) => {
     const token = secureLocalStorage.getItem("token");
-    await axios.delete(`https://e-commerce-back-end-production.up.railway.app/api/authorized/orders/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await axios.delete(
+      `https://e-commerce-back-end-production.up.railway.app/api/authorized/orders/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     toast.success("Deleted Successfully", 2000);
     await fetchData();
   };
@@ -53,7 +53,6 @@ function DashOrders() {
     setSelectedInfo(info);
     setIsUpdateMode((current) => !current);
   };
-
 
   const updateUser = async () => {
     const updatedCart = selectedInfo.cart.map((item) => ({
@@ -68,9 +67,9 @@ function DashOrders() {
       payment_status: selectedInfo.payment_status,
       cart: updatedCart,
     };
-  
+
     const token = secureLocalStorage.getItem("token");
-      
+
     await axios.put(
       `https://e-commerce-back-end-production.up.railway.app/api/authorized/orders/${selectedInfo._id}`,
       updatedInfo,
@@ -86,27 +85,27 @@ function DashOrders() {
     fetchData();
   };
   return (
-    <div className='compflex'>
+    <div className="compflex">
       <Sidebar />
-      <div className='container-info'>
-      <h1 className="Item-dash-header">Orders</h1>
+      <div className="container-info">
+        <h1 className="Item-dash-header">Orders</h1>
 
         {isUpdateMode && (
-          <div className='container-info'>
+          <div className="container-info">
             <p>Order Status</p>
             <input
-              className='checkbox_dash'
-              type='checkbox'
+              className="checkbox_dash"
+              type="checkbox"
               value={selectedInfo.status}
               checked={selectedInfo.status}
               onChange={(e) =>
                 setSelectedInfo({ ...selectedInfo, status: e.target.checked })
               }
             />
-            <p className='Payment_status_dash'>Payment Status</p>
+            <p className="Payment_status_dash">Payment Status</p>
             <input
-              className='checkbox_dash'
-              type='checkbox'
+              className="checkbox_dash"
+              type="checkbox"
               value={selectedInfo.payment_status}
               checked={selectedInfo.payment_status}
               onChange={(e) =>
@@ -117,12 +116,12 @@ function DashOrders() {
               }
             />
 
-            <div className='compflexbutton'>
-              <button className='buttonadd' onClick={updateUser}>
+            <div className="compflexbutton">
+              <button className="buttonadd" onClick={updateUser}>
                 Save
               </button>
               <button
-                className='buttonadd'
+                className="buttonadd"
                 onClick={() => setIsUpdateMode(false)}
               >
                 Cancel
@@ -132,24 +131,24 @@ function DashOrders() {
         )}
         <div>
           <table className="order-dash-table">
-            <thead >
+            <thead>
               <tr className="order-table-thead-tr">
-                <th scope='col'>NB</th>
-                <th scope='col'>quantity</th>
-                <th scope='col'>Order Status</th>
-                <th scope='col'>Payment Status</th>
-                <th scope='col'>Ordered At</th>
-                <th scope='col'>Color</th>
-                <th scope='col'>size</th>
-                <th scope='col'>FullName</th>
-                <th scope='col'>phoneNumber</th>
-                <th scope='col'>name</th>
-                <th scope='col'>Total Price</th>
+                <th scope="col">NB</th>
+                <th scope="col">quantity</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Ordered At</th>
+                <th scope="col">Color</th>
+                <th scope="col">size</th>
+                <th scope="col">FullName</th>
+                <th scope="col">phoneNumber</th>
+                <th scope="col">name</th>
+                <th scope="col">Total Price</th>
               </tr>
             </thead>
-            <tbody  className="order-table-tbody">
+            <tbody className="order-table-tbody">
               {allOrders.map((info, index) => (
-                <tr >
+                <tr>
                   <td>{index + 1}</td>
                   <td>{info.cart.map((info) => info.quantity)}</td>
                   <td>{info.status ? "Delivered" : "pending"}</td>
@@ -170,18 +169,17 @@ function DashOrders() {
                   <td>{info.user_id?.fullName ?? ""}</td>
                   <td>{info.user_id?.phoneNumber ?? ""}</td>
 
-
                   <td>{info.cart.map((info) => info.product_id.name)}</td>
                   <td>{info.total_price}</td>
                   <td>
                     <button
-                      className='buttonedit'
+                      className="buttonedit"
                       onClick={() => handleUpdate(info)}
                     >
                       Edit
                     </button>
                     <button
-                      className='buttondelete'
+                      className="buttondelete"
                       onClick={() => deleteUser(info._id)}
                     >
                       Delete
