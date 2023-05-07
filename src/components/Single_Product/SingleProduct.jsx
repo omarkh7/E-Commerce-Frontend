@@ -26,7 +26,7 @@ function SingleProduct() {
       const response = await axios.get(apiURL);
       setAllData([response.data.product]);
       setLoading(false);
-
+console.log("set", [response.data.product]);
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -103,7 +103,9 @@ function SingleProduct() {
    };
 
 
-   const specificData = alldata && alldata[0].attribute.filter((i) => i.size == selectedSize)
+  const specificData = alldata && alldata[0].attribute.filter((i) => i.size == selectedSize)
+  const allSizes = alldata && alldata[0].attribute.map((item) => item.size);
+  const uniqueSizes = Array.from(new Set(allSizes));
 
   return (
     <div className="product-details-container">
@@ -117,6 +119,9 @@ function SingleProduct() {
             <div key={product._id} className='product-details'>
               <div className='image-wrapper'>
                 <ul>
+                  <li>
+                    <img src={product.image} alt='' />
+                  </li>
                   {product.images &&
                     product.images.map((image, index) => (
                       <li key={index}>
@@ -127,7 +132,7 @@ function SingleProduct() {
               </div>
               <div className='product-info'>
                 {product.is_new_release && (
-                  <p className="new-release">New release!</p>
+                  <p className='new-release'>New release!</p>
                 )}
                 <h1 className='product-name'>{product.name}</h1>
                 <p className='product-category'>{product.category.name}</p>
@@ -144,7 +149,7 @@ function SingleProduct() {
                       onChange={(e) => setSelectedSize(e.target.value)}
                     >
                       <option value=''>Select a Size</option>
-                      {allSizes.map((size, index) => (
+                      {uniqueSizes.map((size, index) => (
                         <option key={index} value={size}>
                           {size}
                         </option>
@@ -168,9 +173,9 @@ function SingleProduct() {
                         </option>
                       ))} */}
                       {specificData.map((item, index) => (
-                      <option key={index} value={item.color}>
-                        {item.color}
-                      </option>
+                        <option key={index} value={item.color}>
+                          {item.color}
+                        </option>
                       ))}
                     </select>
                   </div>
