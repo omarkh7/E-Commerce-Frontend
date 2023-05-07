@@ -7,7 +7,7 @@ const [alldata, setAllData] = useState([]);
 const [loading,setLoading] = useState(true);
 
 
-  const apiURL = "http://localhost:8000/api/products/getproducts";
+  const apiURL = "https://e-commerce-back-end-production.up.railway.app/api/products/getproducts";
 
   const fetchAllData = async () => {
     try {

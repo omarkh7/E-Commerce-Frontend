@@ -24,7 +24,7 @@ function Dashproducts() {
     images: null,
   });
 
-  const APIKEY = "http://localhost:8000/api/products/getproducts";
+  const APIKEY = "https://e-commerce-back-end-production.up.railway.app/api/products/getproducts";
 
   const Products = async () => {
     try {
@@ -55,7 +55,7 @@ function Dashproducts() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/products/createproduct",
+        "https://e-commerce-back-end-production.up.railway.app/api/products/createproduct",
         formData,
         {
           headers: {
@@ -85,7 +85,7 @@ function Dashproducts() {
 
   const deleteUser = async (id) => {
     await axios.delete(
-      `http://localhost:8000/api/products/deleteproduct/${id}`
+      `https://e-commerce-back-end-production.up.railway.app/api/products/deleteproduct/${id}`
     );
     toast.success("Deleted Successfully", 2000);
     await Products();
@@ -114,7 +114,7 @@ function Dashproducts() {
 
 
     await axios.put(
-      `http://localhost:8000/api/products/updateproduct/${selectedInfo._id}`,
+      `https://e-commerce-back-end-production.up.railway.app/api/products/updateproduct/${selectedInfo._id}`,
       formData,
       {
         headers: {

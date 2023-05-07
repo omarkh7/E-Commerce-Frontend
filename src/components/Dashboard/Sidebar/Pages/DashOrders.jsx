@@ -17,7 +17,7 @@ function DashOrders() {
 
          const token = secureLocalStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:8000/api/authorized/orders",
+        "https://e-commerce-back-end-production.up.railway.app/api/authorized/orders",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ function DashOrders() {
     const deleteUser = async (id) => {
       
     const token = secureLocalStorage.getItem("token");
-    await axios.delete(`http://localhost:8000/api/authorized/orders/${id}`, {
+    await axios.delete(`https://e-commerce-back-end-production.up.railway.app/api/authorized/orders/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -72,7 +72,7 @@ function DashOrders() {
     const token = secureLocalStorage.getItem("token");
       
     await axios.put(
-      `http://localhost:8000/api/authorized/orders/${selectedInfo._id}`,
+      `https://e-commerce-back-end-production.up.railway.app/api/authorized/orders/${selectedInfo._id}`,
       updatedInfo,
       {
         headers: {

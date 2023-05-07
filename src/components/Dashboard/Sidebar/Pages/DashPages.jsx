@@ -19,7 +19,7 @@ function DashPages() {
     images: null,
   });
 
-  const APIKEY = "http://localhost:8000/api/pages/getallpages";
+  const APIKEY = "https://e-commerce-back-end-production.up.railway.app/api/pages/getallpages";
 
   const Pages = async () => {
     try {
@@ -43,7 +43,7 @@ function DashPages() {
     formData.append("images", infoImage);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/pages/createpage",
+        "https://e-commerce-back-end-production.up.railway.app/api/pages/createpage",
         formData,
         {
           headers: {
@@ -66,7 +66,7 @@ function DashPages() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8000/api/pages/deletepage/${id}`);
+    await axios.delete(`https://e-commerce-back-end-production.up.railway.app/api/pages/deletepage/${id}`);
     toast.success("Deleted Successfully", 2000);
     await Pages();
   };
@@ -88,7 +88,7 @@ function DashPages() {
     formData.append("images", infoImage);
 
     await axios.put(
-      `http://localhost:8000/api/pages/updatepage/${selectedInfo._id}`,
+      `https://e-commerce-back-end-production.up.railway.app/api/pages/updatepage/${selectedInfo._id}`,
       formData,
       {
         headers: {

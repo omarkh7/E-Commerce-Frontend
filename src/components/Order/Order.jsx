@@ -24,7 +24,7 @@ const Order = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/orders",
+        "https://e-commerce-back-end-production.up.railway.app/api/orders",
         {
           cart,
         },

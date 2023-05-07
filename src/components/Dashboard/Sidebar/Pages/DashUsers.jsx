@@ -34,7 +34,7 @@ function YourComponent() {
     try {
         
       const response = await axios.get(
-        "http://localhost:8000/api/users/getall",
+        "https://e-commerce-back-end-production.up.railway.app/api/users/getall",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ function YourComponent() {
       formData.append("location", newInfo.location);
       try {
           const response = await axios.post(
-              "http://localhost:8000/api/users/register", formData,
+              "https://e-commerce-back-end-production.up.railway.app/api/users/register", formData,
               {
                   headers: {
                       'Content-Type': 'application/x-www-form-urlencoded'
@@ -83,7 +83,7 @@ function YourComponent() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8000/api/users/delete/${id}`);
+    await axios.delete(`https://e-commerce-back-end-production.up.railway.app/api/users/delete/${id}`);
     toast.success("Deleted Successfully", 2000);
     await fetchData();
   };

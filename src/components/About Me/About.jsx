@@ -19,7 +19,7 @@ function About() {
 
   const getabout = async () => {
     const response = await axios.get(
-      `http://localhost:8000/api/pages/getallpagesbyid/6440f68433ababf0bb2ad176`
+      `https://e-commerce-back-end-production.up.railway.app/api/pages/getallpagesbyid/6440f68433ababf0bb2ad176`
     );
     setaboutdata(response.data.data.description);
     setaboutimage(response.data.data.image);

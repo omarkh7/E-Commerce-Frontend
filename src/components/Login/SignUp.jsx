@@ -25,7 +25,7 @@ const SignUp = ({ onBackToLoginClick, setIsLogin }) => {
 
   const fetchRegister = async () => {
     try {
-      await axios.post("http://localhost:8000/api/users/register", {
+      await axios.post("https://e-commerce-back-end-production.up.railway.app/api/users/register", {
         fullName,
         email,
         password,

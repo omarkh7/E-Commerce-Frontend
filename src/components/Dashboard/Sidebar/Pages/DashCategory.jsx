@@ -18,7 +18,7 @@ function DashCategory() {
     info_image: null,
   });
 
-  const APIKEY = "http://localhost:8000/api/category/allcategories";
+  const APIKEY = "https://e-commerce-back-end-production.up.railway.app/api/category/allcategories";
 
   const Categories = async () => {
     try {
@@ -41,7 +41,7 @@ function DashCategory() {
     formData.append("image", infoImage);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/category/createcategory",
+        "https://e-commerce-back-end-production.up.railway.app/api/category/createcategory",
         formData,
         {
           headers: {
@@ -63,7 +63,7 @@ function DashCategory() {
 
   const deleteUser = async (id) => {
     await axios.delete(
-      `http://localhost:8000/api/category/deletecategory/${id}`
+      `https://e-commerce-back-end-production.up.railway.app/api/category/deletecategory/${id}`
     );
     toast.success("Deleted Successfully", 2000);
     await Categories();
@@ -84,7 +84,7 @@ function DashCategory() {
     formData.append("image", infoImage);
 
     await axios.put(
-      `http://localhost:8000/api/category/updatecategory/${selectedInfo._id}`,
+      `https://e-commerce-back-end-production.up.railway.app/api/category/updatecategory/${selectedInfo._id}`,
       formData,
       {
         headers: {

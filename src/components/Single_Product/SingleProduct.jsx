@@ -19,7 +19,7 @@ function SingleProduct() {
 
 
 
-  const apiURL = `http://localhost:8000/api/products/getproductbyid/${productId}`;
+  const apiURL = `https://e-commerce-back-end-production.up.railway.app/api/products/getproductbyid/${productId}`;
 
   const fetchallData = async () => {
     try {

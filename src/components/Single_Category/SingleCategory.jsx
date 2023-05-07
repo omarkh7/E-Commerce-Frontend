@@ -11,7 +11,7 @@ function SingleCategory() {
   const [allproduct, setallproductData] = useState([]);
   const [loading,setLoading] = useState(true);
 
-  const apiURL = `http://localhost:8000/api/products/getproductsbycategory/${categoryId}`;
+  const apiURL = `https://e-commerce-back-end-production.up.railway.app/api/products/getproductsbycategory/${categoryId}`;
 
   const fetchAllProduct = async () => {
     try {

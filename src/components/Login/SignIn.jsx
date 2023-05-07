@@ -17,7 +17,7 @@ const SignIn = ({ onSignupClick }) => {
 
   const fetchLogin = async () => {
     axios
-      .post("http://localhost:8000/api/users/login", { email, password })
+      .post("https://e-commerce-back-end-production.up.railway.app/api/users/login", { email, password })
       .then((res) => {
         secureLocalStorage.setItem("token", res.data.token);
         secureLocalStorage.setItem("role", res.data.role);

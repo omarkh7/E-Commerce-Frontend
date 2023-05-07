@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Categories() {
   const [alldata, setAllData] = useState([]);
 
-  const apiURL = "http://localhost:8000/api/category/allcategories";
+  const apiURL = "https://e-commerce-back-end-production.up.railway.app/api/category/allcategories";
 
   const fetchallData = async () => {
     try {
@@ -64,7 +64,7 @@ function Categories() {
 
                 <img
                   className="img_categories_home"
-                  src={`http://localhost:8000/${item.image}`}
+                  src={`https://e-commerce-back-end-production.up.railway.app/${item.image}`}
                   alt={item.name}
                 />
                 <h6 className="text_under_categories">{item.name}</h6>

@@ -4,7 +4,7 @@ import axios from "axios";
 function Retro() {
 const [alldata, setallData] = useState([]);
 
-  const apiURL = "http://localhost:8000/api/products/getproducts";
+  const apiURL = "https://e-commerce-back-end-production.up.railway.app/api/products/getproducts";
 
   const fetchAllData = async () => {
     try {

@@ -5,7 +5,7 @@ import Loader from "../../../Loader/Loader";
 function Lowtop() {
   const [alldata, setAllData] = useState([]);
   
-  const apiURL = "http://localhost:8000/api/products/getproducts";
+  const apiURL = "https://e-commerce-back-end-production.up.railway.app/api/products/getproducts";
 
   const fetchAllData = async () => {
     try {
