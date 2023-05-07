@@ -26,7 +26,6 @@ function SingleProduct() {
       const response = await axios.get(apiURL);
       setAllData([response.data.product]);
       setLoading(false);
-console.log("set", [response.data.product]);
     } catch (error) {
       console.error(error);
       setLoading(false);
