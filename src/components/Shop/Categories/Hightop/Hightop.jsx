@@ -11,7 +11,6 @@ function Hightop() {
   const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      console.log("Products", response.data);
       setallData(response.data?.productList || []);
       setLoading(false);
     } catch (error) {
@@ -32,7 +31,6 @@ function Hightop() {
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("643fe9acc1397ac9890562cd")
     );
-    console.log("filter", filteredData);
     return (
       <div>
         {filteredData.length > 0 ? (

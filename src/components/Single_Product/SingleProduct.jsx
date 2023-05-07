@@ -18,16 +18,12 @@ function SingleProduct() {
   
 
 
-  console.log("selectedSize: ", selectedSize);
-  console.log("selectedColor: ", selectedColor);
-  console.log("quantity: ", selectedQuantity);
 
   const apiURL = `http://localhost:8000/api/products/getproductbyid/${productId}`;
 
   const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      console.log("hello:", response.data.product);
       setAllData([response.data.product]);
       setLoading(false);
 
@@ -108,7 +104,6 @@ function SingleProduct() {
 
 
    const specificData = alldata && alldata[0].attribute.filter((i) => i.size == selectedSize)
-  console.log('specificData',specificData)
 
   return (
     <div className="product-details-container">

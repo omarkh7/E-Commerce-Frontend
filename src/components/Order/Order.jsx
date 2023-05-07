@@ -34,7 +34,6 @@ const Order = () => {
           },
         }
       );
-      console.log("response", response.data.data);
       setISSubmitted(true);
       localStorage.removeItem("cart");
       setCart([]);
@@ -65,7 +64,6 @@ const Order = () => {
     });
     setCart(updatedCart);
   };
-  console.log('productorder', cart)
   
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));

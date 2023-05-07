@@ -10,7 +10,6 @@ function Lowtop() {
   const fetchAllData = async () => {
     try {
       const response = await axios.get(apiURL);
-      console.log("Products", response.data);
       setAllData(response.data?.productList || []);
      
     } catch (error) {
@@ -28,7 +27,6 @@ function Lowtop() {
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("6437ba63a671878f61ce7e40")
     );
-    console.log("filter", filteredData);
     return (
      
       <div>

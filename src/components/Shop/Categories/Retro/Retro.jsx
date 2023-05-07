@@ -10,7 +10,6 @@ const [alldata, setallData] = useState([]);
     try {
       const response = await axios.get(apiURL);
       setallData(response.data.productList);
-      console.log("Products", response.data.productList);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +22,6 @@ const [alldata, setallData] = useState([]);
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("643feab292947e7429c6dfc2")
     );
-    console.log("filter", filteredData);
 
 
 

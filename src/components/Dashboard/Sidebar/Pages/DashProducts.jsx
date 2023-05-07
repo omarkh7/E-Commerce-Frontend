@@ -63,7 +63,6 @@ function Dashproducts() {
           },
         }
       );
-      console.log("post", response);
 
       toast.success("Added Successfully", 2000);
       Products();
@@ -98,9 +97,7 @@ function Dashproducts() {
   };
 
   const handleImage = (e) => {
-    // console.log("Ee ", e.target.files)
     setInfoImage(e.target.files[0]);
-    // console.log("zeinab ", infoImage);
   };
 
   const updateUser = async () => {
@@ -115,7 +112,6 @@ function Dashproducts() {
     formData.append("image", infoImage);
     formData.append("images", infoImage);
 
-    console.log("UPDATE", isUpdateMode);
 
     await axios.put(
       `http://localhost:8000/api/products/updateproduct/${selectedInfo._id}`,

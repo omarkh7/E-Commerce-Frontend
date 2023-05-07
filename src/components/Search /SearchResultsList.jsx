@@ -3,7 +3,6 @@ import "../Search /SearchResultsList.css";
 import SearchResult from "./SearchResult";
 
 const SearchResultsList = ({ results }) => {
-  console.log("results", results);
   return (
     <div className='results-list'>
       {results.map((result) => {

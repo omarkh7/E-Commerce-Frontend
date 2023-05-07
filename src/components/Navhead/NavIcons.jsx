@@ -11,7 +11,6 @@ function NavIcons(props) {
 
   const handleLogout = () => {
     window.localStorage.clear();
-    console.log("ppppp ",props)
 window.location.reload();
     props.setIsLoggedIn();
   };
@@ -20,7 +19,6 @@ window.location.reload();
     const localStorageData = localStorage.getItem("cart");
     const cartItems = localStorageData ? JSON.parse(localStorageData) : [];
     setCartItemsCount(cartItems.length);
-    console.log("cartitem", cartItemsCount);
   }, [localStorage.getItem("cart")]);
 
 

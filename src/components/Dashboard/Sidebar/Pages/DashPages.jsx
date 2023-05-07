@@ -25,7 +25,6 @@ function DashPages() {
     try {
       const res = await axios.get(APIKEY);
       setAllPages(res.data.data);
-      console.log("Pages", res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +51,6 @@ function DashPages() {
           },
         }
       );
-      // console.log(response)
 
       toast.success("Added Successfully", 2000);
       Pages();
@@ -79,9 +77,7 @@ function DashPages() {
   };
 
   const handleImage = (e) => {
-    // console.log("Ee ", e.target.files)
     setInfoImage(e.target.files[0]);
-    // console.log("zeinab ", infoImage);
   };
 
   const updateUser = async () => {
@@ -90,7 +86,6 @@ function DashPages() {
     formData.append("title", selectedInfo.title);
     formData.append("description", selectedInfo.description);
     formData.append("images", infoImage);
-    console.log("UPDATE", isUpdateMode);
 
     await axios.put(
       `http://localhost:8000/api/pages/updatepage/${selectedInfo._id}`,

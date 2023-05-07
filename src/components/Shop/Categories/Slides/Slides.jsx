@@ -10,7 +10,6 @@ function Slides() {
     try {
       const response = await axios.get(apiURL);
       setallData(response.data.productList);
-      console.log("Products", response.data.productList);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +26,6 @@ function Slides() {
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("643feb6092947e7429c6dfc4")
     );
-    console.log("filter", filteredData);
     return (
       <div>
         {filteredData.length > 0 ? (

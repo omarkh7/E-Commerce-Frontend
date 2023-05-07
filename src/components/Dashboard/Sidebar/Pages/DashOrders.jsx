@@ -27,7 +27,6 @@ function DashOrders() {
 
       // Set the items in state
       setAllOrders(response.data.orders);
-      console.log("getall", response.data.orders);
     } catch (error) {
       console.error("what", error);
     }
@@ -37,7 +36,6 @@ function DashOrders() {
     fetchData();
   }, []);
 
-  // console.log('sida', allOrders.map())
 
     const deleteUser = async (id) => {
       
@@ -56,7 +54,6 @@ function DashOrders() {
     setIsUpdateMode((current) => !current);
   };
 
-  // console.log('ssss', allOrders)
 
   const updateUser = async () => {
     const updatedCart = selectedInfo.cart.map((item) => ({

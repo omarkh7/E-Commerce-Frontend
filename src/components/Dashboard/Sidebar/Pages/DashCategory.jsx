@@ -24,7 +24,6 @@ function DashCategory() {
     try {
       const res = await axios.get(APIKEY);
       setAllCategories(res.data.data);
-      console.log("categoires", res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +49,6 @@ function DashCategory() {
           },
         }
       );
-      // console.log(response)
 
       toast.success("Added Successfully", 2000);
       Categories();
@@ -77,16 +75,13 @@ function DashCategory() {
   };
 
   const handleImage = (e) => {
-    // console.log("Ee ", e.target.files)
     setInfoImage(e.target.files[0]);
-    // console.log("zeinab ", infoImage);
   };
 
   const updateUser = async () => {
     const formData = new FormData();
     formData.append("name", selectedInfo.info_name);
     formData.append("image", infoImage);
-    console.log("UPDATE", isUpdateMode);
 
     await axios.put(
       `http://localhost:8000/api/category/updatecategory/${selectedInfo._id}`,

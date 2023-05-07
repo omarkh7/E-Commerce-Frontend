@@ -44,7 +44,6 @@ function YourComponent() {
 
       // Set the items in state
       setItems(response.data.user);
-      console.log(response.data);
     } catch (error) {
       console.error("what", error);
     }
@@ -67,7 +66,6 @@ function YourComponent() {
                   },
               }
           );
-          console.log("RESPONSE",response)
 
           toast.success("Added Successfully", 2000);
           fetchData();

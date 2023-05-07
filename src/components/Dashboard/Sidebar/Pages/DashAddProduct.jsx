@@ -71,7 +71,6 @@ const DashAddProduct = () => {
         "http://localhost:8000/api/category/allcategories"
       );
       setCategories(response.data.data);
-      console.log("cat", categories);
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +89,6 @@ const DashAddProduct = () => {
 
   function handleImages(e) {
     const filesArray = Array.from(e.target.files);
-    console.log("files", filesArray);
     if (filesArray.length > 0) {
       setNewInfo((prevInfo) => ({ ...prevInfo, images: filesArray }));
     }
@@ -106,7 +104,6 @@ const DashAddProduct = () => {
       console.log(error);
     }
   };
-  console.log(allProducts);
   useEffect(() => {
     Products();
   }, []);
@@ -293,7 +290,6 @@ const DashAddProduct = () => {
                       type='button'
                       className='add-attribute'
                       onClick={() => {
-                        console.log("newInfo", newInfo);
                         setNewInfo((prevInfo) => ({
                           ...prevInfo,
                           attribute: [
@@ -443,7 +439,6 @@ const DashAddProduct = () => {
                       type='button'
                       className='add-attribute'
                       onClick={() => {
-                        console.log("newInfo", newInfo);
                         setNewInfo((prevInfo) => ({
                           ...prevInfo,
                           attribute: [

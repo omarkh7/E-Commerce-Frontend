@@ -14,21 +14,16 @@ function ProductsHome() {
   const fetchallData = async () => {
     try {
       const response = await axios.get(apiURL);
-      console.log("Products", response.data);
       setAllData(response.data.productList);
-      // setLoading(false);
     } catch (error) {
       console.error(error);
-      // setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchallData();
   }, []);
-  // if(loading){
-  //   return <div> <Loader/> </div>
-  // }
+
 
   return (
     <div className='container_products'>

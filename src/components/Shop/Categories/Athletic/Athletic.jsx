@@ -12,7 +12,6 @@ const [loading,setLoading] = useState(true);
   const fetchAllData = async () => {
     try {
       const response = await axios.get(apiURL);
-      console.log("Products", response.data);
       setAllData(response.data?.productList || []); 
       setLoading(false);
     } catch (error) {
@@ -32,7 +31,6 @@ const [loading,setLoading] = useState(true);
     const filteredData = alldata.filter((item) =>
       item.category._id.includes("6437ba7ba671878f61ce7e42")
     );
-    console.log("filter", filteredData);
     return (
       <div>
         {filteredData.length > 0 ? (
