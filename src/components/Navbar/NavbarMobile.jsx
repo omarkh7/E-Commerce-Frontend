@@ -165,17 +165,7 @@ function NavbarMobile() {
             >
               Contact Us
             </motion.div>
-            <motion.div
-              initial={animatedForm}
-              animate={animatedTo}
-              onClick={() => {
-                closeMobileMenu()
-                handleClick();
-              }}
-              transition={{ delay: 0.3 }}
-            >
-              Dashboard
-            </motion.div>
+ 
           </Link>
           <Link to='terms' style={{ textDecoration: "none" }}>
             <motion.div
